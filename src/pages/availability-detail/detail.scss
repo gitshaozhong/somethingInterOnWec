@@ -1,0 +1,385 @@
+.page-detail {
+  min-height: 100vh;
+  background: var(--bg-color);
+  padding-bottom: 100px;
+}
+
+.detail-card {
+  background: var(--white);
+  margin: 12px;
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* 教练信息 */
+.coach-header {
+  .coach-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+.coach-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.coach-avatar-placeholder {
+  background: var(--primary-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--primary-color);
+}
+
+.coach-meta {
+  flex: 1;
+}
+
+.coach-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coach-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.follow-btn {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.follow-btn.following {
+  background: var(--bg-color);
+  color: var(--text-color-secondary);
+}
+
+.coach-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  background: var(--bg-color);
+  color: var(--text-color-secondary);
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.rating-score {
+  font-size: 12px;
+  color: #faad14;
+  font-weight: 600;
+}
+
+.review-hint {
+  font-size: 11px;
+  color: var(--text-color-hint);
+}
+
+.coach-bio {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.bio-label {
+  font-size: 12px;
+  color: var(--text-color-hint);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.bio-text {
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.qualifications {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.qual-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.qual-tag {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  background: #f6ffed;
+  color: var(--success-color);
+  border: 1px solid #b7eb8f;
+}
+
+/* 档期信息 */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.status-open {
+  background: #f6ffed;
+  color: var(--success-color);
+}
+
+.status-closed, .status-expired {
+  background: var(--bg-color);
+  color: var(--text-color-hint);
+}
+
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  width: 50%;
+  margin-bottom: 12px;
+}
+
+.info-item-full {
+  width: 100%;
+}
+
+.info-label {
+  font-size: 12px;
+  color: var(--text-color-hint);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.info-value {
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.info-value.price {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.note-box {
+  background: var(--bg-color);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.note-label {
+  font-size: 11px;
+  color: var(--text-color-hint);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.note-text {
+  font-size: 13px;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  background: var(--white);
+  border-top: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.contact-btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 22px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-btn.secondary {
+  background: var(--bg-color);
+  color: var(--text-color-secondary);
+}
+
+.login-hint {
+  text-align: center;
+  padding: 12px;
+  font-size: 12px;
+  color: var(--text-color-hint);
+}
+
+/* 弹窗 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  width: 85%;
+  max-width: 360px;
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--text-color-hint);
+  border-radius: 50%;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+.modal-hint {
+  font-size: 13px;
+  color: var(--text-color-secondary);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.modal-textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--bg-color);
+  box-sizing: border-box;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-color-hint);
+  margin-top: 4px;
+  display: block;
+}
+
+.modal-disclaimer {
+  font-size: 11px;
+  color: var(--text-color-hint);
+  margin-top: 8px;
+  display: block;
+  text-align: center;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.modal-cancel {
+  flex: 1;
+  height: 40px;
+  border-radius: 20px;
+  background: var(--bg-color);
+  color: var(--text-color-secondary);
+  font-size: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-confirm {
+  flex: 2;
+  height: 40px;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--text-color-hint);
+}

@@ -1,0 +1,107 @@
+.page-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+}
+
+.login-content {
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.logo-area {
+  margin-bottom: 48px;
+}
+
+.app-name {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: block;
+}
+
+.app-desc {
+  font-size: 14px;
+  color: var(--text-color-hint);
+  margin-top: 8px;
+  display: block;
+}
+
+.role-select {
+  margin-bottom: 32px;
+}
+
+.role-label {
+  font-size: 15px;
+  color: var(--text-color-secondary);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.role-options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.role-card {
+  width: 140px;
+  padding: 20px 12px;
+  border-radius: var(--radius);
+  border: 2px solid var(--border-color);
+  background: var(--white);
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.role-card.active {
+  border-color: var(--primary-color);
+  background: var(--primary-color-light);
+}
+
+.role-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.role-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  display: block;
+}
+
+.role-desc {
+  font-size: 11px;
+  color: var(--text-color-hint);
+  display: block;
+  margin-top: 4px;
+}
+
+.wechat-login-btn {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  background: #07c160;
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.wechat-login-btn[disabled] {
+  opacity: 0.6;
+}
+
+.privacy-tip {
+  font-size: 12px;
+  color: var(--text-color-hint);
+  margin-top: 20px;
+  display: block;
+}

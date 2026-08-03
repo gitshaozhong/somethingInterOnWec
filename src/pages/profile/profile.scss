@@ -1,0 +1,107 @@
+.page-profile {
+  padding-bottom: 20px;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--text-color-hint);
+}
+
+.login-btn {
+  margin-top: 16px;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 32px;
+}
+
+.header {
+  background: var(--white);
+  padding: 32px 20px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  overflow: hidden;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: var(--primary-color);
+}
+
+.nickname {
+  font-size: 18px;
+  font-weight: 600;
+  display: block;
+}
+
+.role {
+  font-size: 13px;
+  color: var(--text-color-hint);
+  display: block;
+  margin-top: 4px;
+}
+
+.menu {
+  background: var(--white);
+  margin-bottom: 12px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-icon {
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.menu-label {
+  flex: 1;
+  font-size: 15px;
+}
+
+.menu-arrow {
+  color: var(--text-color-hint);
+  font-size: 14px;
+}
+
+.logout-section {
+  padding: 20px;
+}
+
+.logout-btn {
+  text-align: center;
+  background: var(--white);
+  color: var(--danger-color);
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px;
+  font-size: 15px;
+}
