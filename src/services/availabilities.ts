@@ -1,5 +1,5 @@
 import request from "./request";
-import type { Availability, PaginatedResponse } from "../types";
+import type { Availability, AvailabilityItem, AvailabilityDetail } from "../types";
 
 export interface AvailabilityListParams {
   page?: number;
@@ -8,6 +8,10 @@ export interface AvailabilityListParams {
   timeSlot?: string;
   district?: string;
   level?: number;
+  startHour?: number;
+  endHour?: number;
+  maxPrice?: number;
+  courtBookedBy?: string;
 }
 
 export const availabilitiesService = {
@@ -15,7 +19,7 @@ export const availabilitiesService = {
   list(params: AvailabilityListParams = {}) {
     return request.get<{
       ok: boolean;
-      items: Availability[];
+      items: AvailabilityItem[];
       total: number;
       page: number;
       limit: number;
@@ -24,7 +28,7 @@ export const availabilitiesService = {
 
   /** 获取档期详情 */
   getById(id: string) {
-    return request.get<{ ok: boolean; availability: Availability }>(`/availabilities/${id}`);
+    return request.get<{ ok: boolean; availability: AvailabilityDetail }>(`/availabilities/${id}`);
   },
 
   /** 发布档期 */

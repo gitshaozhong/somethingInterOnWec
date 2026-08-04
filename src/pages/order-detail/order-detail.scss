@@ -89,6 +89,18 @@
   font-weight: 600;
 }
 
+/* 联系方式撤回 */
+.peer-phone-retracted {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.phone-retracted-text {
+  font-size: 13px;
+  color: var(--text-color-hint);
+}
+
 /* 订单信息 */
 .section-title {
   font-size: 16px;
@@ -208,6 +220,12 @@
   gap: 8px;
 }
 
+.checkin-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 .checkin-badge {
   padding: 4px 16px;
   border-radius: 14px;
@@ -236,8 +254,124 @@
   font-size: 12px;
   color: var(--danger-color);
   line-height: 1.5;
+  text-align: left;
+  padding: 8px 10px;
+  background: #fff2f0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* 打卡照片组合 */
+.checkin-photos {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.checkin-photo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex: 1;
+  min-width: 140px;
+  max-width: 160px;
+}
+
+.checkin-photo-block .checkin-photo {
+  width: 100%;
+  height: 110px;
+}
+
+.checkin-photo-label {
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.checkin-photo-time {
+  font-size: 11px;
+  color: var(--text-color-hint);
+}
+
+.checkin-photo-gps {
+  font-size: 11px;
+  color: var(--text-color-hint);
+}
+
+/* 时间线 */
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-node {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.timeline-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 18px;
+}
+
+.timeline-icon {
+  font-size: 16px;
+  color: var(--text-color-hint);
+  line-height: 1;
+  width: 18px;
   text-align: center;
-  padding: 0 16px;
+}
+
+.timeline-node.done .timeline-icon {
+  color: var(--success-color);
+  font-weight: 700;
+}
+
+.timeline-line {
+  flex: 1;
+  width: 1px;
+  min-height: 18px;
+  background: var(--border-color);
+  margin: 2px 0;
+}
+
+.timeline-node.done .timeline-line {
+  background: var(--success-color);
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+  flex: 1;
+}
+
+.timeline-node:last-child .timeline-content {
+  padding-bottom: 0;
+}
+
+.timeline-label {
+  font-size: 13px;
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.timeline-time {
+  font-size: 11px;
+  color: var(--text-color-hint);
+  margin-top: 2px;
+}
+
+.timeline-time.pending {
+  color: var(--text-color-hint);
 }
 
 /* 评价 */

@@ -32,6 +32,16 @@ export const invitationsService = {
     return request.put<{ ok: boolean }>(`/invitations/${id}/revoke`);
   },
 
+  /** 确认练球（第二次确认） */
+  confirmPractice(id: string) {
+    return request.put<{ ok: boolean; bothConfirmed: boolean }>(`/invitations/${id}/confirm-practice`);
+  },
+
+  /** 标记所有消息已读 */
+  markRead() {
+    return request.put<{ ok: boolean }>("/invitations/mark-read");
+  },
+
   /** 我的订单列表 */
   orders() {
     return request.get<{ ok: boolean; items: Invitation[] }>("/invitations/orders");

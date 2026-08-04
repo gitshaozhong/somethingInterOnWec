@@ -30,58 +30,6 @@
   display: block;
 }
 
-.role-select {
-  margin-bottom: 32px;
-}
-
-.role-label {
-  font-size: 15px;
-  color: var(--text-color-secondary);
-  display: block;
-  margin-bottom: 16px;
-}
-
-.role-options {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-}
-
-.role-card {
-  width: 140px;
-  padding: 20px 12px;
-  border-radius: var(--radius);
-  border: 2px solid var(--border-color);
-  background: var(--white);
-  text-align: center;
-  transition: border-color 0.2s;
-}
-
-.role-card.active {
-  border-color: var(--primary-color);
-  background: var(--primary-color-light);
-}
-
-.role-icon {
-  font-size: 32px;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.role-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-color);
-  display: block;
-}
-
-.role-desc {
-  font-size: 11px;
-  color: var(--text-color-hint);
-  display: block;
-  margin-top: 4px;
-}
-
 .wechat-login-btn {
   width: 100%;
   max-width: 300px;
@@ -104,4 +52,6 @@
   color: var(--text-color-hint);
   margin-top: 20px;
   display: block;
+  padding: 0 24px;
+  line-height: 1.6;
 }

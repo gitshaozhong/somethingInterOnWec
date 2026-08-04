@@ -2,112 +2,260 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: var(--bg-color);
+  background: linear-gradient(180deg, #AEECEB 0%, #F8D2E1 100%);
 }
 
-.tab-bar {
-  display: flex;
-  background: var(--white);
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.tab-item {
-  flex: 1;
-  text-align: center;
-  padding: 8px 0;
-  font-size: 15px;
-  color: var(--text-color-secondary);
-  border-bottom: 2px solid transparent;
-}
-
-.tab-item.active {
-  color: var(--primary-color);
-  border-bottom-color: var(--primary-color);
-  font-weight: 600;
-}
-
-.filter-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  background: var(--white);
-  border-bottom: 1px solid var(--border-color);
-}
-
-.filter-trigger {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-  color: var(--text-color-secondary);
-}
-
-.filter-arrow { font-size: 10px; }
-
-.filter-count { font-size: 12px; color: var(--text-color-hint); }
-
-.filter-panel {
-  background: var(--white);
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.filter-row {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-}
-
-.filter-row:last-child { margin-bottom: 0; }
-
-.filter-label {
-  width: 40px;
-  font-size: 13px;
-  color: var(--text-color-secondary);
-  padding-top: 4px;
+/* ============ 顶部渐变背景区 ============ */
+.header-gradient {
+  padding: 12px 12px 0;
   flex-shrink: 0;
 }
 
-.filter-options {
+/* ============ 下沉式双 Tab ============ */
+.sunk-tab-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  flex: 1;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px 12px 0 0;
+  padding: 3px;
+  gap: 2px;
 }
 
-.filter-tag {
-  padding: 4px 12px;
-  border-radius: 14px;
-  background: var(--bg-color);
-  font-size: 12px;
+.sunk-tab {
+  flex: 1;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #5a6a7a;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.2s;
+}
+
+.sunk-tab.active {
+  background: var(--white);
+  color: #07B6D5;
+  font-weight: 600;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.sunk-tab-text {
+  line-height: 1.2;
+}
+
+/* ============ 筛选入口栏（下沉式卡片内） ============ */
+.filter-entry-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--white);
+  border-radius: 0 0 12px 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.entry-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 16px;
+  border-radius: 16px;
+  background: var(--chip-bg);
+  font-size: 13px;
+  color: var(--chip-color);
+  position: relative;
+}
+
+.entry-item.active {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.entry-icon-filter {
+  font-size: 13px;
   color: var(--text-color-secondary);
 }
 
-.filter-tag.active {
-  background: var(--primary-color-light);
+.entry-item.active .entry-icon-filter {
   color: var(--primary-color);
 }
 
+.entry-text {
+  white-space: nowrap;
+}
+
+.entry-icon {
+  font-size: 10px;
+  color: var(--text-color-hint);
+}
+
+.entry-item.active .entry-icon {
+  color: var(--primary-color);
+}
+
+.entry-dot {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-color);
+}
+
+.entry-clear {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-color-hint);
+  flex-shrink: 0;
+  padding: 4px 8px;
+}
+
+/* ============ 顶部半屏筛选面板 ============ */
+.panel-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.filter-panel-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70vh;
+  background: var(--white);
+  border-radius: 0 0 16px 16px;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  animation: slideDown 0.25s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.panel-handle {
+  width: 40px;
+  height: 5px;
+  border-radius: 3px;
+  background: #e0e0e0;
+  margin: 10px auto 6px;
+  flex-shrink: 0;
+}
+
+.panel-scroll {
+  flex: 1;
+  padding: 4px 16px 12px;
+  overflow-y: auto;
+}
+
+.panel-group {
+  margin-bottom: 18px;
+}
+
+.panel-group:last-child {
+  margin-bottom: 8px;
+}
+
+.group-title {
+  display: block;
+  font-size: 13px;
+  color: var(--text-color-secondary);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 药丸 Chip：32pt 高，圆角 16pt */
+.chip {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 16px;
+  border-radius: 16px;
+  background: var(--chip-bg);
+  color: var(--chip-color);
+  font-size: 13px;
+  text-align: center;
+  min-width: 56px;
+}
+
+.chip.active {
+  background: var(--primary-color);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.chip-clear {
+  background: transparent;
+  color: var(--text-color-hint);
+  border: 1px dashed var(--border-color);
+}
+
+/* 底部双按钮 */
+.panel-footer {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border-color);
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.panel-btn-clear {
+  flex: 0 0 110px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 22px;
+  background: var(--chip-bg);
+  color: var(--text-color-secondary);
+  font-size: 14px;
+}
+
+.panel-btn-confirm {
+  flex: 1;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  border-radius: 22px;
+  background: var(--primary-color);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ============ 列表 ============ */
 .list-scroll {
   flex: 1;
-  padding: 12px;
+  padding: 12px 12px 80px;
 }
 
+/* ============ 订单卡片（左-中-右） ============ */
 .card {
   background: var(--white);
-  border-radius: var(--radius);
-  padding: 16px;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
   margin-bottom: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.card-header {
+.card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .user-info {
@@ -115,11 +263,12 @@
   align-items: center;
   gap: 10px;
   flex: 1;
+  overflow: hidden;
 }
 
 .avatar {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
@@ -131,16 +280,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--primary-color);
+  font-weight: 600;
 }
 
-.user-meta { flex: 1; }
+.user-meta {
+  flex: 1;
+  overflow: hidden;
+}
 
 .name {
   font-size: 15px;
   font-weight: 600;
+  color: var(--text-color);
   display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .rating-row {
@@ -167,63 +324,86 @@
   display: block;
 }
 
+/* 等级徽章：蓝色系 */
 .level-badge {
-  background: var(--primary-color-light);
+  background: var(--secondary-color-light);
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 12px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   font-weight: 600;
-}
-
-.level-student {
-  background: #f6ffed;
-  color: var(--success-color);
-}
-
-.card-body {
-  margin-bottom: 10px;
-}
-
-.info-row {
-  display: flex;
-  margin-bottom: 4px;
-}
-
-.info-label {
-  width: 36px;
-  font-size: 13px;
-  color: var(--text-color-hint);
   flex-shrink: 0;
 }
 
-.info-value {
-  font-size: 13px;
-  color: var(--text-color);
+.level-student {
+  background: var(--secondary-color-light);
+  color: var(--secondary-color);
 }
 
-.card-footer {
+/* 中部信息行（一行内 · 分隔） */
+.card-mid {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 0;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.mid-text {
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  margin: 0 2px;
+}
+
+.mid-dot {
+  font-size: 12px;
+  color: var(--text-color-hint);
+  margin: 0 2px;
+}
+
+/* 底部：左标签 右价格 */
+.card-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-color);
-}
-
-.price {
-  font-size: 15px;
-  color: var(--primary-color);
-  font-weight: 600;
 }
 
 .court-badge {
   font-size: 11px;
   color: var(--text-color-hint);
   background: var(--bg-color);
-  padding: 2px 8px;
+  padding: 3px 8px;
   border-radius: 4px;
 }
 
+.price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+}
+
+/* 价格：大号加粗，品牌色（橙） */
+.price {
+  font-size: 20px;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-family: "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
+}
+
+.price-unit {
+  font-size: 11px;
+  color: var(--text-color-hint);
+}
+
+.price-miaoyi {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ============ 加载更多 ============ */
 .load-more, .no-more {
   text-align: center;
   padding: 16px;
@@ -231,4 +411,6 @@
   color: var(--text-color-hint);
 }
 
-.load-more { color: var(--primary-color); }
+.load-more {
+  color: var(--primary-color);
+}

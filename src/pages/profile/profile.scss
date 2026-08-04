@@ -1,35 +1,59 @@
 .page-profile {
-  padding-bottom: 20px;
+  min-height: 100vh;
+  background: var(--bg-color);
+  padding-bottom: 80px;
 }
 
-.empty {
-  text-align: center;
-  padding: 80px 0;
-  color: var(--text-color-hint);
+/* 未登录空状态 */
+.login-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 32px;
+
+  .login-empty-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  .login-empty-text {
+    font-size: 14px;
+    color: var(--text-color-hint);
+    margin-bottom: 24px;
+  }
 }
 
 .login-btn {
-  margin-top: 16px;
-  background: var(--primary-color);
+  background: var(--primary-gradient);
   color: var(--white);
   border: none;
-  border-radius: var(--radius);
-  padding: 10px 32px;
+  border-radius: 24px;
+  padding: 10px 40px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
 }
 
+/* 顶部用户信息区（青绿渐变背景） */
 .header {
-  background: var(--white);
-  padding: 32px 20px;
-  text-align: center;
-  margin-bottom: 12px;
+  background: linear-gradient(180deg, #07B6D5 0%, #4FC9E0 60%, var(--bg-color) 100%);
+  padding: 24px 20px 60px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .avatar {
-  width: 72px;
-  height: 72px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  margin: 0 auto 12px;
+  margin-right: 16px;
   overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
 }
 
 .avatar-img {
@@ -40,60 +64,249 @@
 .avatar-placeholder {
   width: 100%;
   height: 100%;
-  background: var(--primary-color-light);
+  background: rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
-  color: var(--primary-color);
+  font-size: 24px;
+  color: var(--white);
+}
+
+.user-details {
+  flex: 1;
 }
 
 .nickname {
+  display: block;
   font-size: 18px;
   font-weight: 600;
-  display: block;
+  color: var(--white);
+  margin-bottom: 4px;
 }
 
-.role {
-  font-size: 13px;
-  color: var(--text-color-hint);
+.phone {
   display: block;
-  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.menu {
+.setting-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.setting-arrow {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1;
+}
+
+/* 双数据卡片 */
+.balance-cards {
+  display: flex;
+  gap: 12px;
+}
+
+.balance-card {
+  flex: 1;
+  height: 76px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+
+  &.orange {
+    background: var(--primary-gradient);
+  }
+
+  &.green {
+    background: var(--success-gradient);
+  }
+}
+
+.card-content {
+  padding: 14px 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.amount {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.view-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-arrow {
+  font-size: 18px;
+  color: var(--white);
+  line-height: 1;
+}
+
+/* 订单管理网格 */
+.order-section {
   background: var(--white);
-  margin-bottom: 12px;
+  border-radius: 16px;
+  margin: -32px 12px 12px;
+  padding: 16px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.order-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 4px;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.order-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  background: var(--bg-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.order-text {
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  text-align: center;
+}
+
+/* 菜单分组容器 */
+.menu-section {
+  background: var(--white);
+  border-radius: 16px;
+  margin: 12px;
+  padding: 0 16px;
+  box-shadow: var(--card-shadow);
 }
 
 .menu-item {
+  height: 56px;
   display: flex;
   align-items: center;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border-color);
+
+  &:active {
+    background: var(--bg-color);
+  }
 }
 
-.menu-item:last-child {
-  border-bottom: none;
+.menu-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &.orange {
+    background: var(--primary-color-light);
+  }
+
+  &.green {
+    background: #e6f9f1;
+  }
+
+  &.gray {
+    background: var(--bg-color);
+  }
 }
 
 .menu-icon {
   font-size: 18px;
-  margin-right: 12px;
+  line-height: 1;
 }
 
 .menu-label {
   flex: 1;
   font-size: 15px;
+  color: var(--text-color);
+}
+
+.menu-status {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-right: 8px;
+
+  &.done {
+    background: var(--primary-color-light);
+    color: var(--primary-color);
+  }
+
+  &.pending {
+    background: #fff2f0;
+    color: var(--danger-color);
+  }
 }
 
 .menu-arrow {
   color: var(--text-color-hint);
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 1;
 }
 
+.menu-divider {
+  height: 1px;
+  background: var(--divider-color);
+  margin: 0 4px;
+}
+
+/* 退出登录 */
 .logout-section {
-  padding: 20px;
+  padding: 20px 12px;
 }
 
 .logout-btn {
@@ -101,7 +314,8 @@
   background: var(--white);
   color: var(--danger-color);
   border: none;
-  border-radius: var(--radius);
+  border-radius: 12px;
   padding: 12px;
   font-size: 15px;
+  box-shadow: var(--card-shadow);
 }

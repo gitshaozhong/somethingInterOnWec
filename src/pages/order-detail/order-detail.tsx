@@ -21,6 +21,13 @@ function formatDate(dateStr: string | null): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")} ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
 }
 
+/** 时间线时间格式：M/D HH:mm */
+function formatTimelineDate(dateStr: string | null): string {
+  if (!dateStr) return "待操作";
+  const d = new Date(dateStr);
+  return `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
+}
+
 export default function OrderDetail() {
   const router = useRouter();
   const { id } = router.params;
@@ -78,6 +85,16 @@ export default function OrderDetail() {
   // 打卡状态
   const hasCheckin = order.checkIn != null;
   const checkinValid = order.checkIn?.validCheckIn ?? false;
+
+  // 订单时间线 6 节点
+  const timeline = [
+    { label: "双方同意", time: order.acceptedAt, done: !!order.acceptedAt },
+    { label: "学员确认练球", time: order.studentConfirmedAt, done: !!order.studentConfirmedAt },
+    { label: "陪练确认练球", time: order.coachConfirmedAt, done: !!order.coachConfirmedAt },
+    { label: "打卡开始", time: order.checkIn?.startTime ?? null, done: !!order.checkIn?.startTime },
+    { label: "学员确认完成", time: order.studentCompletedAt, done: !!order.studentCompletedAt },
+    { label: "订单完成", time: order.orderClosedAt, done: !!order.orderClosedAt || order.orderStatus === "completed" },
+  ];
 
   // 确认练球
   const handleConfirmPractice = async () => {
@@ -256,10 +273,15 @@ export default function OrderDetail() {
             <Text className="peer-role">{isCoach ? "学员" : "陪练员"}</Text>
           </View>
         </View>
-        {order.peerPhone && (
+        {order.peerPhone && !isCompleted && !isClosed && (
           <View className="peer-phone">
             <Text className="phone-label">联系方式</Text>
             <Text className="phone-value">{order.peerPhone}</Text>
+          </View>
+        )}
+        {(isCompleted || isClosed) && (
+          <View className="peer-phone-retracted">
+            <Text className="phone-retracted-text">服务已完成，联系方式已撤回</Text>
           </View>
         )}
       </View>
@@ -284,6 +306,30 @@ export default function OrderDetail() {
             <Text className="info-label">角色</Text>
             <Text className="info-value">{isCoach ? "陪练员" : "学员"}</Text>
           </View>
+        </View>
+      </View>
+
+      {/* 订单动态时间线 */}
+      <View className="detail-card">
+        <Text className="section-title">订单动态</Text>
+        <View className="timeline">
+          {timeline.map((node, i) => (
+            <View
+              key={i}
+              className={`timeline-node ${node.done ? "done" : ""} ${i < timeline.length - 1 ? "has-line" : ""}`}
+            >
+              <View className="timeline-left">
+                <Text className="timeline-icon">{node.done ? "✓" : "○"}</Text>
+                {i < timeline.length - 1 && <View className="timeline-line" />}
+              </View>
+              <View className="timeline-content">
+                <Text className="timeline-label">{node.label}</Text>
+                <Text className={`timeline-time ${!node.done ? "pending" : ""}`}>
+                  {node.done ? formatTimelineDate(node.time) : "待操作"}
+                </Text>
+              </View>
+            </View>
+          ))}
         </View>
       </View>
 
@@ -319,42 +365,55 @@ export default function OrderDetail() {
         </View>
       )}
 
-      {/* 打卡区域 */}
-      {isInProgress && isCoach && (
+      {/* 陪练打卡 - 教练进行中且未打卡时显示打卡入口 */}
+      {isInProgress && isCoach && !hasCheckin && (
         <View className="detail-card">
           <Text className="section-title">陪练打卡</Text>
-          {hasCheckin ? (
-            <View className="checkin-status">
-              <Text className={`checkin-badge ${checkinValid ? "valid" : "invalid"}`}>
-                {checkinValid ? "已打卡" : "无效打卡"}
-              </Text>
-              {order.checkIn?.startPhoto && (
-                <Image src={order.checkIn.startPhoto} className="checkin-photo" mode="aspectFill" />
-              )}
-              {!checkinValid && (
-                <Text className="checkin-warn">打卡时间不在活动时间前后1小时范围内，本次打卡不计入有效统计，订单完成后评价无效</Text>
-              )}
-            </View>
-          ) : (
-            <View>
-              <Text className="checkin-hint">请在活动时间前后1小时内打卡，需开启定位并上传球馆照片</Text>
-              <Button className="action-btn" onClick={handleGetLocation} loading={actionLoading}>
-                获取定位并打卡
-              </Button>
-            </View>
-          )}
+          <Text className="checkin-hint">请在活动时间前后1小时内打卡，需开启定位并上传球馆照片</Text>
+          <Button className="action-btn" onClick={handleGetLocation} loading={actionLoading}>
+            获取定位并打卡
+          </Button>
         </View>
       )}
 
-      {isInProgress && isStudent && hasCheckin && (
+      {/* 打卡记录 - 任何角色任何状态，有打卡记录时展示完整信息 */}
+      {hasCheckin && order.checkIn && (
         <View className="detail-card">
-          <Text className="section-title">陪练打卡</Text>
-          <View className="checkin-status">
+          <Text className="section-title">打卡记录</Text>
+          <View className="checkin-header">
             <Text className={`checkin-badge ${checkinValid ? "valid" : "invalid"}`}>
-              {checkinValid ? "已打卡" : "无效打卡"}
+              {checkinValid ? "有效打卡" : "无效打卡"}
             </Text>
-            {order.checkIn?.startPhoto && (
-              <Image src={order.checkIn.startPhoto} className="checkin-photo" mode="aspectFill" />
+          </View>
+          {!checkinValid && (
+            <Text className="checkin-warn">
+              ⚠️ 打卡无效：未在活动时间前后1小时内完成打卡，此订单不计入完成数且评价无效
+            </Text>
+          )}
+          <View className="checkin-photos">
+            {order.checkIn.startPhoto && (
+              <View className="checkin-photo-block">
+                <Image src={order.checkIn.startPhoto} className="checkin-photo" mode="aspectFill" />
+                <Text className="checkin-photo-label">开始照片</Text>
+                <Text className="checkin-photo-time">{formatTimelineDate(order.checkIn.startTime)}</Text>
+                {order.checkIn.startGpsLat != null && (
+                  <Text className="checkin-photo-gps">
+                    📍 {order.checkIn.startGpsLat.toFixed(4)}, {order.checkIn.startGpsLng?.toFixed(4)}
+                  </Text>
+                )}
+              </View>
+            )}
+            {order.checkIn.endPhoto && (
+              <View className="checkin-photo-block">
+                <Image src={order.checkIn.endPhoto} className="checkin-photo" mode="aspectFill" />
+                <Text className="checkin-photo-label">结束照片</Text>
+                <Text className="checkin-photo-time">{formatTimelineDate(order.checkIn.endTime)}</Text>
+                {order.checkIn.endGpsLat != null && (
+                  <Text className="checkin-photo-gps">
+                    📍 {order.checkIn.endGpsLat.toFixed(4)}, {order.checkIn.endGpsLng?.toFixed(4)}
+                  </Text>
+                )}
+              </View>
             )}
           </View>
         </View>
@@ -466,7 +525,7 @@ export default function OrderDetail() {
                 placeholder="写点评价吧（选填）"
                 value={reviewComment}
                 onInput={(e) => setReviewComment(e.detail.value)}
-                maxlength={200}
+                maxlength={50}
               />
               <Text className="modal-disclaimer">本评价为双方互评，分数将会直接影响您在平台的信用哟</Text>
             </View>

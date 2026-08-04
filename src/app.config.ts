@@ -1,9 +1,8 @@
 export default defineAppConfig({
   pages: [
+    "pages/publish/publish",
     "pages/index/index",
     "pages/messages/messages",
-    "pages/publish/publish",
-    "pages/orders/orders",
     "pages/profile/profile",
     "pages/login/login",
     "pages/availability-detail/availability-detail",
@@ -12,6 +11,9 @@ export default defineAppConfig({
     "pages/following/following",
     "pages/feedback/feedback",
     "pages/profile-edit/profile-edit",
+    "pages/my-availabilities/my-availabilities",
+    "pages/my-demands/my-demands",
+    "pages/orders/orders",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -20,8 +22,9 @@ export default defineAppConfig({
     navigationBarTextStyle: "black",
   },
   tabBar: {
-    color: "#999999",
-    selectedColor: "#10b981",
+    custom: true,
+    color: "#8a8a9a",
+    selectedColor: "#ff6a00",
     backgroundColor: "#ffffff",
     borderStyle: "black",
     list: [
@@ -32,22 +35,16 @@ export default defineAppConfig({
         selectedIconPath: "assets/tabbar/home-active.png",
       },
       {
-        pagePath: "pages/messages/messages",
-        text: "消息",
-        iconPath: "assets/tabbar/message.png",
-        selectedIconPath: "assets/tabbar/message-active.png",
-      },
-      {
         pagePath: "pages/publish/publish",
         text: "发布",
         iconPath: "assets/tabbar/publish.png",
         selectedIconPath: "assets/tabbar/publish-active.png",
       },
       {
-        pagePath: "pages/orders/orders",
-        text: "订单",
-        iconPath: "assets/tabbar/order.png",
-        selectedIconPath: "assets/tabbar/order-active.png",
+        pagePath: "pages/messages/messages",
+        text: "消息",
+        iconPath: "assets/tabbar/message.png",
+        selectedIconPath: "assets/tabbar/message-active.png",
       },
       {
         pagePath: "pages/profile/profile",

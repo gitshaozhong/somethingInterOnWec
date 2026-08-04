@@ -7,13 +7,8 @@ import "./login.scss";
 export default function Login() {
   const { login } = useUserStore();
   const [loading, setLoading] = useState(false);
-  const [role, setRole] = useState<"student" | "coach" | null>(null);
 
   const handleLogin = async () => {
-    if (!role) {
-      Taro.showToast({ title: "请选择角色", icon: "none" });
-      return;
-    }
     setLoading(true);
     try {
       const loginRes = await Taro.login();
@@ -22,10 +17,11 @@ export default function Login() {
         return;
       }
 
-      await login(loginRes.code, role);
+      // 登录不再选择角色，默认 student，身份由"我的"档案完整度决定
+      await login(loginRes.code, "student");
       Taro.showToast({ title: "登录成功", icon: "success" });
       setTimeout(() => {
-        Taro.switchTab({ url: "/pages/index/index" });
+        Taro.switchTab({ url: "/pages/publish/publish" });
       }, 1000);
     } catch (err: any) {
       Taro.showToast({ title: err?.message || "登录失败", icon: "none" });
@@ -42,39 +38,17 @@ export default function Login() {
           <Text className="app-desc">羽毛球陪练撮合平台</Text>
         </View>
 
-        <View className="role-select">
-          <Text className="role-label">请选择你的角色</Text>
-          <View className="role-options">
-            <View
-              className={`role-card ${role === "student" ? "active" : ""}`}
-              onClick={() => setRole("student")}
-            >
-              <Text className="role-icon">🏸</Text>
-              <Text className="role-name">我是学员</Text>
-              <Text className="role-desc">寻找陪练，提升球技</Text>
-            </View>
-            <View
-              className={`role-card ${role === "coach" ? "active" : ""}`}
-              onClick={() => setRole("coach")}
-            >
-              <Text className="role-icon">🎯</Text>
-              <Text className="role-name">我是陪练员</Text>
-              <Text className="role-desc">发布档期，接单教学</Text>
-            </View>
-          </View>
-        </View>
-
         <Button
           className="wechat-login-btn"
           loading={loading}
-          disabled={loading || !role}
+          disabled={loading}
           onClick={handleLogin}
         >
           微信一键登录
         </Button>
 
         <Text className="privacy-tip">
-          登录即表示同意《用户协议》和《隐私政策》
+          登录后请前往"我的"完善学员/陪练员档案，即可发布需求或档期
         </Text>
       </View>
     </View>

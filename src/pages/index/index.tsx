@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "@tarojs/components";
+import { View, Text, ScrollView, Picker } from "@tarojs/components";
 import { useState, useEffect, useCallback } from "react";
 import Taro, { useDidShow, usePullDownRefresh } from "@tarojs/taro";
 import { availabilitiesService } from "../../services/availabilities";
@@ -6,27 +6,21 @@ import { demandsService } from "../../services/demands";
 import Loading from "../../components/Loading";
 import Empty from "../../components/Empty";
 import RatingStars from "../../components/RatingStars";
+import { BEIJING_DISTRICTS, BADMINTON_LEVELS, MAX_PRICE_OPTIONS, COURT_BOOKED_OPTIONS } from "../../config/site";
 import type { AvailabilityItem, DemandItem } from "../../types";
 import "./index.scss";
 
-const TIME_SLOTS = [
-  { value: "", label: "全部时段" },
-  { value: "morning", label: "上午" },
-  { value: "afternoon", label: "下午" },
-  { value: "evening", label: "晚上" },
-];
-
-const LEVELS = [
-  { value: 0, label: "全部等级" },
-  { value: 1, label: "Lv1+" },
-  { value: 2, label: "Lv2+" },
-  { value: 3, label: "Lv3+" },
-  { value: 4, label: "Lv4+" },
-  { value: 5, label: "Lv5+" },
+// 时段预设（单选，映射到 startHour/endHour）
+const TIME_PRESETS = [
+  { value: "", label: "不限", start: null as number | null, end: null as number | null },
+  { value: "morning", label: "早晨 6-9", start: 6, end: 9 },
+  { value: "forenoon", label: "上午 9-12", start: 9, end: 12 },
+  { value: "afternoon", label: "下午 12-18", start: 12, end: 18 },
+  { value: "evening", label: "晚上 18-23", start: 18, end: 23 },
 ];
 
 export default function Index() {
-  const [tab, setTab] = useState<"coach" | "student">("coach");
+  const [tab, setTab] = useState<"coach" | "student">("student");
   const [coachList, setCoachList] = useState<AvailabilityItem[]>([]);
   const [studentList, setStudentList] = useState<DemandItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,18 +28,44 @@ export default function Index() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const [timeSlot, setTimeSlot] = useState("");
+
+  // 顶部半屏筛选面板
+  const [showPanel, setShowPanel] = useState(false);
+
+  // 筛选状态
+  const [date, setDate] = useState("");
+  const [timePreset, setTimePreset] = useState("");
+  const [district, setDistrict] = useState("");
   const [level, setLevel] = useState(0);
-  const [showFilters, setShowFilters] = useState(false);
+  const [studentLevel, setStudentLevel] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
+  const [courtBooked, setCourtBooked] = useState("");
+
+  const startHour = TIME_PRESETS.find(t => t.value === timePreset)?.start ?? null;
+  const endHour = TIME_PRESETS.find(t => t.value === timePreset)?.end ?? null;
+
+  const hasActiveFilter =
+    !!date ||
+    !!timePreset ||
+    !!district ||
+    level > 0 ||
+    studentLevel > 0 ||
+    maxPrice > 0 ||
+    !!courtBooked;
 
   const fetchList = useCallback(async (pageNum = 1, append = false) => {
     if (pageNum === 1) setLoading(true);
     try {
       const params: Record<string, unknown> = { page: pageNum, limit: 20 };
-      if (timeSlot) params.timeSlot = timeSlot;
-      if (level > 0) params.level = level;
+      if (date) params.date = date;
+      if (startHour != null) params.startHour = startHour;
+      if (endHour != null) params.endHour = endHour;
+      if (district) params.district = district;
+      if (courtBooked) params.courtBookedBy = courtBooked;
 
       if (tab === "coach") {
+        if (level > 0) params.level = level;
+        if (maxPrice > 0) params.maxPrice = maxPrice;
         const res = await availabilitiesService.list(params);
         if (res.ok) {
           setCoachList(append ? [...coachList, ...res.items] : res.items);
@@ -53,6 +73,9 @@ export default function Index() {
           setHasMore(pageNum * 20 < res.total);
         }
       } else {
+        if (level > 0) params.expectedLevel = level;
+        if (studentLevel > 0) params.studentLevel = studentLevel;
+        if (maxPrice > 0) params.maxBudget = maxPrice;
         const res = await demandsService.list(params);
         if (res.ok) {
           setStudentList(append ? [...studentList, ...res.items] : res.items);
@@ -66,13 +89,13 @@ export default function Index() {
       setLoading(false);
       setRefreshing(false);
     }
-  }, [tab, timeSlot, level]);
+  }, [tab, date, startHour, endHour, district, level, studentLevel, maxPrice, courtBooked, coachList, studentList]);
 
   useEffect(() => {
     setPage(1);
     setHasMore(true);
     fetchList(1);
-  }, [tab, timeSlot, level]);
+  }, [tab, date, timePreset, district, level, studentLevel, maxPrice, courtBooked]);
 
   useDidShow(() => {
     fetchList(1);
@@ -106,13 +129,26 @@ export default function Index() {
 
   const formatTime = (start: number, end: number) => `${start}:00-${end}:00`;
 
+  const clearFilters = () => {
+    setDate("");
+    setTimePreset("");
+    setDistrict("");
+    setLevel(0);
+    setStudentLevel(0);
+    setMaxPrice(0);
+    setCourtBooked("");
+  };
+
+
+
+  // 陪练卡片
   const renderCoachList = () => (
     coachList.length === 0 && !loading ? (
       <Empty text="暂无档期" />
     ) : (
       coachList.map((item) => (
         <View key={item.id} className="card" onClick={() => goDetail(item.id)}>
-          <View className="card-header">
+          <View className="card-top">
             <View className="user-info">
               {item.coachAvatar ? (
                 <View className="avatar" style={{ backgroundImage: `url(${item.coachAvatar})` }} />
@@ -139,41 +175,42 @@ export default function Index() {
             </View>
           </View>
 
-          <View className="card-body">
-            <View className="info-row">
-              <Text className="info-label">日期</Text>
-              <Text className="info-value">{item.playDate}</Text>
-            </View>
-            <View className="info-row">
-              <Text className="info-label">时间</Text>
-              <Text className="info-value">{timeLabel(item.timeSlot)} {formatTime(item.startHour, item.endHour)}</Text>
-            </View>
-            <View className="info-row">
-              <Text className="info-label">球馆</Text>
-              <Text className="info-value">{item.venueName}</Text>
-            </View>
+          <View className="card-mid">
+            <Text className="mid-text">{item.playDate}</Text>
+            <Text className="mid-dot">·</Text>
+            <Text className="mid-text">{timeLabel(item.timeSlot)} {formatTime(item.startHour, item.endHour)}</Text>
+            <Text className="mid-dot">·</Text>
+            <Text className="mid-text">{item.venueName}</Text>
           </View>
 
-          <View className="card-footer">
-            <Text className="price">
-              {item.priceMin != null ? `${item.priceMin}-${item.priceMax}元/时` : "价格面议"}
-            </Text>
+          <View className="card-bottom">
             <Text className="court-badge">
               {item.courtBookedBy === "coach" ? "陪练订场" : item.courtBookedBy === "student" ? "学员订场" : "协商订场"}
             </Text>
+            <View className="price-wrap">
+              {item.priceMin != null ? (
+                <>
+                  <Text className="price">¥{item.priceMin}-{item.priceMax}</Text>
+                  <Text className="price-unit">/时</Text>
+                </>
+              ) : (
+                <Text className="price price-miaoyi">价格面议</Text>
+              )}
+            </View>
           </View>
         </View>
       ))
     )
   );
 
+  // 学员需求卡片
   const renderStudentList = () => (
     studentList.length === 0 && !loading ? (
       <Empty text="暂无需求" />
     ) : (
       studentList.map((item) => (
         <View key={item.id} className="card" onClick={() => goDetail(item.id)}>
-          <View className="card-header">
+          <View className="card-top">
             <View className="user-info">
               {item.userAvatar ? (
                 <View className="avatar" style={{ backgroundImage: `url(${item.userAvatar})` }} />
@@ -194,27 +231,30 @@ export default function Index() {
             )}
           </View>
 
-          <View className="card-body">
-            <View className="info-row">
-              <Text className="info-label">日期</Text>
-              <Text className="info-value">{item.playDate}</Text>
-            </View>
-            <View className="info-row">
-              <Text className="info-label">时间</Text>
-              <Text className="info-value">{timeLabel(item.timeSlot)} {formatTime(item.startHour, item.endHour)}</Text>
-            </View>
+          <View className="card-mid">
+            <Text className="mid-text">{item.playDate}</Text>
+            <Text className="mid-dot">·</Text>
+            <Text className="mid-text">{timeLabel(item.timeSlot)} {formatTime(item.startHour, item.endHour)}</Text>
             {item.locationName && (
-              <View className="info-row">
-                <Text className="info-label">地点</Text>
-                <Text className="info-value">{item.locationName}</Text>
-              </View>
+              <>
+                <Text className="mid-dot">·</Text>
+                <Text className="mid-text">{item.locationName}</Text>
+              </>
             )}
           </View>
 
-          <View className="card-footer">
-            <Text className="price">
-              {item.budgetMax != null ? `预算 ¥${item.budgetMin ?? 0}-${item.budgetMax}/时` : "预算面议"}
-            </Text>
+          <View className="card-bottom">
+            <Text className="court-badge">期望 Lv.{item.expectedLevel ?? "?"}+</Text>
+            <View className="price-wrap">
+              {item.budgetMax != null ? (
+                <>
+                  <Text className="price">¥{item.budgetMin ?? 0}-{item.budgetMax}</Text>
+                  <Text className="price-unit">/时</Text>
+                </>
+              ) : (
+                <Text className="price price-miaoyi">预算面议</Text>
+              )}
+            </View>
           </View>
         </View>
       ))
@@ -223,56 +263,189 @@ export default function Index() {
 
   return (
     <View className="page-index">
-      {/* 顶部 Tab */}
-      <View className="tab-bar">
-        <View className={`tab-item ${tab === "coach" ? "active" : ""}`} onClick={() => setTab("coach")}>
-          <Text>陪练大厅</Text>
+      {/* 顶部渐变背景区 + 下沉式 Tab + 筛选条 */}
+      <View className="header-gradient">
+        {/* 下沉式双 Tab */}
+        <View className="sunk-tab-bar">
+          <View
+            className={`sunk-tab ${tab === "student" ? "active" : ""}`}
+            onClick={() => setTab("student")}
+          >
+            <Text className="sunk-tab-text">学员大厅</Text>
+          </View>
+          <View
+            className={`sunk-tab ${tab === "coach" ? "active" : ""}`}
+            onClick={() => setTab("coach")}
+          >
+            <Text className="sunk-tab-text">陪练大厅</Text>
+          </View>
         </View>
-        <View className={`tab-item ${tab === "student" ? "active" : ""}`} onClick={() => setTab("student")}>
-          <Text>学员大厅</Text>
+
+        {/* 筛选入口栏（仅一个"筛选"按钮，点击弹出顶部半屏面板） */}
+        <View className="filter-entry-bar">
+          <View className={`entry-item ${hasActiveFilter ? "active" : ""}`} onClick={() => setShowPanel(true)}>
+            <Text className="entry-icon-filter">▦</Text>
+            <Text className="entry-text">筛选</Text>
+            {hasActiveFilter && <View className="entry-dot" />}
+            <Text className="entry-icon">▾</Text>
+          </View>
+          {hasActiveFilter && (
+            <Text className="entry-clear" onClick={clearFilters}>清空</Text>
+          )}
         </View>
       </View>
 
-      {/* 筛选栏 */}
-      <View className="filter-bar">
-        <View className="filter-trigger" onClick={() => setShowFilters(!showFilters)}>
-          <Text>筛选</Text>
-          <Text className="filter-arrow">{showFilters ? "▲" : "▼"}</Text>
-        </View>
-        <Text className="filter-count">共{total}条</Text>
-      </View>
+      {/* 顶部半屏筛选面板 */}
+      {showPanel && (
+        <>
+          <View className="panel-mask" onClick={() => setShowPanel(false)} />
+          <View className="filter-panel-top">
+            {/* 下拉指示器 */}
+            <View className="panel-handle" />
 
-      {showFilters && (
-        <View className="filter-panel">
-          <View className="filter-row">
-            <Text className="filter-label">时段</Text>
-            <View className="filter-options">
-              {TIME_SLOTS.map((s) => (
-                <View
-                  key={s.value}
-                  className={`filter-tag ${timeSlot === s.value ? "active" : ""}`}
-                  onClick={() => setTimeSlot(s.value)}
-                >
-                  <Text>{s.label}</Text>
+            <ScrollView className="panel-scroll" scrollY>
+              {/* 日期 */}
+              <View className="panel-group">
+                <Text className="group-title">日期</Text>
+                <View className="chip-row">
+                  <Picker mode="date" value={date} onChange={(e) => setDate(e.detail.value)}>
+                    <View className={`chip ${date ? "active" : ""}`}>
+                      <Text>{date || "选择日期"}</Text>
+                    </View>
+                  </Picker>
+                  {date && (
+                    <View className="chip chip-clear" onClick={() => setDate("")}>
+                      <Text>清除日期</Text>
+                    </View>
+                  )}
                 </View>
-              ))}
+              </View>
+
+              {/* 区域 */}
+              <View className="panel-group">
+                <Text className="group-title">区域（单选）</Text>
+                <View className="chip-row">
+                  <View className={`chip ${!district ? "active" : ""}`} onClick={() => setDistrict("")}>
+                    <Text>不限</Text>
+                  </View>
+                  {BEIJING_DISTRICTS.map((d) => (
+                    <View
+                      key={d}
+                      className={`chip ${district === d ? "active" : ""}`}
+                      onClick={() => setDistrict(d)}
+                    >
+                      <Text>{d}区</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+
+              {/* 时段（单选） */}
+              <View className="panel-group">
+                <Text className="group-title">时段（单选）</Text>
+                <View className="chip-row">
+                  {TIME_PRESETS.map((t) => (
+                    <View
+                      key={t.value}
+                      className={`chip ${timePreset === t.value ? "active" : ""}`}
+                      onClick={() => setTimePreset(t.value)}
+                    >
+                      <Text>{t.label}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+
+              {/* 等级 */}
+              <View className="panel-group">
+                <Text className="group-title">{tab === "coach" ? "陪练等级（单选）" : "期望等级（单选）"}</Text>
+                <View className="chip-row">
+                  <View className={`chip ${level === 0 ? "active" : ""}`} onClick={() => setLevel(0)}>
+                    <Text>不限</Text>
+                  </View>
+                  {BADMINTON_LEVELS.filter(l => l.value > 0).map((l) => (
+                    <View
+                      key={l.value}
+                      className={`chip ${level === l.value ? "active" : ""}`}
+                      onClick={() => setLevel(l.value)}
+                    >
+                      <Text>{l.value}级+</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+
+              {/* 学员等级（仅学员大厅） */}
+              {tab === "student" && (
+                <View className="panel-group">
+                  <Text className="group-title">学员等级（单选）</Text>
+                  <View className="chip-row">
+                    <View className={`chip ${studentLevel === 0 ? "active" : ""}`} onClick={() => setStudentLevel(0)}>
+                      <Text>不限</Text>
+                    </View>
+                    {BADMINTON_LEVELS.filter(l => l.value > 0).map((l) => (
+                      <View
+                        key={l.value}
+                        className={`chip ${studentLevel === l.value ? "active" : ""}`}
+                        onClick={() => setStudentLevel(l.value)}
+                      >
+                        <Text>≤{l.value}级</Text>
+                      </View>
+                    ))}
+                  </View>
+                </View>
+              )}
+
+              {/* 预算上限 */}
+              <View className="panel-group">
+                <Text className="group-title">预算上限（单选）</Text>
+                <View className="chip-row">
+                  <View className={`chip ${maxPrice === 0 ? "active" : ""}`} onClick={() => setMaxPrice(0)}>
+                    <Text>不限</Text>
+                  </View>
+                  {MAX_PRICE_OPTIONS.map((p) => (
+                    <View
+                      key={p.value}
+                      className={`chip ${maxPrice === p.value ? "active" : ""}`}
+                      onClick={() => setMaxPrice(p.value)}
+                    >
+                      <Text>{p.label}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+
+              {/* 场地预订 */}
+              <View className="panel-group">
+                <Text className="group-title">场地预订（单选）</Text>
+                <View className="chip-row">
+                  <View className={`chip ${!courtBooked ? "active" : ""}`} onClick={() => setCourtBooked("")}>
+                    <Text>不限</Text>
+                  </View>
+                  {COURT_BOOKED_OPTIONS.map((o) => (
+                    <View
+                      key={o.value}
+                      className={`chip ${courtBooked === o.value ? "active" : ""}`}
+                      onClick={() => setCourtBooked(o.value)}
+                    >
+                      <Text>{o.label}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+            </ScrollView>
+
+            {/* 底部双按钮 */}
+            <View className="panel-footer safe-bottom">
+              <View className="panel-btn-clear" onClick={clearFilters}>
+                <Text>清空筛选</Text>
+              </View>
+              <View className="panel-btn-confirm" onClick={() => setShowPanel(false)}>
+                <Text>查看 {total} 条结果</Text>
+              </View>
             </View>
           </View>
-          <View className="filter-row">
-            <Text className="filter-label">等级</Text>
-            <View className="filter-options">
-              {LEVELS.map((l) => (
-                <View
-                  key={l.value}
-                  className={`filter-tag ${level === l.value ? "active" : ""}`}
-                  onClick={() => setLevel(l.value)}
-                >
-                  <Text>{l.label}</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-        </View>
+        </>
       )}
 
       {/* 列表 */}

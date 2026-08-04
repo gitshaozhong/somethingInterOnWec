@@ -51,12 +51,17 @@ export interface AvailabilityDetail {
   timeSlot: string;
   startHour: number;
   endHour: number;
+  venueId: string | null;
   venueName: string;
   venueAddress: string | null;
+  tempLocation: string | null;
+  tempLat: number | null;
+  tempLng: number | null;
   priceMin: number | null;
   priceMax: number | null;
   courtBookedBy: string;
   note: string | null;
+  status: AvailabilityStatus;
   coach: {
     userId: string;
     bio: string | null;
@@ -75,6 +80,7 @@ export interface AvailabilityDetail {
     address: string;
   } | null;
   createdAt: string;
+  expiresAt: string;
 }
 
 /** 学员需求列表项 */
@@ -107,11 +113,16 @@ export interface DemandDetail {
   startHour: number;
   endHour: number;
   locationName: string | null;
+  locationLat: number | null;
+  locationLng: number | null;
+  radiusKm: number;
   expectedLevel: number | null;
+  studentLevel: number | null;
   budgetMin: number | null;
   budgetMax: number | null;
   courtBookedBy: string;
   note: string | null;
+  status: DemandStatus;
   user: {
     name: string;
     avatarVirtual: string | null;
@@ -125,6 +136,7 @@ export interface DemandDetail {
     recentRating: number | null;
   } | null;
   createdAt: string;
+  expiresAt: string;
 }
 
 /** 邀请/消息列表项 */
@@ -216,4 +228,63 @@ export interface ApiResponse<T = unknown> {
   message?: string;
   count?: number;
   [key: string]: unknown;
+}
+
+/** 分页响应 */
+export interface PaginatedResponse<T = unknown> {
+  ok: boolean;
+  items: T[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
+/** 档期状态 */
+export type AvailabilityStatus = "open" | "closed" | "expired";
+
+/** 陪练档期（数据库原始行，mine 端点返回） */
+export interface Availability {
+  id: string;
+  coachId: string;
+  playDate: string;
+  timeSlot: string;
+  startHour: number | null;
+  endHour: number | null;
+  venueId: string | null;
+  tempLocation: string | null;
+  tempLat: number | null;
+  tempLng: number | null;
+  priceMin: number | null;
+  priceMax: number | null;
+  courtBookedBy: string;
+  note: string | null;
+  status: AvailabilityStatus;
+  createdAt: string;
+  expiresAt: string;
+}
+
+/** 需求状态 */
+export type DemandStatus = "open" | "closed" | "expired";
+
+/** 学员需求（数据库原始行，mine 端点返回） */
+export interface Demand {
+  id: string;
+  userId: string;
+  playDate: string;
+  timeSlot: string;
+  startHour: number | null;
+  endHour: number | null;
+  locationLat: number | null;
+  locationLng: number | null;
+  locationName: string | null;
+  radiusKm: number;
+  expectedLevel: number | null;
+  studentLevel: number | null;
+  budgetMin: number | null;
+  budgetMax: number | null;
+  courtBookedBy: string;
+  note: string | null;
+  status: DemandStatus;
+  createdAt: string;
+  expiresAt: string;
 }
