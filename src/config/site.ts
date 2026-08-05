@@ -118,31 +118,77 @@ export const PRICE_PRESETS = [
   { min: 70, max: 100, label: "70-100 元/时（6 级以上陪练）" },
 ] as const;
 
-/** 北京预置球馆（按区域分组） */
-export const BEIJING_VENUES: Record<string, string[]> = {
+/**
+ * 预置球馆快捷搜索词（按区域分组）
+ * - name: 球馆名称（展示 + 作为 POI 搜索关键词）
+ * - address: 所在区域提示（展示用，不参与搜索）
+ *
+ * 坐标不再预置：改为进入 venue-picker 后由腾讯位置服务 POI 搜索实时返回
+ */
+export interface PresetVenue {
+  name: string;
+  address: string;
+}
+
+export const BEIJING_VENUES: Record<string, PresetVenue[]> = {
   朝阳: [
-    "朝阳体育中心羽毛球馆",
-    "奥体中心羽毛球馆",
-    "地坛体育馆羽毛球馆",
-    "工人体育馆羽毛球馆",
+    { name: "朝阳体育中心羽毛球馆", address: "朝阳区姚家园路甲1号" },
+    { name: "奥体中心羽毛球馆", address: "朝阳区安定路甲3号" },
+    { name: "地坛体育馆羽毛球馆", address: "东城区安外安定门外大街" },
+    { name: "工人体育馆羽毛球馆", address: "朝阳区工人体育场北路" },
   ],
   海淀: [
-    "清华大学综合体育馆羽毛球馆",
-    "北京大学邱德拔体育馆羽毛球馆",
-    "首体羽毛球馆",
+    { name: "清华大学综合体育馆羽毛球馆", address: "海淀区清华大学内" },
+    { name: "北京大学邱德拔体育馆羽毛球馆", address: "海淀区北京大学内" },
+    { name: "首体羽毛球馆", address: "海淀区中关村南大街" },
   ],
-  西城: ["月坛体育馆羽毛球馆", "西单体育场羽毛球馆"],
-  东城: ["东单体育中心羽毛球馆"],
-  丰台: ["丰台体育中心羽毛球馆"],
-  石景山: ["石景山体育场羽毛球馆"],
-  通州: ["通州运河羽毛球馆"],
-  顺义: ["顺义奥林匹克水上公园羽毛球馆"],
-  昌平: ["昌平体育馆羽毛球馆"],
-  大兴: ["大兴体育馆羽毛球馆"],
-  房山: ["房山体育中心羽毛球馆"],
-  怀柔: ["怀柔体育馆羽毛球馆"],
-  密云: ["密云体育馆羽毛球馆"],
+  西城: [
+    { name: "月坛体育馆羽毛球馆", address: "西城区月坛南街" },
+    { name: "西单体育场羽毛球馆", address: "西城区西单北大街" },
+  ],
+  东城: [
+    { name: "东单体育中心羽毛球馆", address: "东城区东单北大街" },
+  ],
+  丰台: [
+    { name: "丰台体育中心羽毛球馆", address: "丰台区西四环南路" },
+  ],
+  石景山: [
+    { name: "石景山体育场羽毛球馆", address: "石景山区石景山路" },
+  ],
+  通州: [
+    { name: "通州运河羽毛球馆", address: "通州区运河大街" },
+  ],
+  顺义: [
+    { name: "顺义奥林匹克水上公园羽毛球馆", address: "顺义区白马路" },
+  ],
+  昌平: [
+    { name: "昌平体育馆羽毛球馆", address: "昌平区南环路" },
+  ],
+  大兴: [
+    { name: "大兴体育馆羽毛球馆", address: "大兴区黄村镇" },
+  ],
+  房山: [
+    { name: "房山体育中心羽毛球馆", address: "房山区良乡" },
+  ],
+  怀柔: [
+    { name: "怀柔体育馆羽毛球馆", address: "怀柔区青春路" },
+  ],
+  密云: [
+    { name: "密云体育馆羽毛球馆", address: "密云区鼓楼东大街" },
+  ],
 };
+
+/**
+ * 扁平化预置球馆列表（供快捷搜索入口使用）
+ * 保留所属区域信息
+ */
+export const PRESET_VENUE_LIST: (PresetVenue & { district: string })[] = (() => {
+  const list: (PresetVenue & { district: string })[] = [];
+  Object.entries(BEIJING_VENUES).forEach(([district, venues]) => {
+    venues.forEach((v) => list.push({ ...v, district }));
+  });
+  return list;
+})();
 
 export const siteConfig = {
   badmintonLevels: BADMINTON_LEVELS,

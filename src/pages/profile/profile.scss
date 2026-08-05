@@ -4,6 +4,12 @@
   padding-bottom: 80px;
 }
 
+/* 未登录状态页面背景 */
+.page-profile-loggedout {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #AEECEB 0%, #F8D2E1 100%);
+}
+
 /* 未登录空状态 */
 .login-empty {
   display: flex;

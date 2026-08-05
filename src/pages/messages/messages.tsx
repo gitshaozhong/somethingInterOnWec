@@ -54,13 +54,19 @@ export default function Messages() {
     }
   };
 
-  useEffect(() => { markReadAndFetch(); }, []);
-  useDidShow(() => { markReadAndFetch(); });
+  useEffect(() => { if (user) markReadAndFetch(); }, [user]);
+  useDidShow(() => { if (user) markReadAndFetch(); });
 
   if (!user) {
     return (
       <View className="page-messages">
-        <Empty text="请先登录" />
+        <View className="login-empty">
+          <View className="login-empty-icon">🏸</View>
+          <Text className="login-empty-text">登录后体验全部功能</Text>
+          <Button className="login-btn" onClick={() => Taro.navigateTo({ url: "/pages/login/login" })}>
+            微信一键登录
+          </Button>
+        </View>
       </View>
     );
   }

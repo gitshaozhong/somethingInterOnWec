@@ -14,6 +14,7 @@ export default defineAppConfig({
     "pages/my-availabilities/my-availabilities",
     "pages/my-demands/my-demands",
     "pages/orders/orders",
+    "pages/venue-picker/venue-picker",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -21,6 +22,18 @@ export default defineAppConfig({
     navigationBarTitleText: "羽球搭子",
     navigationBarTextStyle: "black",
   },
+  permission: {
+    // 腾讯位置服务 SDK 需要的位置权限
+    "scope.userLocation": {
+      desc: "用于发布订单时选择附近球馆位置",
+    },
+  },
+  // 必填：微信后台申请的地图 Key 配置（位置服务）
+  // 在小程序后台 → 开发管理 → 接口设置中开启"地理位置"相关接口
+  requiredPrivateInfos: [
+    "getLocation",
+    "chooseLocation",
+  ],
   tabBar: {
     custom: true,
     color: "#8a8a9a",

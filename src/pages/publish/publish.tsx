@@ -11,10 +11,9 @@ import {
   HOUR_OPTIONS,
   COURT_BOOKED_OPTIONS,
   PRICE_PRESETS,
-  BEIJING_DISTRICTS,
-  BEIJING_VENUES,
   inferTimeSlot,
 } from "../../config/site";
+import type { SelectedVenue } from "../venue-picker/venue-picker";
 import "./publish.scss";
 
 type PublishTab = "student" | "coach";
@@ -38,11 +37,11 @@ export default function Publish() {
   const [courtBookedBy, setCourtBookedBy] = useState("student");
   const [note, setNote] = useState("");
 
-  // 球馆两级选择
-  const [districtIdx, setDistrictIdx] = useState(0);
-  const [venueIdx, setVenueIdx] = useState(0);
-  const [customVenue, setCustomVenue] = useState("");
-  const [useCustomVenue, setUseCustomVenue] = useState(false);
+  // 球馆选择（通过 venue-picker 页面选择）
+  const [venueName, setVenueName] = useState("");
+  const [venueAddress, setVenueAddress] = useState("");
+  const [venueLat, setVenueLat] = useState<number | null>(null);
+  const [venueLng, setVenueLng] = useState<number | null>(null);
 
   // 陪练档期专属
   const [priceMin, setPriceMin] = useState("");
@@ -154,12 +153,18 @@ export default function Publish() {
     Taro.switchTab({ url: "/pages/profile/profile" });
   };
 
-  // 当前选中的球馆名
-  const currentDistrict = BEIJING_DISTRICTS[districtIdx] as string;
-  const currentVenues = BEIJING_VENUES[currentDistrict] || [];
-  const venueName = useCustomVenue
-    ? customVenue.trim()
-    : (currentVenues[venueIdx] || "");
+  // 跳转到球馆选择页
+  const goToVenuePicker = () => {
+    Taro.navigateTo({ url: "/pages/venue-picker/venue-picker" });
+  };
+
+  // venue-picker 页面回传数据时调用（通过 Taro.getCurrentPages 调用）
+  const onVenueSelected = (venue: SelectedVenue) => {
+    setVenueName(venue.name);
+    setVenueAddress(venue.address);
+    setVenueLat(venue.latitude || null);
+    setVenueLng(venue.longitude || null);
+  };
 
   // 检查重复发布
   const checkDuplicate = async (): Promise<boolean> => {
@@ -225,6 +230,8 @@ export default function Publish() {
         endHour,
         timeSlot,
         tempLocation: venueName,
+        tempLat: venueLat,
+        tempLng: venueLng,
         priceMin: priceMin ? Number(priceMin) : null,
         priceMax: priceMax ? Number(priceMax) : null,
         courtBookedBy,
@@ -275,6 +282,8 @@ export default function Publish() {
         endHour,
         timeSlot,
         locationName: venueName,
+        locationLat: venueLat,
+        locationLng: venueLng,
         expectedLevel,
         studentLevel,
         budgetMin: budgetMin ? Number(budgetMin) : null,
@@ -300,10 +309,10 @@ export default function Publish() {
     setEndHour(21);
     setCourtBookedBy("student");
     setNote("");
-    setDistrictIdx(0);
-    setVenueIdx(0);
-    setCustomVenue("");
-    setUseCustomVenue(false);
+    setVenueName("");
+    setVenueAddress("");
+    setVenueLat(null);
+    setVenueLng(null);
     setPriceMin("");
     setPriceMax("");
     setBudgetMin("");
@@ -319,10 +328,11 @@ export default function Publish() {
   if (!user) {
     return (
       <View className="page-publish">
-        <View className="empty">
-          <Text>请先登录</Text>
+        <View className="login-empty">
+          <View className="login-empty-icon">🏸</View>
+          <Text className="login-empty-text">登录后体验全部功能</Text>
           <Button className="login-btn" onClick={() => Taro.navigateTo({ url: "/pages/login/login" })}>
-            去登录
+            微信一键登录
           </Button>
         </View>
       </View>
@@ -388,36 +398,18 @@ export default function Publish() {
                 </View>
 
                 <View className="form-item">
-                  <Text className="form-label">区域 *</Text>
-                  <Picker mode="selector" range={BEIJING_DISTRICTS as readonly string[]} value={districtIdx} onChange={(e) => { setDistrictIdx(Number(e.detail.value)); setVenueIdx(0); setUseCustomVenue(false); }}>
-                    <View className="picker-value"><Text>{currentDistrict}区</Text></View>
-                  </Picker>
-                </View>
-
-                <View className="form-item">
                   <Text className="form-label">球馆 *</Text>
-                  {!useCustomVenue ? (
-                    <>
-                      <Picker mode="selector" range={currentVenues.length > 0 ? currentVenues : ["（暂无）"]} value={venueIdx} onChange={(e) => setVenueIdx(Number(e.detail.value))}>
-                        <View className="picker-value">
-                          <Text className={currentVenues[venueIdx] ? "" : "placeholder"}>
-                            {currentVenues[venueIdx] || "请选择球馆"}
-                          </Text>
-                        </View>
-                      </Picker>
-                      <Text className="link-text" onClick={() => setUseCustomVenue(true)}>找不到球馆？手动输入</Text>
-                    </>
-                  ) : (
-                    <>
-                      <Input
-                        className="form-input"
-                        placeholder="请输入球馆名称"
-                        value={customVenue}
-                        onInput={(e) => setCustomVenue(e.detail.value)}
-                      />
-                      <Text className="link-text" onClick={() => setUseCustomVenue(false)}>从列表选择</Text>
-                    </>
-                  )}
+                  <View className="venue-entry" onClick={goToVenuePicker}>
+                    {venueName ? (
+                      <View className="venue-entry-selected">
+                        <Text className="venue-entry-name">{venueName}</Text>
+                        {venueAddress ? <Text className="venue-entry-addr">{venueAddress}</Text> : null}
+                      </View>
+                    ) : (
+                      <Text className="venue-entry-placeholder">点击选择球馆位置</Text>
+                    )}
+                    <Text className="venue-entry-arrow">›</Text>
+                  </View>
                 </View>
 
                 <View className="form-item">
@@ -496,36 +488,18 @@ export default function Publish() {
                 </View>
 
                 <View className="form-item">
-                  <Text className="form-label">区域 *</Text>
-                  <Picker mode="selector" range={BEIJING_DISTRICTS as readonly string[]} value={districtIdx} onChange={(e) => { setDistrictIdx(Number(e.detail.value)); setVenueIdx(0); setUseCustomVenue(false); }}>
-                    <View className="picker-value"><Text>{currentDistrict}区</Text></View>
-                  </Picker>
-                </View>
-
-                <View className="form-item">
                   <Text className="form-label">球馆 *</Text>
-                  {!useCustomVenue ? (
-                    <>
-                      <Picker mode="selector" range={currentVenues.length > 0 ? currentVenues : ["（暂无）"]} value={venueIdx} onChange={(e) => setVenueIdx(Number(e.detail.value))}>
-                        <View className="picker-value">
-                          <Text className={currentVenues[venueIdx] ? "" : "placeholder"}>
-                            {currentVenues[venueIdx] || "请选择球馆"}
-                          </Text>
-                        </View>
-                      </Picker>
-                      <Text className="link-text" onClick={() => setUseCustomVenue(true)}>找不到球馆？手动输入</Text>
-                    </>
-                  ) : (
-                    <>
-                      <Input
-                        className="form-input"
-                        placeholder="请输入球馆名称"
-                        value={customVenue}
-                        onInput={(e) => setCustomVenue(e.detail.value)}
-                      />
-                      <Text className="link-text" onClick={() => setUseCustomVenue(false)}>从列表选择</Text>
-                    </>
-                  )}
+                  <View className="venue-entry" onClick={goToVenuePicker}>
+                    {venueName ? (
+                      <View className="venue-entry-selected">
+                        <Text className="venue-entry-name">{venueName}</Text>
+                        {venueAddress ? <Text className="venue-entry-addr">{venueAddress}</Text> : null}
+                      </View>
+                    ) : (
+                      <Text className="venue-entry-placeholder">点击选择球馆位置</Text>
+                    )}
+                    <Text className="venue-entry-arrow">›</Text>
+                  </View>
                 </View>
 
                 <View className="form-item">

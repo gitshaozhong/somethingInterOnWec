@@ -27,7 +27,7 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <View className="page-profile">
+      <View className="page-profile-loggedout">
         <View className="login-empty">
           <View className="login-empty-icon">🏸</View>
           <Text className="login-empty-text">登录后体验全部功能</Text>
