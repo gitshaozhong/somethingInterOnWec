@@ -263,6 +263,47 @@ export interface Availability {
   expiresAt: string;
 }
 
+/** 消息中心分类 */
+export type MessageCategory = "first_confirm" | "second_confirm" | "system" | "ad";
+
+/** 系统通知类型（与后端 notificationType 枚举对齐） */
+export type NotificationType =
+  | "invitation_received"
+  | "invitation_accepted"
+  | "invitation_declined"
+  | "invitation_revoked"
+  | "practice_confirmed"
+  | "checkin_started"
+  | "checkin_completed"
+  | "ban_notice"
+  | "ban_lifted"
+  | "system_notice"
+  | "avatar_review_result"
+  | "ability_review_result"
+  | "ad";
+
+/** 通知消息项（来自 notifications 表，用于系统消息/广告消息） */
+export interface NotificationItem {
+  id: string;
+  type: NotificationType;
+  title: string;
+  body: string | null;
+  readAt: string | null;
+  createdAt: string;
+}
+
+/** 一次/二次确认消息项（来自 invitations 表聚合） */
+export interface ConfirmMessageItem {
+  id: string;
+  status: string;
+  orderStatus: string | null;
+  fromUserId: string;
+  toUserId: string;
+  createdAt: string;
+  updatedAt: string;
+  viewedAt: string | null;
+}
+
 /** 需求状态 */
 export type DemandStatus = "open" | "closed" | "expired";
 

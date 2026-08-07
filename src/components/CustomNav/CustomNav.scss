@@ -1,0 +1,42 @@
+/* ============ 自定义导航栏（4 个 Tab 页统一样式） ============ */
+.custom-nav {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.custom-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 16px;
+}
+
+.custom-nav-left {
+  width: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-nav-title {
+  flex: 1;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.custom-nav-right {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.custom-nav-action {
+  font-size: 14px;
+  color: var(--primary-color);
+  font-weight: 500;
+}

@@ -15,6 +15,8 @@ export default defineAppConfig({
     "pages/my-demands/my-demands",
     "pages/orders/orders",
     "pages/venue-picker/venue-picker",
+    "pages/messages/first-confirm/first-confirm",
+    "pages/messages/second-confirm/second-confirm",
   ],
   window: {
     backgroundTextStyle: "light",

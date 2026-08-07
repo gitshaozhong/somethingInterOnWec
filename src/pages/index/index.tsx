@@ -6,6 +6,7 @@ import { demandsService } from "../../services/demands";
 import Loading from "../../components/Loading";
 import Empty from "../../components/Empty";
 import RatingStars from "../../components/RatingStars";
+import CustomNav from "../../components/CustomNav/CustomNav";
 import { BEIJING_DISTRICTS, BADMINTON_LEVELS, MAX_PRICE_OPTIONS, COURT_BOOKED_OPTIONS } from "../../config/site";
 import type { AvailabilityItem, DemandItem } from "../../types";
 import "./index.scss";
@@ -68,7 +69,7 @@ export default function Index() {
         if (maxPrice > 0) params.maxPrice = maxPrice;
         const res = await availabilitiesService.list(params);
         if (res.ok) {
-          setCoachList(append ? [...coachList, ...res.items] : res.items);
+          setCoachList((prev) => (append ? [...prev, ...res.items] : res.items));
           setTotal(res.total);
           setHasMore(pageNum * 20 < res.total);
         }
@@ -78,7 +79,7 @@ export default function Index() {
         if (maxPrice > 0) params.maxBudget = maxPrice;
         const res = await demandsService.list(params);
         if (res.ok) {
-          setStudentList(append ? [...studentList, ...res.items] : res.items);
+          setStudentList((prev) => (append ? [...prev, ...res.items] : res.items));
           setTotal(res.total);
           setHasMore(pageNum * 20 < res.total);
         }
@@ -89,7 +90,7 @@ export default function Index() {
       setLoading(false);
       setRefreshing(false);
     }
-  }, [tab, date, startHour, endHour, district, level, studentLevel, maxPrice, courtBooked, coachList, studentList]);
+  }, [tab, date, startHour, endHour, district, level, studentLevel, maxPrice, courtBooked]);
 
   useEffect(() => {
     setPage(1);
@@ -263,6 +264,8 @@ export default function Index() {
 
   return (
     <View className="page-index">
+      {/* 统一自定义导航栏 */}
+      <CustomNav title="羽球搭子" />
       {/* 顶部渐变背景区 + 下沉式 Tab + 筛选条 */}
       <View className="header-gradient">
         {/* 下沉式双 Tab */}

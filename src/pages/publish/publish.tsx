@@ -6,6 +6,7 @@ import { demandsService } from "../../services/demands";
 import { authService } from "../../services/auth";
 import { useUserStore } from "../../stores/user";
 import Loading from "../../components/Loading";
+import CustomNav from "../../components/CustomNav/CustomNav";
 import {
   BADMINTON_LEVELS,
   HOUR_OPTIONS,
@@ -76,10 +77,12 @@ export default function Publish() {
         const sp = u.studentProfile;
         const cp = u.coachProfile;
         const sEnabled = !!sp && !!u.avatarVirtual && !!u.avatarReal && !!u.name &&
-          (!!u.phone && /^1[3-9]\d{9}$/.test(u.phone)) && !!sp.realName && !!sp.idNumber && sp.level > 0;
+          (!!u.phone && /^1[3-9]\d{9}$/.test(u.phone)) && !!sp.realName && !!sp.idNumber && sp.level > 0 &&
+          u.studentAvatarStatus === "verified";
         const cEnabled = !!cp && !!u.avatarVirtual && !!u.avatarReal && !!u.name &&
           (!!u.phone && /^1[3-9]\d{9}$/.test(u.phone)) && !!cp.realName && !!cp.bio &&
-          !!cp.teachingInfo && !!cp.city && (cp.frequentAreas?.length ?? 0) > 0 && cp.level > 0;
+          !!cp.teachingInfo && !!cp.city && (cp.frequentAreas?.length ?? 0) > 0 && cp.level > 0 &&
+          u.coachAvatarStatus === "verified";
         if (sEnabled) {
           setActiveTab("student");
         } else if (cEnabled) {
@@ -93,12 +96,13 @@ export default function Publish() {
     }
   };
 
-  // 学员身份是否已开通
+  // 学员身份是否已开通（真人头像需审核通过）
   const studentEnabled = (() => {
     const sp = profile?.studentProfile;
     if (!sp) return false;
     return !!profile?.avatarVirtual &&
       !!profile?.avatarReal &&
+      profile?.studentAvatarStatus === "verified" &&
       !!profile?.name &&
       !!profile?.phone && /^1[3-9]\d{9}$/.test(profile.phone) &&
       !!sp.realName &&
@@ -106,12 +110,13 @@ export default function Publish() {
       sp.level > 0;
   })();
 
-  // 陪练身份是否已开通
+  // 陪练身份是否已开通（真人头像需审核通过）
   const coachEnabled = (() => {
     const cp = profile?.coachProfile;
     if (!cp) return false;
     return !!profile?.avatarVirtual &&
       !!profile?.avatarReal &&
+      profile?.coachAvatarStatus === "verified" &&
       !!profile?.name &&
       !!profile?.phone && /^1[3-9]\d{9}$/.test(profile.phone) &&
       !!cp.realName &&
@@ -322,12 +327,13 @@ export default function Publish() {
   const today = new Date().toISOString().slice(0, 10);
 
   if (loading) {
-    return <View className="page-publish"><Loading /></View>;
+    return <View className="page-publish"><CustomNav title="发布" /><Loading /></View>;
   }
 
   if (!user) {
     return (
       <View className="page-publish">
+        <CustomNav title="发布" />
         <View className="login-empty">
           <View className="login-empty-icon">🏸</View>
           <Text className="login-empty-text">登录后体验全部功能</Text>
@@ -341,6 +347,8 @@ export default function Publish() {
 
   return (
     <View className="page-publish">
+      {/* 统一自定义导航栏 */}
+      <CustomNav title="发布" />
       {/* 顶部渐变背景 + 下沉式双 Tab */}
       <View className="publish-header">
         <View className="publish-tab-bar">

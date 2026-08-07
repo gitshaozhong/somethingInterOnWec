@@ -42,16 +42,21 @@ export default function ProfileEdit() {
   const [uploadingVirtual, setUploadingVirtual] = useState(false);
   const [uploadingReal, setUploadingReal] = useState(false);
 
+  // 账号维度真实姓名/身份证号（学员/陪练员共享，第一次写入后锁定）
+  const [realName, setRealName] = useState("");
+  const [idNumber, setIdNumber] = useState("");
+  // 是否锁定：账号已登记后，编辑第二身份时只读
+  const identityLocked = !!(profile?.realName);
+  // 平台昵称同样账号维度统一，第一次写入后锁定
+  const nameLocked = !!(profile?.name);
+
   // 学员档案字段
-  const [studentRealName, setStudentRealName] = useState("");
-  const [studentIdNumber, setStudentIdNumber] = useState("");
   const [studentBio, setStudentBio] = useState("");
   const [studentLevel, setStudentLevel] = useState(0);
   const [studentYearsPlayed, setStudentYearsPlayed] = useState("");
   const [goalTags, setGoalTags] = useState<string[]>([]);
 
   // 陪练档案字段
-  const [coachRealName, setCoachRealName] = useState("");
   const [coachBio, setCoachBio] = useState("");
   const [coachTeachingInfo, setCoachTeachingInfo] = useState("");
   const [coachLevel, setCoachLevel] = useState(0);
@@ -64,6 +69,10 @@ export default function ProfileEdit() {
   const [coachPriceMax, setCoachPriceMax] = useState("");
   const [zhongyuCertId, setZhongyuCertId] = useState("");
   const [specialtyTags, setSpecialtyTags] = useState<string[]>([]);
+  // 能力认证（陪练员）
+  const [otherQualification, setOtherQualification] = useState("");
+  const [certificatePhotos, setCertificatePhotos] = useState<string[]>([]);
+  const [uploadingCertificate, setUploadingCertificate] = useState(false);
 
   // 各自错误提示
   const [studentErrors, setStudentErrors] = useState<Record<string, string>>({});
@@ -85,10 +94,12 @@ export default function ProfileEdit() {
         setAvatarVirtual(u.avatarVirtual || "");
         setAvatarReal(u.avatarReal || "");
 
+        // 账号维度真实姓名/身份证号（学员/陪练员共享）
+        setRealName(u.realName || u.studentProfile?.realName || u.coachProfile?.realName || "");
+        setIdNumber(u.idNumber || u.studentProfile?.idNumber || u.coachProfile?.idNumber || "");
+
         if (u.studentProfile) {
           const sp = u.studentProfile;
-          setStudentRealName(sp.realName || "");
-          setStudentIdNumber(sp.idNumber || "");
           setStudentBio(sp.bio || "");
           setStudentLevel(sp.level ?? 0);
           setStudentYearsPlayed(sp.yearsPlayed != null ? String(sp.yearsPlayed) : "");
@@ -97,7 +108,6 @@ export default function ProfileEdit() {
 
         if (u.coachProfile) {
           const cp = u.coachProfile;
-          setCoachRealName(cp.realName || "");
           setCoachBio(cp.bio || "");
           setCoachTeachingInfo(cp.teachingInfo || "");
           setCoachLevel(cp.level ?? 0);
@@ -109,6 +119,9 @@ export default function ProfileEdit() {
           setCoachPriceMax(cp.priceMax != null ? String(cp.priceMax) : "");
           setZhongyuCertId(cp.zhongyuCertId || "");
           setSpecialtyTags(cp.specialtyTags || []);
+          // 能力认证
+          setOtherQualification(cp.otherQualification || "");
+          setCertificatePhotos(cp.certificatePhotos || []);
         }
       }
     } catch (err) {
@@ -150,15 +163,56 @@ export default function ProfileEdit() {
     }
   };
 
+  // 上传能力证明照片（最多5张）
+  const handleUploadCertificate = async () => {
+    if (certificatePhotos.length >= 5) {
+      Taro.showToast({ title: "最多上传5张", icon: "none" });
+      return;
+    }
+    setUploadingCertificate(true);
+    try {
+      const remain = 5 - certificatePhotos.length;
+      const chooseRes = await Taro.chooseImage({
+        count: remain,
+        sizeType: ["compressed"],
+        sourceType: ["album", "camera"],
+      });
+      const token = Taro.getStorageSync("auth_token");
+      const uploaded: string[] = [];
+      for (const filePath of chooseRes.tempFilePaths) {
+        const uploadRes = await Taro.uploadFile({
+          url: `${BASE_URL}/upload/certificate`,
+          filePath,
+          name: "file",
+          header: { Authorization: `Bearer ${token}` },
+        });
+        const data = JSON.parse(uploadRes.data) as { ok: boolean; url?: string };
+        if (data.ok && data.url) {
+          const fullUrl = data.url.startsWith("http") ? data.url : `${BASE_URL.replace("/api", "")}${data.url}`;
+          uploaded.push(fullUrl);
+        }
+      }
+      if (uploaded.length > 0) {
+        setCertificatePhotos([...certificatePhotos, ...uploaded]);
+        Taro.showToast({ title: "上传成功", icon: "success" });
+      }
+    } catch (e: any) {
+      Taro.showToast({ title: e?.message || "上传失败", icon: "none" });
+    } finally {
+      setUploadingCertificate(false);
+    }
+  };
+
   // 学员完整度
   const studentComplete = (() => {
+    const studentAvatarVerified = profile?.studentAvatarStatus === "verified";
     const checks = [
       { key: "avatarVirtual", label: "虚拟头像", done: !!avatarVirtual },
-      { key: "avatarReal", label: "真人头像", done: !!avatarReal },
+      { key: "avatarReal", label: "真人头像", done: !!avatarReal && studentAvatarVerified },
       { key: "name", label: "平台昵称", done: !!name.trim() },
       { key: "phone", label: "手机号", done: !!phone.trim() && /^1[3-9]\d{9}$/.test(phone) },
-      { key: "studentRealName", label: "真实姓名", done: !!studentRealName.trim() },
-      { key: "studentIdNumber", label: "身份证号", done: !!studentIdNumber.trim() },
+      { key: "realName", label: "真实姓名", done: !!realName.trim() },
+      { key: "idNumber", label: "身份证号", done: !!idNumber.trim() },
       { key: "studentLevel", label: "自评等级", done: studentLevel > 0 },
     ];
     const done = checks.filter((c) => c.done).length;
@@ -167,12 +221,13 @@ export default function ProfileEdit() {
 
   // 陪练完整度
   const coachComplete = (() => {
+    const coachAvatarVerified = profile?.coachAvatarStatus === "verified";
     const checks = [
       { key: "avatarVirtual", label: "虚拟头像", done: !!avatarVirtual },
-      { key: "avatarReal", label: "真人头像", done: !!avatarReal },
+      { key: "avatarReal", label: "真人头像", done: !!avatarReal && coachAvatarVerified },
       { key: "name", label: "平台昵称", done: !!name.trim() },
       { key: "phone", label: "手机号", done: !!phone.trim() && /^1[3-9]\d{9}$/.test(phone) },
-      { key: "coachRealName", label: "真实姓名", done: !!coachRealName.trim() },
+      { key: "realName", label: "真实姓名", done: !!realName.trim() },
       { key: "coachBio", label: "个人介绍", done: !!coachBio.trim() },
       { key: "coachTeachingInfo", label: "授课信息", done: !!coachTeachingInfo.trim() },
       { key: "coachCity", label: "所在城市", done: !!coachCity.trim() },
@@ -201,8 +256,8 @@ export default function ProfileEdit() {
     if (!avatarReal) errors.avatarReal = "请上传真人头像";
     if (!phone.trim()) errors.phone = "请输入手机号";
     else if (!/^1[3-9]\d{9}$/.test(phone)) errors.phone = "手机号格式不正确";
-    if (!studentRealName.trim()) errors.studentRealName = "请输入真实姓名";
-    if (!studentIdNumber.trim()) errors.studentIdNumber = "请输入身份证号";
+    if (!realName.trim()) errors.realName = "请输入真实姓名";
+    if (!idNumber.trim()) errors.idNumber = "请输入身份证号";
     if (studentBio.length > 100) errors.studentBio = "个人介绍不能超过100字";
 
     if (Object.keys(errors).length > 0) {
@@ -217,9 +272,10 @@ export default function ProfileEdit() {
         phone: phone.trim(),
         avatarVirtual,
         avatarReal,
+        currentRole: "student",
         studentProfile: {
-          realName: studentRealName.trim(),
-          idNumber: studentIdNumber.trim(),
+          realName: realName.trim(),
+          idNumber: idNumber.trim(),
           bio: studentBio.trim() || null,
           level: studentLevel,
           yearsPlayed: studentYearsPlayed ? parseInt(studentYearsPlayed) : null,
@@ -246,7 +302,7 @@ export default function ProfileEdit() {
     if (!avatarReal) errors.avatarReal = "请上传真人头像";
     if (!phone.trim()) errors.phone = "请输入手机号";
     else if (!/^1[3-9]\d{9}$/.test(phone)) errors.phone = "手机号格式不正确";
-    if (!coachRealName.trim()) errors.coachRealName = "请输入真实姓名";
+    if (!realName.trim()) errors.realName = "请输入真实姓名";
     if (!coachBio.trim()) errors.coachBio = "请填写个人介绍";
     if (!coachTeachingInfo.trim()) errors.coachTeachingInfo = "请填写授课信息";
     if (!coachCity.trim()) errors.coachCity = "请输入所在城市";
@@ -266,8 +322,9 @@ export default function ProfileEdit() {
         phone: phone.trim(),
         avatarVirtual,
         avatarReal,
+        currentRole: "coach",
         coachProfile: {
-          realName: coachRealName.trim(),
+          realName: realName.trim(),
           bio: coachBio.trim() || null,
           teachingInfo: coachTeachingInfo.trim() || null,
           level: coachLevel,
@@ -279,6 +336,8 @@ export default function ProfileEdit() {
           priceMax: coachPriceMax ? parseInt(coachPriceMax) : null,
           zhongyuCertId: zhongyuCertId.trim() || null,
           specialtyTags,
+          otherQualification: otherQualification.trim() || null,
+          certificatePhotos,
         },
       };
       const res = await authService.updateProfile(body);
@@ -358,14 +417,21 @@ export default function ProfileEdit() {
                 <View className="avatar-preview avatar-placeholder"><Text>点击上传</Text></View>
               )}
               <Text className="avatar-hint">请上传含本人正面人脸或全身照，审核通过后用于订单内展示，不公开到大厅</Text>
-              {profile?.realVerifiedStatus && (
-                <Text className={`verify-status status-${profile.realVerifiedStatus}`}>
-                  {profile.realVerifiedStatus === "verified" ? "已审核" : profile.realVerifiedStatus === "pending" ? "审核中" : "未通过"}
-                </Text>
-              )}
-              {profile?.realVerifiedStatus === "rejected" && profile?.realAvatarRejectReason && (
-                <Text className="reject-reason">拒绝原因：{profile.realAvatarRejectReason}</Text>
-              )}
+              {(() => {
+                const avatarStatus = activeTab === "student" ? profile?.studentAvatarStatus : profile?.coachAvatarStatus;
+                const rejectReason = activeTab === "student" ? profile?.studentAvatarRejectReason : profile?.coachAvatarRejectReason;
+                if (!avatarStatus) return null;
+                return (
+                  <>
+                    <Text className={`verify-status status-${avatarStatus}`}>
+                      {avatarStatus === "verified" ? "已审核" : avatarStatus === "pending" ? "审核中" : "未通过"}
+                    </Text>
+                    {avatarStatus === "rejected" && rejectReason && (
+                      <Text className="reject-reason">拒绝原因：{rejectReason}</Text>
+                    )}
+                  </>
+                );
+              })()}
             </View>
           </View>
 
@@ -374,11 +440,12 @@ export default function ProfileEdit() {
 
           <View className="form-item">
             <Text className="form-label">平台昵称 *</Text>
-            <Text className="form-hint">公开显示</Text>
+            <Text className="form-hint">{nameLocked ? "账号已登记，不可更改" : "公开显示"}</Text>
             <Input
-              className="form-input"
+              className={`form-input ${nameLocked ? "readonly" : ""}`}
               placeholder="请输入平台昵称"
               value={name}
+              disabled={nameLocked}
               onInput={(e) => { setName(e.detail.value); clearError(activeTab, "name"); }}
             />
             {(activeTab === "student" ? studentErrors : coachErrors).name && (
@@ -415,26 +482,28 @@ export default function ProfileEdit() {
 
             <View className="form-item">
               <Text className="form-label">真实姓名 *</Text>
-              <Text className="form-hint">不公开显示</Text>
+              <Text className="form-hint">{identityLocked ? "账号已登记，不可修改" : "不公开显示"}</Text>
               <Input
-                className="form-input"
+                className={`form-input ${identityLocked ? "readonly" : ""}`}
                 placeholder="请输入真实姓名"
-                value={studentRealName}
-                onInput={(e) => { setStudentRealName(e.detail.value); clearError("student", "studentRealName"); }}
+                value={realName}
+                disabled={identityLocked}
+                onInput={(e) => { setRealName(e.detail.value); clearError("student", "realName"); }}
               />
-              {studentErrors.studentRealName && <Text className="field-error">{studentErrors.studentRealName}</Text>}
+              {studentErrors.realName && <Text className="field-error">{studentErrors.realName}</Text>}
             </View>
 
             <View className="form-item">
               <Text className="form-label">身份证号 *</Text>
-              <Text className="form-hint">不公开显示</Text>
+              <Text className="form-hint">{identityLocked ? "账号已登记，不可修改" : "不公开显示"}</Text>
               <Input
-                className="form-input"
+                className={`form-input ${identityLocked ? "readonly" : ""}`}
                 placeholder="请输入身份证号"
-                value={studentIdNumber}
-                onInput={(e) => { setStudentIdNumber(e.detail.value); clearError("student", "studentIdNumber"); }}
+                value={idNumber}
+                disabled={identityLocked}
+                onInput={(e) => { setIdNumber(e.detail.value); clearError("student", "idNumber"); }}
               />
-              {studentErrors.studentIdNumber && <Text className="field-error">{studentErrors.studentIdNumber}</Text>}
+              {studentErrors.idNumber && <Text className="field-error">{studentErrors.idNumber}</Text>}
             </View>
 
             <View className="form-item">
@@ -495,6 +564,59 @@ export default function ProfileEdit() {
           </View>
         )}
 
+        {/* 能力认证独立卡片（仅陪练员） */}
+        {activeTab === "coach" && (
+          <View className="form-card">
+            <View className="section-title"><Text>能力认证</Text></View>
+
+            {qualifications.includes("其他认证") && (
+              <View className="form-item">
+                <Text className="form-label">其他认证</Text>
+                <Text className="form-hint">请填写认证名称，如需展示多项请用顿号分隔</Text>
+                <Input
+                  className="form-input"
+                  placeholder="如：国家二级运动员、XX赛事冠军等"
+                  value={otherQualification}
+                  onInput={(e) => setOtherQualification(e.detail.value)}
+                />
+              </View>
+            )}
+
+            <View className="form-item">
+              <View className="ability-photo-header">
+                <Text className="form-label">能力证明照片</Text>
+                <Text className="ability-photo-count">{certificatePhotos.length}/5</Text>
+              </View>
+              <Text className="form-hint">能够充分证明你的该项运动能力，比如打球照片、球领、获奖证明或者专业教练的活动证明等等</Text>
+              <View className="ability-photo-grid">
+                {certificatePhotos.map((url, idx) => (
+                  <View key={idx} className="ability-photo-item">
+                    <Image src={url} className="ability-photo" mode="aspectFill" />
+                    <View
+                      className="ability-photo-del"
+                      onClick={() => setCertificatePhotos(certificatePhotos.filter((_, i) => i !== idx))}
+                    >
+                      <Text>✕</Text>
+                    </View>
+                  </View>
+                ))}
+                {certificatePhotos.length < 5 && (
+                  <View
+                    className="ability-photo-upload"
+                    onClick={handleUploadCertificate}
+                  >
+                    {uploadingCertificate ? (
+                      <Text className="uploading-text">上传中...</Text>
+                    ) : (
+                      <Text className="upload-icon">+</Text>
+                    )}
+                  </View>
+                )}
+              </View>
+            </View>
+          </View>
+        )}
+
         {/* 陪练员档案表单 */}
         {activeTab === "coach" && (
           <View className="form-card">
@@ -502,14 +624,15 @@ export default function ProfileEdit() {
 
             <View className="form-item">
               <Text className="form-label">真实姓名 *</Text>
-              <Text className="form-hint">不公开显示</Text>
+              <Text className="form-hint">{identityLocked ? "账号已登记，不可修改" : "不公开显示"}</Text>
               <Input
-                className="form-input"
+                className={`form-input ${identityLocked ? "readonly" : ""}`}
                 placeholder="请输入真实姓名"
-                value={coachRealName}
-                onInput={(e) => { setCoachRealName(e.detail.value); clearError("coach", "coachRealName"); }}
+                value={realName}
+                disabled={identityLocked}
+                onInput={(e) => { setRealName(e.detail.value); clearError("coach", "realName"); }}
               />
-              {coachErrors.coachRealName && <Text className="field-error">{coachErrors.coachRealName}</Text>}
+              {coachErrors.realName && <Text className="field-error">{coachErrors.realName}</Text>}
             </View>
 
             <View className="form-item">

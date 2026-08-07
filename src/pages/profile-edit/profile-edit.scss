@@ -394,3 +394,67 @@
   line-height: 1.5;
   display: block;
 }
+
+/* 能力证明照片 */
+.ability-photo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ability-photo-count {
+  font-size: 12px;
+  color: var(--text-color-hint);
+}
+
+.ability-photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.ability-photo-item {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+
+.ability-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.ability-photo-del {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ability-photo-upload {
+  width: 72px;
+  height: 72px;
+  border: 1px dashed var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-color);
+}
+
+.upload-icon {
+  font-size: 28px;
+  color: var(--text-color-hint);
+  line-height: 1;
+}

@@ -3,6 +3,7 @@ import Taro, { useDidShow } from "@tarojs/taro";
 import { useState } from "react";
 import { useUserStore } from "../../stores/user";
 import { authService } from "../../services/auth";
+import CustomNav from "../../components/CustomNav/CustomNav";
 import "./profile.scss";
 
 export default function Profile() {
@@ -28,6 +29,7 @@ export default function Profile() {
   if (!user) {
     return (
       <View className="page-profile-loggedout">
+        <CustomNav title="我的" />
         <View className="login-empty">
           <View className="login-empty-icon">🏸</View>
           <Text className="login-empty-text">登录后体验全部功能</Text>
@@ -46,6 +48,8 @@ export default function Profile() {
     const required = [
       !!profile?.avatarVirtual,
       !!profile?.avatarReal,
+      // 真人头像必须审核通过才能开通
+      profile?.studentAvatarStatus === "verified",
       !!profile?.name,
       !!profile?.phone && /^1[3-9]\d{9}$/.test(profile.phone),
       !!sp.realName,
@@ -63,6 +67,8 @@ export default function Profile() {
     const required = [
       !!profile?.avatarVirtual,
       !!profile?.avatarReal,
+      // 真人头像必须审核通过才能开通
+      profile?.coachAvatarStatus === "verified",
       !!profile?.name,
       !!profile?.phone && /^1[3-9]\d{9}$/.test(profile.phone),
       !!cp.realName,
@@ -114,6 +120,8 @@ export default function Profile() {
 
   return (
     <View className="page-profile">
+      {/* 统一自定义导航栏 */}
+      <CustomNav title="我的" />
       {/* 顶部用户信息（橙色渐变背景） */}
       <View className="header">
         <View className="user-info" onClick={() => Taro.navigateTo({ url: "/pages/profile-edit/profile-edit?tab=student" })}>

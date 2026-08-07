@@ -1,1 +1,1 @@
-{"navigationBarTitleText":"消息中心","navigationBarBackgroundColor":"#07B6D5","navigationBarTextStyle":"white","usingComponents":{"comp":"../../comp"}}
+{"navigationBarTitleText":"消息中心","navigationStyle":"custom","backgroundColor":"#AEECEB","usingComponents":{"comp":"../../comp"}}
