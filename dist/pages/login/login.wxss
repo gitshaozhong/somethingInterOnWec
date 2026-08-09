@@ -1,1 +1,60 @@
-.page-login{align-items:center;background:var(--white);display:flex;justify-content:center;min-height:100vh}.login-content{padding:80rpx;text-align:center;width:100%}.logo-area{margin-bottom:96rpx}.app-name{color:var(--primary-color);display:block;font-size:56rpx;font-weight:700}.app-desc{color:var(--text-color-hint);display:block;font-size:28rpx;margin-top:16rpx}.wechat-login-btn{background:#07c160;border:none;border-radius:var(--radius);color:var(--white);font-size:32rpx;font-weight:600;margin:0 auto;max-width:600rpx;padding:28rpx;width:100%}.wechat-login-btn[disabled]{opacity:.6}.privacy-tip{color:var(--text-color-hint);display:block;font-size:24rpx;line-height:1.6;margin-top:40rpx;padding:0 48rpx}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/pages/login/login.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+}
+
+.login-content {
+  text-align: center;
+  padding: 80rpx;
+  width: 100%;
+}
+
+.logo-area {
+  margin-bottom: 96rpx;
+}
+
+.app-name {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: block;
+}
+
+.app-desc {
+  font-size: 28rpx;
+  color: var(--text-color-hint);
+  margin-top: 16rpx;
+  display: block;
+}
+
+.wechat-login-btn {
+  width: 100%;
+  max-width: 600rpx;
+  margin: 0 auto;
+  background: #07c160;
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  padding: 28rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.wechat-login-btn[disabled] {
+  opacity: 0.6;
+}
+
+.privacy-tip {
+  font-size: 24rpx;
+  color: var(--text-color-hint);
+  margin-top: 40rpx;
+  display: block;
+  padding: 0 48rpx;
+  line-height: 1.6;
+}

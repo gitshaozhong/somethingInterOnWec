@@ -1,1 +1,498 @@
-.page-profile-edit{background:var(--bg-color);display:flex;flex-direction:column;height:100vh}.profile-tab-bar{background:var(--white);border-bottom:2rpx solid var(--border-color);display:flex;flex-shrink:0}.profile-tab-item{border-bottom:4rpx solid transparent;color:var(--text-color-secondary);flex:1;font-size:30rpx;padding:24rpx 0;text-align:center;transition:all .2s}.profile-tab-item.active{border-bottom-color:var(--primary-color);color:var(--primary-color);font-weight:600}.form-scroll{flex:1;overflow-y:auto}.form-card{background:var(--white);border-radius:var(--radius);box-shadow:0 2rpx 8rpx rgba(0,0,0,.06);margin:24rpx;padding:32rpx}.avatar-section{border-bottom:2rpx solid var(--border-color);display:flex;gap:32rpx;margin-bottom:32rpx;padding-bottom:32rpx}.avatar-item{align-items:center;display:flex;flex:1;flex-direction:column;gap:12rpx}.avatar-label-row{align-items:center;display:flex;gap:12rpx}.avatar-label{color:var(--text-color);font-size:26rpx;font-weight:500}.uploading-text{color:var(--primary-color);font-size:22rpx}.avatar-preview{border:4rpx solid var(--border-color);border-radius:50%;height:144rpx;width:144rpx}.avatar-placeholder{align-items:center;background:var(--bg-color);color:var(--text-color-hint);display:flex;font-size:24rpx;justify-content:center}.avatar-hint{color:var(--text-color-hint);font-size:20rpx;line-height:1.4;text-align:center}.verify-status{border-radius:16rpx;font-size:22rpx;padding:2rpx 16rpx}.verify-status.status-verified{background:#f6ffed;color:var(--success-color)}.verify-status.status-pending{background:#fffbe6;color:var(--warning-color)}.verify-status.status-rejected{background:#fff2f0;color:var(--danger-color)}.section-title{border-bottom:2rpx solid var(--border-color);color:var(--text-color);font-size:30rpx;font-weight:600;margin-bottom:16rpx;padding:16rpx 0}.form-item{margin-bottom:32rpx}.form-label{color:var(--text-color);display:block;font-size:28rpx;font-weight:500;margin-bottom:8rpx}.form-hint{color:var(--text-color-hint);display:block;font-size:22rpx;line-height:1.4;margin-bottom:12rpx}.form-input{background:var(--white);border:2rpx solid var(--border-color);border-radius:12rpx;box-sizing:border-box;font-size:28rpx;height:80rpx;padding:0 24rpx;width:100%}.form-input.readonly{background:var(--bg-color);color:var(--text-color-hint)}.form-textarea{background:var(--white);border:2rpx solid var(--border-color);border-radius:12rpx;box-sizing:border-box;font-size:28rpx;height:160rpx;line-height:1.5;padding:20rpx;width:100%}.char-count{color:var(--text-color-hint);display:block;font-size:22rpx;margin-top:4rpx;text-align:right}.picker-value{align-items:center;border:2rpx solid var(--border-color);border-radius:12rpx;color:var(--text-color);display:flex;font-size:28rpx;height:80rpx;padding:0 24rpx}.tag-input-row{display:flex;gap:16rpx}.tag-input{flex:1}.add-tag-btn{align-items:center;background:var(--primary-color);border-radius:12rpx;color:#fff;display:flex;flex-shrink:0;font-size:26rpx;height:80rpx;justify-content:center;padding:0 32rpx}.tag-list{display:flex;flex-wrap:wrap;gap:16rpx;margin-top:16rpx}.tag-item{background:var(--bg-color);border:2rpx solid var(--border-color);border-radius:28rpx;color:var(--text-color-secondary);font-size:24rpx;padding:8rpx 24rpx}.tag-item.active{background:var(--primary-color-light);border-color:var(--primary-color);color:var(--primary-color)}.submit-area{padding:24rpx}.submit-btn{align-items:center;background:var(--primary-color);border:none;border-radius:44rpx;color:#fff;display:flex;font-size:32rpx;font-weight:600;height:88rpx;justify-content:center;width:100%}.empty{color:var(--text-color-hint);padding:160rpx 0;text-align:center}.completeness-banner{background:#fffbe6;border:2rpx solid #ffe58f;border-radius:16rpx;margin-bottom:24rpx;padding:16rpx 24rpx}.completeness-banner.all-done{background:#f6ffed;border-color:#b7eb8f}.completeness-text{color:var(--text-color-secondary);font-size:24rpx;line-height:1.5}.completeness-banner.all-done .completeness-text{color:var(--success-color)}.field-error{color:var(--danger-color);display:block;font-size:22rpx;line-height:1.4;margin-top:8rpx}.reject-reason{background:#fff2f0;border-radius:8rpx;color:var(--danger-color);font-size:22rpx;line-height:1.4;margin-top:8rpx;padding:4rpx 12rpx;text-align:center}.level-hint{color:var(--text-color-hint);display:block;font-size:22rpx;line-height:1.4;margin-top:8rpx}.rating-card{background:var(--bg-color);border-bottom:2rpx solid var(--border-color);border-radius:16rpx;margin-bottom:32rpx;padding:24rpx 24rpx 32rpx}.rating-card-title{color:var(--text-color);font-size:30rpx;font-weight:600;margin-bottom:20rpx}.rating-card-row{align-items:center;display:flex;gap:12rpx;margin-bottom:16rpx}.stars-row{align-items:center;display:flex;gap:2rpx}.star{font-size:32rpx;line-height:1}.star.filled{color:#fadb14}.star.empty{color:#e8e8e8}.rating-number{color:var(--text-color);font-size:44rpx;font-weight:700;margin-left:8rpx}.rating-count{color:var(--text-color-hint);font-size:22rpx}.served-badge{background:var(--white);border-radius:8rpx;color:var(--text-color-secondary);display:inline-block;font-size:24rpx;margin-bottom:12rpx;padding:4rpx 16rpx}.rating-hint{color:var(--text-color-hint);display:block;font-size:22rpx;line-height:1.5}.ability-photo-header{align-items:center;display:flex;justify-content:space-between}.ability-photo-count{color:var(--text-color-hint);font-size:24rpx}.ability-photo-grid{display:flex;flex-wrap:wrap;gap:16rpx;margin-top:16rpx}.ability-photo-item{height:144rpx;position:relative;width:144rpx}.ability-photo{border:2rpx solid var(--border-color);border-radius:12rpx;height:144rpx;width:144rpx}.ability-photo-del{align-items:center;background:rgba(0,0,0,.55);border-radius:50%;color:#fff;display:flex;font-size:22rpx;height:36rpx;justify-content:center;position:absolute;right:-12rpx;top:-12rpx;width:36rpx}.ability-photo-upload{align-items:center;background:var(--bg-color);border:2rpx dashed var(--border-color);border-radius:12rpx;display:flex;height:144rpx;justify-content:center;width:144rpx}.upload-icon{color:var(--text-color-hint);font-size:56rpx;line-height:1}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/pages/profile-edit/profile-edit.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+.page-profile-edit {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color);
+}
+
+/* 顶部双 Tab */
+.profile-tab-bar {
+  display: flex;
+  background: var(--white);
+  border-bottom: 2rpx solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.profile-tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 30rpx;
+  color: var(--text-color-secondary);
+  border-bottom: 4rpx solid transparent;
+  transition: all 0.2s;
+}
+
+.profile-tab-item.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* 滚动表单区 */
+.form-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.form-card {
+  background: var(--white);
+  margin: 24rpx;
+  border-radius: var(--radius);
+  padding: 32rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 头像 */
+.avatar-section {
+  display: flex;
+  gap: 32rpx;
+  margin-bottom: 32rpx;
+  padding-bottom: 32rpx;
+  border-bottom: 2rpx solid var(--border-color);
+}
+
+.avatar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.avatar-label-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.avatar-label {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.uploading-text {
+  font-size: 22rpx;
+  color: var(--primary-color);
+}
+
+.avatar-preview {
+  width: 144rpx;
+  height: 144rpx;
+  border-radius: 50%;
+  border: 4rpx solid var(--border-color);
+}
+
+.avatar-placeholder {
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: var(--text-color-hint);
+}
+
+.avatar-hint {
+  font-size: 20rpx;
+  color: var(--text-color-hint);
+  text-align: center;
+  line-height: 1.4;
+}
+
+.verify-status {
+  font-size: 22rpx;
+  padding: 2rpx 16rpx;
+  border-radius: 16rpx;
+}
+
+.verify-status.status-verified {
+  background: #f6ffed;
+  color: var(--success-color);
+}
+
+.verify-status.status-pending {
+  background: #fffbe6;
+  color: var(--warning-color);
+}
+
+.verify-status.status-rejected {
+  background: #fff2f0;
+  color: var(--danger-color);
+}
+
+/* 分区标题 */
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-color);
+  padding: 16rpx 0;
+  margin-bottom: 16rpx;
+  border-bottom: 2rpx solid var(--border-color);
+}
+
+/* 表单项 */
+.form-item {
+  margin-bottom: 32rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.form-hint {
+  font-size: 22rpx;
+  color: var(--text-color-hint);
+  display: block;
+  margin-bottom: 12rpx;
+  line-height: 1.4;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  background: var(--white);
+  box-sizing: border-box;
+}
+
+.form-input.readonly {
+  background: var(--bg-color);
+  color: var(--text-color-hint);
+}
+
+.form-textarea {
+  width: 100%;
+  height: 160rpx;
+  padding: 20rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  background: var(--white);
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 22rpx;
+  color: var(--text-color-hint);
+  margin-top: 4rpx;
+  display: block;
+}
+
+.picker-value {
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+
+/* 标签输入 */
+.tag-input-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.tag-input {
+  flex: 1;
+}
+
+.add-tag-btn {
+  height: 80rpx;
+  padding: 0 32rpx;
+  border-radius: 12rpx;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 所在城市选择入口（点击跳转 city-picker） */
+.city-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  padding: 0 24rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 12rpx;
+  background: var(--white);
+  box-sizing: border-box;
+}
+
+.city-entry:active {
+  background: var(--bg-color);
+}
+
+.city-entry-value {
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+
+.city-entry-placeholder {
+  font-size: 28rpx;
+  color: var(--text-color-hint);
+}
+
+.city-entry-arrow {
+  font-size: 40rpx;
+  color: var(--text-color-hint);
+  line-height: 1;
+  margin-left: 16rpx;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.tag-item {
+  padding: 8rpx 24rpx;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  background: var(--bg-color);
+  color: var(--text-color-secondary);
+  border: 2rpx solid var(--border-color);
+}
+
+.tag-item.active {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* 提交按钮 */
+.submit-area {
+  padding: 24rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty {
+  text-align: center;
+  padding: 160rpx 0;
+  color: var(--text-color-hint);
+}
+
+/* 完整度引导 */
+.completeness-banner {
+  background: #fffbe6;
+  border: 2rpx solid #ffe58f;
+  border-radius: 16rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.completeness-banner.all-done {
+  background: #f6ffed;
+  border-color: #b7eb8f;
+}
+
+.completeness-text {
+  font-size: 24rpx;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+}
+
+.completeness-banner.all-done .completeness-text {
+  color: var(--success-color);
+}
+
+/* 字段错误提示 */
+.field-error {
+  font-size: 22rpx;
+  color: var(--danger-color);
+  margin-top: 8rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+/* 真人头像拒绝原因 */
+.reject-reason {
+  font-size: 22rpx;
+  color: var(--danger-color);
+  margin-top: 8rpx;
+  text-align: center;
+  line-height: 1.4;
+  padding: 4rpx 12rpx;
+  background: #fff2f0;
+  border-radius: 8rpx;
+}
+
+/* 等级说明 */
+.level-hint {
+  font-size: 22rpx;
+  color: var(--text-color-hint);
+  margin-top: 8rpx;
+  display: block;
+  line-height: 1.4;
+}
+
+/* 评分卡 */
+.rating-card {
+  background: var(--bg-color);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 32rpx;
+  padding-bottom: 32rpx;
+  border-bottom: 2rpx solid var(--border-color);
+}
+
+.rating-card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 20rpx;
+}
+
+.rating-card-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.stars-row {
+  display: flex;
+  align-items: center;
+  gap: 2rpx;
+}
+
+.star {
+  font-size: 32rpx;
+  line-height: 1;
+}
+
+.star.filled {
+  color: #fadb14;
+}
+
+.star.empty {
+  color: #e8e8e8;
+}
+
+.rating-number {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-left: 8rpx;
+}
+
+.rating-count {
+  font-size: 22rpx;
+  color: var(--text-color-hint);
+}
+
+.served-badge {
+  display: inline-block;
+  background: var(--white);
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: var(--text-color-secondary);
+  margin-bottom: 12rpx;
+}
+
+.rating-hint {
+  font-size: 22rpx;
+  color: var(--text-color-hint);
+  line-height: 1.5;
+  display: block;
+}
+
+/* 能力证明照片 */
+.ability-photo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ability-photo-count {
+  font-size: 24rpx;
+  color: var(--text-color-hint);
+}
+
+.ability-photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+.ability-photo-item {
+  position: relative;
+  width: 144rpx;
+  height: 144rpx;
+}
+
+.ability-photo {
+  width: 144rpx;
+  height: 144rpx;
+  border-radius: 12rpx;
+  border: 2rpx solid var(--border-color);
+}
+
+.ability-photo-del {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ability-photo-upload {
+  width: 144rpx;
+  height: 144rpx;
+  border: 2rpx dashed var(--border-color);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-color);
+}
+
+.upload-icon {
+  font-size: 56rpx;
+  color: var(--text-color-hint);
+  line-height: 1;
+}

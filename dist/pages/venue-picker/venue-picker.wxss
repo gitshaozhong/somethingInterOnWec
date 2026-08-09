@@ -1,1 +1,386 @@
-.page-venue-picker{background:#f5f5f7;display:flex;flex-direction:column;height:100vh}.search-bar{align-items:center;background:#fff;box-shadow:0 2rpx 8rpx rgba(0,0,0,.04);display:flex;padding:12rpx 24rpx;z-index:10}.search-input-wrap{align-items:center;background:#f2f2f4;border-radius:32rpx;display:flex;flex:1;height:64rpx;padding:0 24rpx}.search-input{color:#333;flex:1;font-size:28rpx}.clear-btn{color:#999;font-size:28rpx;margin-left:8rpx;padding:8rpx}.search-btn{color:#ff6a00;font-size:28rpx;font-weight:500;margin-left:16rpx;padding:8rpx 16rpx}.map-container{flex-shrink:0;height:55vh;position:relative;width:100%}.map{height:100%;width:100%}.center-marker{left:50%;pointer-events:none;position:absolute;top:50%;transform:translate(-50%,-100%);z-index:5}.center-marker-pin{background:#ff6a00;border:4rpx solid #fff;border-radius:50% 50% 50% 0;box-shadow:0 4rpx 12rpx rgba(0,0,0,.25);height:40rpx;transform:rotate(-45deg);width:40rpx}.center-marker-shadow{background:rgba(0,0,0,.2);border-radius:50%;bottom:-20rpx;height:8rpx;left:50%;position:absolute;transform:translateX(-50%);width:24rpx}.locate-btn{align-items:center;background:#fff;border-radius:50%;bottom:24rpx;box-shadow:0 4rpx 16rpx rgba(0,0,0,.12);display:flex;height:80rpx;justify-content:center;position:absolute;right:24rpx;width:80rpx;z-index:6}.locate-icon{font-size:36rpx}.drag-info-card{background:#fff;border-radius:16rpx;bottom:24rpx;box-shadow:0 4rpx 16rpx rgba(0,0,0,.1);left:24rpx;padding:20rpx 24rpx;position:absolute;right:24rpx;z-index:7}.drag-info-text{color:#999;font-size:26rpx}.drag-info-content{align-items:center;display:flex;justify-content:space-between}.drag-info-main{flex:1;min-width:0}.drag-info-name{color:#222;display:block;font-size:30rpx;font-weight:600;margin-bottom:4rpx}.drag-info-address{color:#888;display:block;font-size:24rpx}.drag-use-btn{background:#ff6a00;border-radius:24rpx;color:#fff;flex-shrink:0;font-size:26rpx;font-weight:500;margin-left:16rpx;padding:12rpx 24rpx}.drag-use-btn.active{background:#4caf50}.list-area{background:#fff;border-radius:24rpx 24rpx 0 0;display:flex;flex:1;flex-direction:column;margin-top:-24rpx;min-height:0;padding-top:16rpx;position:relative;z-index:8}.preset-section{border-bottom:1rpx solid #f0f0f0;padding:16rpx 24rpx}.section-header{align-items:center;display:flex;justify-content:space-between;margin-bottom:16rpx}.section-title{color:#222;font-size:28rpx;font-weight:600}.section-hint{color:#999;font-size:22rpx}.preset-scroll{white-space:nowrap}.preset-chip{align-items:center;background:#fff5ed;border:1rpx solid #ffe0c2;border-radius:12rpx;display:inline-flex;flex-direction:column;margin-right:16rpx;padding:12rpx 24rpx}.preset-chip-name{color:#ff6a00;font-size:24rpx;font-weight:500}.preset-chip-district{color:#b07030;font-size:20rpx;margin-top:4rpx}.result-scroll{flex:1;padding:0 24rpx}.loading-tip{color:#999;font-size:26rpx;padding:48rpx 0;text-align:center}.empty-tip{align-items:center;display:flex;flex-direction:column;padding:48rpx 0}.empty-icon{font-size:64rpx;margin-bottom:16rpx}.empty-text{color:#666;font-size:28rpx;margin-bottom:8rpx}.empty-hint{color:#aaa;font-size:24rpx}.result-item{align-items:center;border-bottom:1rpx solid #f5f5f5;display:flex;padding:24rpx 0}.result-item.selected{background:#fff8f3;margin:0 -24rpx;padding-left:24rpx;padding-right:24rpx}.result-item-main{flex:1;min-width:0}.result-item-name{color:#222;display:block;font-size:30rpx;font-weight:500;margin-bottom:6rpx}.result-item-address{color:#888;display:block;font-size:24rpx}.result-item-side{align-items:flex-end;display:flex;flex-direction:column;flex-shrink:0;margin-left:16rpx}.result-item-distance{color:#999;font-size:24rpx;margin-bottom:4rpx}.result-item-check{color:#ff6a00;font-size:32rpx;font-weight:600}.selected-banner{background:#fff8f3;border-top:1rpx solid #ffe0c2;padding:16rpx 24rpx}.selected-info{display:flex;flex-direction:column}.selected-name{color:#ff6a00;font-size:28rpx;font-weight:600;margin-bottom:4rpx}.selected-address{color:#999;font-size:24rpx}.bottom-bar{background:#fff;box-shadow:0 -2rpx 8rpx rgba(0,0,0,.04);flex-shrink:0;padding:16rpx 24rpx}.safe-bottom{padding-bottom:calc(16rpx + env(safe-area-inset-bottom))}.confirm-btn{background:#ff6a00;border:none;border-radius:44rpx;color:#fff;font-size:32rpx;font-weight:600;height:88rpx;line-height:88rpx;text-align:center;width:100%}.confirm-btn.disabled,.confirm-btn[disabled]{background:#ccc;color:#fff}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/pages/venue-picker/venue-picker.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/**
+ * 球馆选择页样式
+ * 设计风格参考滴滴：顶部搜索 + 大地图 + 底部列表 + 橙色确认按钮
+ */
+.page-venue-picker {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f5f7;
+}
+
+/* ---------- 顶部搜索栏 ---------- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  background: #fff;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  z-index: 10;
+}
+
+.search-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: #f2f2f4;
+  border-radius: 32rpx;
+  padding: 0 24rpx;
+  height: 64rpx;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.clear-btn {
+  font-size: 28rpx;
+  color: #999;
+  padding: 8rpx;
+  margin-left: 8rpx;
+}
+
+.search-btn {
+  margin-left: 16rpx;
+  font-size: 28rpx;
+  color: #ff6a00;
+  font-weight: 500;
+  padding: 8rpx 16rpx;
+}
+
+/* ---------- 地图区域 ---------- */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+  flex-shrink: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+/* 中心选点标记（拖拽选点用） */
+.center-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.center-marker-pin {
+  width: 40rpx;
+  height: 40rpx;
+  background: #ff6a00;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 4rpx solid #fff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.25);
+}
+
+.center-marker-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -20rpx;
+  transform: translateX(-50%);
+  width: 24rpx;
+  height: 8rpx;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+/* 定位按钮 */
+.locate-btn {
+  position: absolute;
+  right: 24rpx;
+  bottom: 24rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.12);
+  z-index: 6;
+}
+
+.locate-icon {
+  font-size: 36rpx;
+}
+
+/* 拖拽信息卡片 */
+.drag-info-card {
+  position: absolute;
+  left: 24rpx;
+  right: 24rpx;
+  bottom: 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  z-index: 7;
+}
+
+.drag-info-text {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.drag-info-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drag-info-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.drag-info-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4rpx;
+}
+
+.drag-info-address {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
+.drag-use-btn {
+  flex-shrink: 0;
+  margin-left: 16rpx;
+  padding: 12rpx 24rpx;
+  background: #ff6a00;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 24rpx;
+  font-weight: 500;
+}
+
+.drag-use-btn.active {
+  background: #4caf50;
+}
+
+/* ---------- 下方列表区 ---------- */
+.list-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  margin-top: -24rpx;
+  position: relative;
+  z-index: 8;
+  padding-top: 16rpx;
+}
+
+/* 快捷球馆 */
+.preset-section {
+  padding: 16rpx 24rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #222;
+}
+
+.section-hint {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.preset-scroll {
+  white-space: nowrap;
+}
+
+.preset-chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  background: #fff5ed;
+  border-radius: 12rpx;
+  margin-right: 16rpx;
+  border: 1rpx solid #ffe0c2;
+}
+
+.preset-chip-name {
+  font-size: 24rpx;
+  color: #ff6a00;
+  font-weight: 500;
+}
+
+.preset-chip-district {
+  font-size: 20rpx;
+  color: #b07030;
+  margin-top: 4rpx;
+}
+
+/* 搜索结果列表 */
+.result-scroll {
+  flex: 1;
+  padding: 0 24rpx;
+}
+
+.loading-tip {
+  text-align: center;
+  padding: 48rpx 0;
+  color: #999;
+  font-size: 26rpx;
+}
+
+.empty-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0;
+}
+
+.empty-icon {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.empty-hint {
+  font-size: 24rpx;
+  color: #aaa;
+}
+
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.result-item.selected {
+  background: #fff8f3;
+  margin: 0 -24rpx;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+}
+
+.result-item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-item-name {
+  display: block;
+  font-size: 30rpx;
+  color: #222;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+}
+
+.result-item-address {
+  display: block;
+  font-size: 24rpx;
+  color: #888;
+}
+
+.result-item-side {
+  flex-shrink: 0;
+  margin-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.result-item-distance {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 4rpx;
+}
+
+.result-item-check {
+  font-size: 32rpx;
+  color: #ff6a00;
+  font-weight: 600;
+}
+
+/* 选中提示横幅 */
+.selected-banner {
+  padding: 16rpx 24rpx;
+  background: #fff8f3;
+  border-top: 1rpx solid #ffe0c2;
+}
+
+.selected-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #ff6a00;
+  margin-bottom: 4rpx;
+}
+
+.selected-address {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* ---------- 底部确认按钮 ---------- */
+.bottom-bar {
+  flex-shrink: 0;
+  padding: 16rpx 24rpx;
+  background: #fff;
+  box-shadow: 0 -2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.safe-bottom {
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+}
+
+.confirm-btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #ff6a00;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-radius: 44rpx;
+  border: none;
+  text-align: center;
+}
+
+.confirm-btn.disabled,
+.confirm-btn[disabled] {
+  background: #ccc;
+  color: #fff;
+}

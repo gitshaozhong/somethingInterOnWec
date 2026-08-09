@@ -81,7 +81,7 @@ export default function Publish() {
           u.studentAvatarStatus === "verified";
         const cEnabled = !!cp && !!u.avatarVirtual && !!u.avatarReal && !!u.name &&
           (!!u.phone && /^1[3-9]\d{9}$/.test(u.phone)) && !!cp.realName && !!cp.bio &&
-          !!cp.teachingInfo && !!cp.city && (cp.frequentAreas?.length ?? 0) > 0 && cp.level > 0 &&
+          !!cp.teachingInfo && !!cp.city && cp.level > 0 &&
           u.coachAvatarStatus === "verified";
         if (sEnabled) {
           setActiveTab("student");
@@ -121,9 +121,7 @@ export default function Publish() {
       !!profile?.phone && /^1[3-9]\d{9}$/.test(profile.phone) &&
       !!cp.realName &&
       !!cp.bio &&
-      !!cp.teachingInfo &&
-      !!cp.city &&
-      (cp.frequentAreas?.length ?? 0) > 0 &&
+      !!cp.teachingInfo && !!cp.city &&
       cp.level > 0;
   })();
 
@@ -327,12 +325,12 @@ export default function Publish() {
   const today = new Date().toISOString().slice(0, 10);
 
   if (loading) {
-    return <View className="page-publish"><CustomNav title="发布" /><Loading /></View>;
+    return <View className={`page-publish ${activeTab === "student" ? "tab-student" : "tab-coach"}`}><CustomNav title="发布" /><Loading /></View>;
   }
 
   if (!user) {
     return (
-      <View className="page-publish">
+      <View className={`page-publish ${activeTab === "student" ? "tab-student" : "tab-coach"}`}>
         <CustomNav title="发布" />
         <View className="login-empty">
           <View className="login-empty-icon">🏸</View>
@@ -346,7 +344,7 @@ export default function Publish() {
   }
 
   return (
-    <View className="page-publish">
+    <View className={`page-publish ${activeTab === "student" ? "tab-student" : "tab-coach"}`}>
       {/* 统一自定义导航栏 */}
       <CustomNav title="发布" />
       {/* 顶部渐变背景 + 下沉式双 Tab */}

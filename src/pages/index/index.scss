@@ -2,13 +2,25 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(180deg, #AEECEB 0%, #F8D2E1 100%);
+  transition: background 0.3s ease;
+}
+
+/* 学员大厅：绿色渐变背景 */
+.page-index.tab-student {
+  background: linear-gradient(180deg, #94F29A 0%, #C2F2C8 60%, #f5f7fa 100%);
+}
+
+/* 陪练大厅：蓝色渐变背景 */
+.page-index.tab-coach {
+  background: linear-gradient(180deg, #58AFF6 0%, #9DD0FA 60%, #f5f7fa 100%);
 }
 
 /* ============ 顶部渐变背景区 ============ */
 .header-gradient {
   padding: 12px 12px 0;
   flex-shrink: 0;
+  /* 背景透明，透出 page-index 的角色渐变 */
+  background: transparent;
 }
 
 /* ============ 下沉式双 Tab ============ */
@@ -246,9 +258,12 @@
 .card {
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 14px 16px;
+  /* 上下 padding 减到原来 80%（14px → 11px），整体更紧凑 */
+  padding: 11px 16px;
   margin-bottom: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* 确保四角圆角一致，防止内部元素溢出导致右侧视觉直角 */
+  overflow: hidden;
 }
 
 .card-top {

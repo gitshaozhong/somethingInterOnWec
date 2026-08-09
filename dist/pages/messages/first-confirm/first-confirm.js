@@ -1,1 +1,676 @@
-"use strict";(wx["webpackJsonp"]=wx["webpackJsonp"]||[]).push([[828],{6684:function(e,s,a){var n=a(8870),c=a(1212),r=a(467),l=a(5544),t=a(118),o=a(6540),i=a(758),d=a.n(i),m=a(8170),u=a(4074),f=a(197),h=a(251),x=a(3146),p=a(6901),g=a(4848),j={pending:{label:"\u5f85\u786e\u8ba4",color:"#faad14",bg:"#fffbe6"},accepted:{label:"\u5df2\u786e\u8ba4",color:"#1677ff",bg:"#e6f4ff"},in_progress:{label:"\u8fdb\u884c\u4e2d",color:"#52c41a",bg:"#f6ffed"},completed:{label:"\u5df2\u5b8c\u6210",color:"#52c41a",bg:"#f6ffed"},declined:{label:"\u5df2\u62d2\u7edd",color:"#999",bg:"#f5f5f5"},cancelled:{label:"\u5df2\u53d6\u6d88",color:"#999",bg:"#f5f5f5"},closed:{label:"\u5df2\u5173\u95ed",color:"#999",bg:"#f5f5f5"},expired:{label:"\u5df2\u8fc7\u671f",color:"#999",bg:"#f5f5f5"},revoked:{label:"\u5df2\u64a4\u56de",color:"#999",bg:"#f5f5f5"}};function N(e){var s=e.status,a=j[s]||{label:s,color:"#999",bg:"#f5f5f5"};return(0,g.jsx)(t.EY,{style:{fontSize:12,padding:"2px 8px",borderRadius:4,color:a.color,background:a.bg},children:a.label})}function b(){var e=(0,f.k)(),s=e.user,a=(0,h.C)(),n=a.setUnreadCount,j=(0,o.useState)([]),b=(0,l.A)(j,2),S=b[0],v=b[1],k=(0,o.useState)(!0),A=(0,l.A)(k,2),E=A[0],Y=A[1],w=(0,o.useState)(!1),C=(0,l.A)(w,2),y=C[0],T=C[1],U=(0,o.useState)(""),M=(0,l.A)(U,2),P=M[0],B=M[1],_=(0,o.useState)("accept"),$=(0,l.A)(_,2),D=$[0],F=$[1],R=(0,o.useState)(""),V=(0,l.A)(R,2),I=V[0],J=V[1],O=(0,o.useState)(!1),z=(0,l.A)(O,2),H=z[0],q=z[1],G=(0,o.useState)(!1),K=(0,l.A)(G,2),L=K[0],Q=K[1],W=(0,o.useState)(""),X=(0,l.A)(W,2),Z=X[0],ee=X[1],se=(0,o.useState)(!1),ae=(0,l.A)(se,2),ne=ae[0],ce=ae[1],re=(0,o.useState)(!1),le=(0,l.A)(re,2),te=le[0],oe=le[1],ie=(0,o.useCallback)((0,r.A)((0,c.A)().m(function e(){var a,n;return(0,c.A)().w(function(e){while(1)switch(e.p=e.n){case 0:if(s){e.n=1;break}return e.a(2);case 1:return Y(!0),e.p=2,e.n=3,m.o.list();case 3:a=e.v,a.ok&&v((a.items||[]).filter(function(e){return!e.orderStatus})),e.n=5;break;case 4:e.p=4,n=e.v,console.error("[first-confirm] \u83b7\u53d6\u5931\u8d25:",n);case 5:return e.p=5,Y(!1),e.f(5);case 6:return e.a(2)}},e,null,[[2,4,5,6]])})),[s]);(0,o.useEffect)(function(){ie()},[ie]),(0,i.useDidShow)(function(){ie()});var de=function(e){if(!e)return"\u2014";var s=new Date(e);return"".concat(s.getMonth()+1,"/").concat(s.getDate()," ").concat(String(s.getHours()).padStart(2,"0"),":").concat(String(s.getMinutes()).padStart(2,"0"))},me=function(e){d().navigateTo({url:"/pages/order-detail/order-detail?id=".concat(e)})},ue=function(e){return"completed"!==e.orderStatus&&"closed"!==e.orderStatus&&"accepted"===e.status},fe=function(e,s){B(e.id),F(s),J(""),T(!0)},he=function(){var e=(0,r.A)((0,c.A)().m(function e(){var s,a,r;return(0,c.A)().w(function(e){while(1)switch(e.p=e.n){case 0:if(!H){e.n=1;break}return e.a(2);case 1:return q(!0),e.p=2,e.n=3,m.o.respond(P,{action:D,replyMessage:I.trim()||void 0});case 3:if(s=e.v,!s.ok){e.n=7;break}return d().showToast({title:"accept"===D?"\u5df2\u540c\u610f\uff0c\u53cc\u65b9\u5df2\u89e3\u9501\u624b\u673a\u53f7":"\u5df2\u5a49\u62d2\u9080\u8bf7",icon:"success"}),T(!1),ie(),e.p=4,e.n=5,u.w.unreadCount();case 5:a=e.v,a.ok&&n(a.count||0),e.n=7;break;case 6:e.p=6,e.v;case 7:e.n=9;break;case 8:e.p=8,r=e.v,d().showToast({title:(null===r||void 0===r?void 0:r.message)||"\u64cd\u4f5c\u5931\u8d25",icon:"none"});case 9:return e.p=9,q(!1),e.f(9);case 10:return e.a(2)}},e,null,[[4,6],[2,8,9,10]])}));return function(){return e.apply(this,arguments)}}(),xe=function(e){ee(e.id),ce("pending"===e.status),Q(!0)},pe=function(){var e=(0,r.A)((0,c.A)().m(function e(){var s,a;return(0,c.A)().w(function(e){while(1)switch(e.p=e.n){case 0:if(!te){e.n=1;break}return e.a(2);case 1:return oe(!0),e.p=2,e.n=3,m.o.revoke(Z);case 3:s=e.v,s.ok&&(d().showToast({title:ne?"\u5df2\u53d6\u6d88\u9080\u8bf7":"\u5df2\u64a4\u56de\u6388\u6743",icon:"success"}),Q(!1),ie()),e.n=5;break;case 4:e.p=4,a=e.v,d().showToast({title:(null===a||void 0===a?void 0:a.message)||"\u64cd\u4f5c\u5931\u8d25",icon:"none"});case 5:return e.p=5,oe(!1),e.f(5);case 6:return e.a(2)}},e,null,[[2,4,5,6]])}));return function(){return e.apply(this,arguments)}}();if(!s)return(0,g.jsx)(t.Ss,{className:"page-confirm",children:(0,g.jsx)(p.A,{text:"\u8bf7\u5148\u767b\u5f55"})});var ge=function(e){var a=e.toUserId===s.id,n=a?e.fromUserName:e.toUserName,c=a?e.fromUserAvatar:e.toUserAvatar,r=a?e.fromUserRealAvatar:e.toUserRealAvatar,l=ue(e);return(0,g.jsxs)(t.Ss,{className:"msg-card",children:[(0,g.jsxs)(t.Ss,{className:"msg-header",onClick:function(){return me(e.id)},children:[(0,g.jsxs)(t.Ss,{className:"msg-user-info",children:[l&&r?(0,g.jsx)(t._V,{src:r,className:"msg-avatar",mode:"aspectFill"}):c?(0,g.jsx)(t._V,{src:c,className:"msg-avatar",mode:"aspectFill"}):(0,g.jsx)(t.Ss,{className:"msg-avatar msg-avatar-placeholder",children:(0,g.jsx)(t.EY,{children:(n||"?")[0]})}),(0,g.jsxs)(t.Ss,{className:"msg-user-meta",children:[(0,g.jsx)(t.EY,{className:"msg-user-name",children:n}),(0,g.jsxs)(t.EY,{className:"msg-source",children:[a?"\u53d1\u7ed9\u6211":"\u6211\u53d1\u51fa"," \xb7 ",e.sourceTitle]}),e.orderNo&&(0,g.jsx)(t.EY,{className:"msg-order-no",children:e.orderNo})]})]}),(0,g.jsx)(N,{status:e.status})]}),(0,g.jsxs)(t.Ss,{className:"msg-body",children:[e.message&&(0,g.jsxs)(t.Ss,{className:"msg-text-box",children:[(0,g.jsx)(t.EY,{className:"msg-text-label",children:"\u5bf9\u65b9\u7559\u8a00"}),(0,g.jsx)(t.EY,{className:"msg-text",children:e.message})]}),e.replyMessage&&(0,g.jsxs)(t.Ss,{className:"msg-reply-box",children:[(0,g.jsx)(t.EY,{className:"msg-reply-label",children:"\u56de\u590d"}),(0,g.jsx)(t.EY,{className:"msg-reply",children:e.replyMessage})]}),"accepted"===e.status&&e.peerPhone&&(0,g.jsxs)(t.Ss,{className:"msg-phone-box",children:[(0,g.jsx)(t.EY,{className:"msg-phone-label",children:"\u5df2\u89e3\u9501\u8054\u7cfb\u65b9\u5f0f"}),(0,g.jsxs)(t.EY,{className:"msg-phone",children:["\ud83d\udcde ",e.peerPhone]}),l&&r&&(0,g.jsx)(t._V,{src:r,className:"msg-real-avatar",mode:"aspectFill"})]}),"accepted"===e.status&&!e.peerPhone&&(0,g.jsx)(t.Ss,{className:"msg-phone-revoked",children:(0,g.jsx)(t.EY,{children:"\ud83d\udcde \u670d\u52a1\u5df2\u5b8c\u6210\u6216\u8ba2\u5355\u5173\u95ed\uff0c\u8054\u7cfb\u65b9\u5f0f\u5df2\u64a4\u56de"})})]}),(0,g.jsxs)(t.Ss,{className:"msg-time-row",children:[(0,g.jsxs)(t.EY,{className:"msg-time",children:["\u53d1\u8d77\uff1a",de(e.createdAt)]}),e.acceptedAt&&(0,g.jsxs)(t.EY,{className:"msg-time",children:["\u540c\u610f\uff1a",de(e.acceptedAt)]}),"pending"===e.status&&(0,g.jsxs)(t.EY,{className:"msg-time",children:["\u8fc7\u671f\uff1a",de(e.expiresAt)]})]}),(0,g.jsxs)(t.Ss,{className:"msg-footer",children:[a&&"pending"===e.status&&(0,g.jsxs)(t.Ss,{className:"respond-btns",children:[(0,g.jsx)(t.Ss,{className:"respond-btn accept",onClick:function(){return fe(e,"accept")},children:(0,g.jsx)(t.EY,{children:"\u540c\u610f\u5e76\u89e3\u9501"})}),(0,g.jsx)(t.Ss,{className:"respond-btn decline",onClick:function(){return fe(e,"decline")},children:(0,g.jsx)(t.EY,{children:"\u5a49\u62d2"})})]}),"accepted"===e.status&&(0,g.jsx)(t.Ss,{className:"respond-btns",children:(0,g.jsx)(t.Ss,{className:"respond-btn revoke",onClick:function(){return xe(e)},children:(0,g.jsx)(t.EY,{children:"\u64a4\u56de\u6388\u6743"})})}),!a&&"pending"===e.status&&(0,g.jsxs)(t.Ss,{className:"respond-btns",children:[(0,g.jsx)(t.EY,{className:"msg-waiting",children:"\u7b49\u5f85\u5bf9\u65b9\u54cd\u5e94\u2026"}),(0,g.jsx)(t.Ss,{className:"respond-btn cancel",onClick:function(){return xe(e)},children:(0,g.jsx)(t.EY,{children:"\u53d6\u6d88\u9080\u8bf7"})})]}),"accepted"===e.status&&(0,g.jsx)(t.EY,{className:"msg-hint",children:'\u53cc\u65b9\u5df2\u4e92\u76f8\u540c\u610f\uff0c\u53ef\u5728"\u6211\u7684\u8ba2\u5355"\u4e2d\u786e\u8ba4\u7ec3\u7403'})]})]},e.id)};return(0,g.jsxs)(t.Ss,{className:"page-confirm",children:[(0,g.jsxs)(t.BM,{scrollY:!0,className:"confirm-scroll",enhanced:!0,showScrollbar:!1,children:[E?(0,g.jsx)(x.A,{}):0===S.length?(0,g.jsx)(p.A,{text:"\u6682\u65e0\u7b2c\u4e00\u6b21\u786e\u8ba4\u6d88\u606f"}):(0,g.jsx)(t.Ss,{className:"list",children:S.map(ge)}),(0,g.jsx)(t.Ss,{className:"safe-bottom"})]}),y&&(0,g.jsx)(t.Ss,{className:"modal-overlay",onClick:function(){return T(!1)},children:(0,g.jsxs)(t.Ss,{className:"modal-content",onClick:function(e){return e.stopPropagation()},children:[(0,g.jsxs)(t.Ss,{className:"modal-header",children:[(0,g.jsx)(t.EY,{className:"modal-title",children:"accept"===D?"\u540c\u610f\u9080\u8bf7\uff1f":"\u5a49\u62d2\u9080\u8bf7\uff1f"}),(0,g.jsx)(t.Ss,{className:"modal-close",onClick:function(){return T(!1)},children:(0,g.jsx)(t.EY,{children:"\u2715"})})]}),(0,g.jsxs)(t.Ss,{className:"modal-body",children:[(0,g.jsx)(t.EY,{className:"modal-hint",children:"accept"===D?"\u540c\u610f\u540e\u53cc\u65b9\u5c06\u4e92\u89c1\u624b\u673a\u53f7\u548c\u771f\u4eba\u5934\u50cf\uff0c\u5bf9\u65b9\u53ef\u8054\u7cfb\u4f60\u7ea6\u7403\u54df^_^~":"\u5a49\u62d2\u540e\u5bf9\u65b9\u53ef\u91cd\u65b0\u53d1\u8d77 1 \u6b21\u9080\u8bf7\uff08\u5171 2 \u6b21\u673a\u4f1a\uff09\u3002"}),(0,g.jsx)(t.TM,{className:"modal-textarea",placeholder:"accept"===D?"\u5982\uff1a\u53ef\u4ee5\u7684\uff0c\u51e0\u70b9\u89c1\uff1f\uff08\u2264100\u5b57\uff09":"\u5982\uff1a\u4e0d\u597d\u610f\u601d\uff0c\u90a3\u5929\u6709\u5b89\u6392\u4e86\uff08\u2264100\u5b57\uff09",value:I,onInput:function(e){return J(e.detail.value)},maxlength:100}),(0,g.jsxs)(t.EY,{className:"char-count",children:[I.length,"/100"]})]}),(0,g.jsxs)(t.Ss,{className:"modal-footer",children:[(0,g.jsx)(t.$n,{className:"modal-cancel",onClick:function(){return T(!1)},children:"\u53d6\u6d88"}),(0,g.jsx)(t.$n,{className:"modal-confirm ".concat("decline"===D?"decline":""),onClick:he,loading:H,disabled:H,children:"accept"===D?"\u786e\u8ba4\u540c\u610f":"\u786e\u8ba4\u5a49\u62d2"})]})]})}),L&&(0,g.jsx)(t.Ss,{className:"modal-overlay",onClick:function(){return Q(!1)},children:(0,g.jsxs)(t.Ss,{className:"modal-content",onClick:function(e){return e.stopPropagation()},children:[(0,g.jsxs)(t.Ss,{className:"modal-header",children:[(0,g.jsx)(t.EY,{className:"modal-title",children:ne?"\u53d6\u6d88\u9080\u8bf7\uff1f":"\u64a4\u56de\u8054\u7cfb\u65b9\u5f0f\u6388\u6743\uff1f"}),(0,g.jsx)(t.Ss,{className:"modal-close",onClick:function(){return Q(!1)},children:(0,g.jsx)(t.EY,{children:"\u2715"})})]}),(0,g.jsx)(t.Ss,{className:"modal-body",children:(0,g.jsx)(t.EY,{className:"modal-hint",children:ne?"\u53d6\u6d88\u540e\u5bf9\u65b9\u5c06\u770b\u4e0d\u5230\u4f60\u7684\u9080\u8bf7\uff0c\u6b64\u64cd\u4f5c\u4e0d\u53ef\u64a4\u9500\u3002":"\u64a4\u56de\u540e\u53cc\u65b9\u90fd\u4e0d\u518d\u53ef\u89c1\u5bf9\u65b9\u624b\u673a\u53f7\uff0c\u4e14\u65e0\u6cd5\u518d\u6b21\u9080\u8bf7\u3002\u6b64\u64cd\u4f5c\u4e0d\u53ef\u64a4\u9500\u3002"})}),(0,g.jsxs)(t.Ss,{className:"modal-footer",children:[(0,g.jsx)(t.$n,{className:"modal-cancel",onClick:function(){return Q(!1)},children:"\u8fd4\u56de"}),(0,g.jsx)(t.$n,{className:"modal-confirm decline",onClick:pe,loading:te,disabled:te,children:ne?"\u786e\u8ba4\u53d6\u6d88":"\u786e\u8ba4\u64a4\u56de"})]})]})})]})}var S={navigationBarTitleText:"\u6d3b\u52a8\u8ba2\u5355\u4e00\u6b21\u786e\u8ba4",navigationBarBackgroundColor:"#ffffff",navigationBarTextStyle:"black",backgroundColor:"#f5f7fa"},v=(0,n.eU)(b,"pages/messages/first-confirm/first-confirm",{root:{cn:[]}},S||{});b&&b.behaviors&&(v.behaviors=(v.behaviors||[]).concat(b.behaviors));Page(v)}},function(e){var s=function(s){return e(e.s=s)};e.O(0,[907,96,76],function(){return s(6684)});e.O()}]);
+"use strict";
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/messages/first-confirm/first-confirm"],{
+
+/***/ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/messages/first-confirm/first-confirm!./src/pages/messages/first-confirm/first-confirm.tsx":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/messages/first-confirm/first-confirm!./src/pages/messages/first-confirm/first-confirm.tsx ***!
+  \******************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ FirstConfirmPage; }
+/* harmony export */ });
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regenerator.js */ "./node_modules/@babel/runtime/helpers/esm/regenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/index.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_invitations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/invitations */ "./src/services/invitations.ts");
+/* harmony import */ var _services_notifications__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/notifications */ "./src/services/notifications.ts");
+/* harmony import */ var _stores_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../stores/user */ "./src/stores/user.ts");
+/* harmony import */ var _stores_app__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../stores/app */ "./src/stores/app.ts");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components/Loading */ "./src/components/Loading.tsx");
+/* harmony import */ var _components_Empty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Empty */ "./src/components/Empty.tsx");
+/* harmony import */ var _components_StatusBadge__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../components/StatusBadge */ "./src/components/StatusBadge.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function FirstConfirmPage() {
+  var _useUserStore = (0,_stores_user__WEBPACK_IMPORTED_MODULE_4__.useUserStore)(),
+    user = _useUserStore.user;
+  var _useAppStore = (0,_stores_app__WEBPACK_IMPORTED_MODULE_5__.useAppStore)(),
+    setUnreadCount = _useAppStore.setUnreadCount;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState, 2),
+    items = _useState2[0],
+    setItems = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+
+  // 响应弹窗
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState5, 2),
+    showRespond = _useState6[0],
+    setShowRespond = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState7, 2),
+    respondInvId = _useState8[0],
+    setRespondInvId = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("accept"),
+    _useState0 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState9, 2),
+    respondAction = _useState0[0],
+    setRespondAction = _useState0[1];
+  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState1, 2),
+    replyMessage = _useState10[0],
+    setReplyMessage = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState11, 2),
+    respondLoading = _useState12[0],
+    setRespondLoading = _useState12[1];
+
+  // 撤回弹窗
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState14 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState13, 2),
+    showRevoke = _useState14[0],
+    setShowRevoke = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState15, 2),
+    revokeInvId = _useState16[0],
+    setRevokeInvId = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState18 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState17, 2),
+    revokeIsPending = _useState18[0],
+    setRevokeIsPending = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState20 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_10__["default"])(_useState19, 2),
+    revokeLoading = _useState20[0],
+    setRevokeLoading = _useState20[1];
+  var fetchMessages = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_11__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__["default"])().m(function _callee() {
+    var res, _t;
+    return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__["default"])().w(function (_context) {
+      while (1) switch (_context.p = _context.n) {
+        case 0:
+          if (user) {
+            _context.n = 1;
+            break;
+          }
+          return _context.a(2);
+        case 1:
+          setLoading(true);
+          _context.p = 2;
+          _context.n = 3;
+          return _services_invitations__WEBPACK_IMPORTED_MODULE_2__.invitationsService.list();
+        case 3:
+          res = _context.v;
+          if (res.ok) {
+            // 一次确认：orderStatus 为 null
+            setItems((res.items || []).filter(function (i) {
+              return !i.orderStatus;
+            }));
+          }
+          _context.n = 5;
+          break;
+        case 4:
+          _context.p = 4;
+          _t = _context.v;
+          console.error("[first-confirm] 获取失败:", _t);
+        case 5:
+          _context.p = 5;
+          setLoading(false);
+          return _context.f(5);
+        case 6:
+          return _context.a(2);
+      }
+    }, _callee, null, [[2, 4, 5, 6]]);
+  })), [user]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchMessages();
+  }, [fetchMessages]);
+  (0,_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__.useDidShow)(function () {
+    fetchMessages();
+  });
+  var formatDate = function formatDate(dateStr) {
+    if (!dateStr) return "—";
+    var d = new Date(dateStr);
+    return "".concat(d.getMonth() + 1, "/").concat(d.getDate(), " ").concat(String(d.getHours()).padStart(2, "0"), ":").concat(String(d.getMinutes()).padStart(2, "0"));
+  };
+  var goOrderDetail = function goOrderDetail(id) {
+    _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().navigateTo({
+      url: "/pages/order-detail/order-detail?id=".concat(id)
+    });
+  };
+  var showRealAvatar = function showRealAvatar(item) {
+    if (item.orderStatus === "completed" || item.orderStatus === "closed") return false;
+    return item.status === "accepted";
+  };
+  var openRespond = function openRespond(item, action) {
+    setRespondInvId(item.id);
+    setRespondAction(action);
+    setReplyMessage("");
+    setShowRespond(true);
+  };
+  var handleRespond = /*#__PURE__*/function () {
+    var _ref2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_11__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__["default"])().m(function _callee2() {
+      var res, unreadRes, _t2, _t3;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__["default"])().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            if (!respondLoading) {
+              _context2.n = 1;
+              break;
+            }
+            return _context2.a(2);
+          case 1:
+            setRespondLoading(true);
+            _context2.p = 2;
+            _context2.n = 3;
+            return _services_invitations__WEBPACK_IMPORTED_MODULE_2__.invitationsService.respond(respondInvId, {
+              action: respondAction,
+              replyMessage: replyMessage.trim() || undefined
+            });
+          case 3:
+            res = _context2.v;
+            if (!res.ok) {
+              _context2.n = 7;
+              break;
+            }
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: respondAction === "accept" ? "已同意，双方已解锁手机号" : "已婉拒邀请",
+              icon: "success"
+            });
+            setShowRespond(false);
+            fetchMessages();
+            _context2.p = 4;
+            _context2.n = 5;
+            return _services_notifications__WEBPACK_IMPORTED_MODULE_3__.notificationsService.unreadCount();
+          case 5:
+            unreadRes = _context2.v;
+            if (unreadRes.ok) setUnreadCount(unreadRes.count || 0);
+            _context2.n = 7;
+            break;
+          case 6:
+            _context2.p = 6;
+            _t2 = _context2.v;
+          case 7:
+            _context2.n = 9;
+            break;
+          case 8:
+            _context2.p = 8;
+            _t3 = _context2.v;
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: (_t3 === null || _t3 === void 0 ? void 0 : _t3.message) || "操作失败",
+              icon: "none"
+            });
+          case 9:
+            _context2.p = 9;
+            setRespondLoading(false);
+            return _context2.f(9);
+          case 10:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[4, 6], [2, 8, 9, 10]]);
+    }));
+    return function handleRespond() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var openRevoke = function openRevoke(item) {
+    setRevokeInvId(item.id);
+    setRevokeIsPending(item.status === "pending");
+    setShowRevoke(true);
+  };
+  var handleRevoke = /*#__PURE__*/function () {
+    var _ref3 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_11__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__["default"])().m(function _callee3() {
+      var res, _t4;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_12__["default"])().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            if (!revokeLoading) {
+              _context3.n = 1;
+              break;
+            }
+            return _context3.a(2);
+          case 1:
+            setRevokeLoading(true);
+            _context3.p = 2;
+            _context3.n = 3;
+            return _services_invitations__WEBPACK_IMPORTED_MODULE_2__.invitationsService.revoke(revokeInvId);
+          case 3:
+            res = _context3.v;
+            if (res.ok) {
+              _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+                title: revokeIsPending ? "已取消邀请" : "已撤回授权",
+                icon: "success"
+              });
+              setShowRevoke(false);
+              fetchMessages();
+            }
+            _context3.n = 5;
+            break;
+          case 4:
+            _context3.p = 4;
+            _t4 = _context3.v;
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: (_t4 === null || _t4 === void 0 ? void 0 : _t4.message) || "操作失败",
+              icon: "none"
+            });
+          case 5:
+            _context3.p = 5;
+            setRevokeLoading(false);
+            return _context3.f(5);
+          case 6:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[2, 4, 5, 6]]);
+    }));
+    return function handleRevoke() {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  if (!user) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+      className: "page-confirm",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Empty__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        text: "\u8BF7\u5148\u767B\u5F55"
+      })
+    });
+  }
+  var renderItem = function renderItem(item) {
+    var isReceived = item.toUserId === user.id;
+    var peerName = isReceived ? item.fromUserName : item.toUserName;
+    var peerAvatar = isReceived ? item.fromUserAvatar : item.toUserAvatar;
+    var peerRealAvatar = isReceived ? item.fromUserRealAvatar : item.toUserRealAvatar;
+    var showReal = showRealAvatar(item);
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+      className: "msg-card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "msg-header",
+        onClick: function onClick() {
+          return goOrderDetail(item.id);
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "msg-user-info",
+          children: [showReal && peerRealAvatar ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Image, {
+            src: peerRealAvatar,
+            className: "msg-avatar",
+            mode: "aspectFill"
+          }) : peerAvatar ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Image, {
+            src: peerAvatar,
+            className: "msg-avatar",
+            mode: "aspectFill"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "msg-avatar msg-avatar-placeholder",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: (peerName || "?")[0]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "msg-user-meta",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              className: "msg-user-name",
+              children: peerName
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              className: "msg-source",
+              children: [isReceived ? "发给我" : "我发出", " \xB7 ", item.sourceTitle]
+            }), item.orderNo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              className: "msg-order-no",
+              children: item.orderNo
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_StatusBadge__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          status: item.status
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "msg-body",
+        children: [item.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "msg-text-box",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-text-label",
+            children: "\u5BF9\u65B9\u7559\u8A00"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-text",
+            children: item.message
+          })]
+        }), item.replyMessage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "msg-reply-box",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-reply-label",
+            children: "\u56DE\u590D"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-reply",
+            children: item.replyMessage
+          })]
+        }), item.status === "accepted" && item.peerPhone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "msg-phone-box",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-phone-label",
+            children: "\u5DF2\u89E3\u9501\u8054\u7CFB\u65B9\u5F0F"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-phone",
+            children: ["\uD83D\uDCDE ", item.peerPhone]
+          }), showReal && peerRealAvatar && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Image, {
+            src: peerRealAvatar,
+            className: "msg-real-avatar",
+            mode: "aspectFill"
+          })]
+        }), item.status === "accepted" && !item.peerPhone && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "msg-phone-revoked",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            children: "\uD83D\uDCDE \u670D\u52A1\u5DF2\u5B8C\u6210\u6216\u8BA2\u5355\u5173\u95ED\uFF0C\u8054\u7CFB\u65B9\u5F0F\u5DF2\u64A4\u56DE"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "msg-time-row",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+          className: "msg-time",
+          children: ["\u53D1\u8D77\uFF1A", formatDate(item.createdAt)]
+        }), item.acceptedAt && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+          className: "msg-time",
+          children: ["\u540C\u610F\uFF1A", formatDate(item.acceptedAt)]
+        }), item.status === "pending" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+          className: "msg-time",
+          children: ["\u8FC7\u671F\uFF1A", formatDate(item.expiresAt)]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "msg-footer",
+        children: [isReceived && item.status === "pending" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "respond-btns",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "respond-btn accept",
+            onClick: function onClick() {
+              return openRespond(item, "accept");
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: "\u540C\u610F\u5E76\u89E3\u9501"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "respond-btn decline",
+            onClick: function onClick() {
+              return openRespond(item, "decline");
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: "\u5A49\u62D2"
+            })
+          })]
+        }), item.status === "accepted" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "respond-btns",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "respond-btn revoke",
+            onClick: function onClick() {
+              return openRevoke(item);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: "\u64A4\u56DE\u6388\u6743"
+            })
+          })
+        }), !isReceived && item.status === "pending" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "respond-btns",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "msg-waiting",
+            children: "\u7B49\u5F85\u5BF9\u65B9\u54CD\u5E94\u2026"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "respond-btn cancel",
+            onClick: function onClick() {
+              return openRevoke(item);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: "\u53D6\u6D88\u9080\u8BF7"
+            })
+          })]
+        }), item.status === "accepted" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+          className: "msg-hint",
+          children: "\u53CC\u65B9\u5DF2\u4E92\u76F8\u540C\u610F\uFF0C\u53EF\u5728\"\u6211\u7684\u8BA2\u5355\"\u4E2D\u786E\u8BA4\u7EC3\u7403"
+        })]
+      })]
+    }, item.id);
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+    className: "page-confirm",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.ScrollView, {
+      scrollY: true,
+      className: "confirm-scroll",
+      enhanced: true,
+      showScrollbar: false,
+      children: [loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Loading__WEBPACK_IMPORTED_MODULE_6__["default"], {}) : items.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_Empty__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        text: "\u6682\u65E0\u7B2C\u4E00\u6B21\u786E\u8BA4\u6D88\u606F"
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "list",
+        children: items.map(renderItem)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "safe-bottom"
+      })]
+    }), showRespond && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+      className: "modal-overlay",
+      onClick: function onClick() {
+        return setShowRespond(false);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "modal-content",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "modal-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "modal-title",
+            children: respondAction === "accept" ? "同意邀请？" : "婉拒邀请？"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "modal-close",
+            onClick: function onClick() {
+              return setShowRespond(false);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: "\u2715"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "modal-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "modal-hint",
+            children: respondAction === "accept" ? "同意后双方将互见手机号和真人头像，对方可联系你约球哟^_^~" : "婉拒后对方可重新发起 1 次邀请（共 2 次机会）。"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Textarea, {
+            className: "modal-textarea",
+            placeholder: respondAction === "accept" ? "如：可以的，几点见？（≤100字）" : "如：不好意思，那天有安排了（≤100字）",
+            value: replyMessage,
+            onInput: function onInput(e) {
+              return setReplyMessage(e.detail.value);
+            },
+            maxlength: 100
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "char-count",
+            children: [replyMessage.length, "/100"]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "modal-footer",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Button, {
+            className: "modal-cancel",
+            onClick: function onClick() {
+              return setShowRespond(false);
+            },
+            children: "\u53D6\u6D88"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Button, {
+            className: "modal-confirm ".concat(respondAction === "decline" ? "decline" : ""),
+            onClick: handleRespond,
+            loading: respondLoading,
+            disabled: respondLoading,
+            children: respondAction === "accept" ? "确认同意" : "确认婉拒"
+          })]
+        })]
+      })
+    }), showRevoke && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+      className: "modal-overlay",
+      onClick: function onClick() {
+        return setShowRevoke(false);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+        className: "modal-content",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "modal-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "modal-title",
+            children: revokeIsPending ? "取消邀请？" : "撤回联系方式授权？"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+            className: "modal-close",
+            onClick: function onClick() {
+              return setShowRevoke(false);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+              children: "\u2715"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "modal-body",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Text, {
+            className: "modal-hint",
+            children: revokeIsPending ? "取消后对方将看不到你的邀请，此操作不可撤销。" : "撤回后双方都不再可见对方手机号，且无法再次邀请。此操作不可撤销。"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.View, {
+          className: "modal-footer",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Button, {
+            className: "modal-cancel",
+            onClick: function onClick() {
+              return setShowRevoke(false);
+            },
+            children: "\u8FD4\u56DE"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_13__.Button, {
+            className: "modal-confirm decline",
+            onClick: handleRevoke,
+            loading: revokeLoading,
+            disabled: revokeLoading,
+            children: revokeIsPending ? "确认取消" : "确认撤回"
+          })]
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/components/StatusBadge.tsx":
+/*!****************************************!*\
+  !*** ./src/components/StatusBadge.tsx ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ StatusBadge; }
+/* harmony export */ });
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+var STATUS_MAP = {
+  pending: {
+    label: "待确认",
+    color: "#faad14",
+    bg: "#fffbe6"
+  },
+  accepted: {
+    label: "已确认",
+    color: "#1677ff",
+    bg: "#e6f4ff"
+  },
+  in_progress: {
+    label: "进行中",
+    color: "#52c41a",
+    bg: "#f6ffed"
+  },
+  completed: {
+    label: "已完成",
+    color: "#52c41a",
+    bg: "#f6ffed"
+  },
+  declined: {
+    label: "已拒绝",
+    color: "#999",
+    bg: "#f5f5f5"
+  },
+  cancelled: {
+    label: "已取消",
+    color: "#999",
+    bg: "#f5f5f5"
+  },
+  closed: {
+    label: "已关闭",
+    color: "#999",
+    bg: "#f5f5f5"
+  },
+  expired: {
+    label: "已过期",
+    color: "#999",
+    bg: "#f5f5f5"
+  },
+  revoked: {
+    label: "已撤回",
+    color: "#999",
+    bg: "#f5f5f5"
+  }
+};
+function StatusBadge(_ref) {
+  var status = _ref.status;
+  var cfg = STATUS_MAP[status] || {
+    label: status,
+    color: "#999",
+    bg: "#f5f5f5"
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_1__.Text, {
+    style: {
+      fontSize: 12,
+      padding: "2px 8px",
+      borderRadius: 4,
+      color: cfg.color,
+      background: cfg.bg
+    },
+    children: cfg.label
+  });
+}
+
+/***/ }),
+
+/***/ "./src/pages/messages/first-confirm/first-confirm.tsx":
+/*!************************************************************!*\
+  !*** ./src/pages/messages/first-confirm/first-confirm.tsx ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/dsl/common.js");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_messages_first_confirm_first_confirm_first_confirm_tsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!../../../../node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/messages/first-confirm/first-confirm!./first-confirm.tsx */ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/messages/first-confirm/first-confirm!./src/pages/messages/first-confirm/first-confirm.tsx");
+
+
+var config = {"navigationBarTitleText":"活动订单一次确认","navigationBarBackgroundColor":"#ffffff","navigationBarTextStyle":"black","backgroundColor":"#f5f7fa"};
+
+
+
+var taroOption = (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.createPageConfig)(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_messages_first_confirm_first_confirm_first_confirm_tsx__WEBPACK_IMPORTED_MODULE_0__["default"], 'pages/messages/first-confirm/first-confirm', {root:{cn:[]}}, config || {})
+if (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_messages_first_confirm_first_confirm_first_confirm_tsx__WEBPACK_IMPORTED_MODULE_0__["default"] && _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_messages_first_confirm_first_confirm_first_confirm_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors) {
+  taroOption.behaviors = (taroOption.behaviors || []).concat(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_messages_first_confirm_first_confirm_first_confirm_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors)
+}
+var inst = Page(taroOption)
+
+
+
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_messages_first_confirm_first_confirm_first_confirm_tsx__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+/******/ __webpack_require__.O(0, ["taro","vendors","common"], function() { return __webpack_exec__("./src/pages/messages/first-confirm/first-confirm.tsx"); });
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=first-confirm.js.map

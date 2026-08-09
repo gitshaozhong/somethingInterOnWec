@@ -20,7 +20,13 @@ export default function Orders() {
   const { user } = useUserStore();
   const [orders, setOrders] = useState<OrderItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [tab, setTab] = useState("all");
+  // 从 URL 参数初始化 tab（profile "订单管理" 网格跳转携带 status）
+  const initialTab = (() => {
+    const params = Taro.getCurrentInstance().router?.params;
+    const s = params?.status as string | undefined;
+    return s && ORDER_TABS.some((t) => t.key === s) ? s : "all";
+  })();
+  const [tab, setTab] = useState(initialTab);
 
   const fetchOrders = async () => {
     setLoading(true);

@@ -62,8 +62,6 @@ export default function ProfileEdit() {
   const [coachLevel, setCoachLevel] = useState(0);
   const [coachYearsPlayed, setCoachYearsPlayed] = useState("");
   const [coachCity, setCoachCity] = useState("");
-  const [frequentAreas, setFrequentAreas] = useState<string[]>([]);
-  const [areaInput, setAreaInput] = useState("");
   const [qualifications, setQualifications] = useState<string[]>([]);
   const [coachPriceMin, setCoachPriceMin] = useState("");
   const [coachPriceMax, setCoachPriceMax] = useState("");
@@ -113,7 +111,6 @@ export default function ProfileEdit() {
           setCoachLevel(cp.level ?? 0);
           setCoachYearsPlayed(cp.yearsPlayed != null ? String(cp.yearsPlayed) : "");
           setCoachCity(cp.city || "");
-          setFrequentAreas(cp.frequentAreas || []);
           setQualifications(cp.qualifications || []);
           setCoachPriceMin(cp.priceMin != null ? String(cp.priceMin) : "");
           setCoachPriceMax(cp.priceMax != null ? String(cp.priceMax) : "");
@@ -231,7 +228,6 @@ export default function ProfileEdit() {
       { key: "coachBio", label: "个人介绍", done: !!coachBio.trim() },
       { key: "coachTeachingInfo", label: "授课信息", done: !!coachTeachingInfo.trim() },
       { key: "coachCity", label: "所在城市", done: !!coachCity.trim() },
-      { key: "frequentAreas", label: "常住区域", done: frequentAreas.length > 0 },
       { key: "coachLevel", label: "自评等级", done: coachLevel > 0 },
     ];
     const done = checks.filter((c) => c.done).length;
@@ -305,8 +301,7 @@ export default function ProfileEdit() {
     if (!realName.trim()) errors.realName = "请输入真实姓名";
     if (!coachBio.trim()) errors.coachBio = "请填写个人介绍";
     if (!coachTeachingInfo.trim()) errors.coachTeachingInfo = "请填写授课信息";
-    if (!coachCity.trim()) errors.coachCity = "请输入所在城市";
-    if (frequentAreas.length === 0) errors.frequentAreas = "请添加常住区域";
+    if (!coachCity.trim()) errors.coachCity = "请选择所在城市";
     if (coachBio.length > 100) errors.coachBio = "个人介绍不能超过100字";
     if (coachTeachingInfo.length > 100) errors.coachTeachingInfo = "授课信息不能超过100字";
 
@@ -330,7 +325,6 @@ export default function ProfileEdit() {
           level: coachLevel,
           yearsPlayed: coachYearsPlayed ? parseInt(coachYearsPlayed) : null,
           city: coachCity.trim(),
-          frequentAreas,
           qualifications,
           priceMin: coachPriceMin ? parseInt(coachPriceMin) : null,
           priceMax: coachPriceMax ? parseInt(coachPriceMax) : null,
@@ -350,6 +344,19 @@ export default function ProfileEdit() {
     } finally {
       setSaving(false);
     }
+  };
+
+  // 跳转城市选择页（通过 eventChannel 接收选中的城市，Taro 函数组件下比 prevPage.fn 更可靠）
+  const goToCityPicker = () => {
+    Taro.navigateTo({
+      url: "/pages/city-picker/city-picker",
+      events: {
+        onCitySelected: (city: string) => {
+          setCoachCity(city);
+          clearError("coach", "coachCity");
+        },
+      },
+    });
   };
 
   if (loading) return <View className="page-profile-edit"><Loading /></View>;
@@ -691,48 +698,16 @@ export default function ProfileEdit() {
 
             <View className="form-item">
               <Text className="form-label">所在城市 *</Text>
-              <Input
-                className="form-input"
-                placeholder="如：北京市"
-                value={coachCity}
-                onInput={(e) => { setCoachCity(e.detail.value); clearError("coach", "coachCity"); }}
-              />
-              {coachErrors.coachCity && <Text className="field-error">{coachErrors.coachCity}</Text>}
-            </View>
-
-            <View className="form-item">
-              <Text className="form-label">常住区域 *</Text>
-              <View className="tag-input-row">
-                <Input
-                  className="form-input tag-input"
-                  placeholder="输入区域名后点击添加"
-                  value={areaInput}
-                  onInput={(e) => setAreaInput(e.detail.value)}
-                />
-                <View className="add-tag-btn" onClick={() => {
-                  if (areaInput.trim() && !frequentAreas.includes(areaInput.trim())) {
-                    setFrequentAreas([...frequentAreas, areaInput.trim()]);
-                    setAreaInput("");
-                    clearError("coach", "frequentAreas");
-                  }
-                }}>
-                  <Text>添加</Text>
-                </View>
+              <View
+                className={`city-entry ${!coachCity ? "is-empty" : ""}`}
+                onClick={goToCityPicker}
+              >
+                <Text className={coachCity ? "city-entry-value" : "city-entry-placeholder"}>
+                  {coachCity || "请选择城市"}
+                </Text>
+                <Text className="city-entry-arrow">›</Text>
               </View>
-              {frequentAreas.length > 0 && (
-                <View className="tag-list">
-                  {frequentAreas.map((area) => (
-                    <View
-                      key={area}
-                      className="tag-item"
-                      onClick={() => setFrequentAreas(frequentAreas.filter((a) => a !== area))}
-                    >
-                      <Text>{area} ✕</Text>
-                    </View>
-                  ))}
-                </View>
-              )}
-              {coachErrors.frequentAreas && <Text className="field-error">{coachErrors.frequentAreas}</Text>}
+              {coachErrors.coachCity && <Text className="field-error">{coachErrors.coachCity}</Text>}
             </View>
 
             <View className="form-item">

@@ -1,9 +1,19 @@
 .page-publish {
   height: 100vh;
-  background: linear-gradient(180deg, #AEECEB 0%, #F8D2E1 100%);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: background 0.3s ease;
+}
+
+/* 学员发布：绿色渐变背景 */
+.page-publish.tab-student {
+  background: linear-gradient(180deg, #94F29A 0%, #C2F2C8 60%, #f5f7fa 100%);
+}
+
+/* 陪练员发布：蓝色渐变背景 */
+.page-publish.tab-coach {
+  background: linear-gradient(180deg, #58AFF6 0%, #9DD0FA 60%, #f5f7fa 100%);
   box-sizing: border-box;
 }
 
@@ -57,20 +67,20 @@
   text-align: center;
   padding: 10px 0;
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  color: #5a6a7a;
   border-radius: 10px 10px 0 0;
   transition: all 0.2s;
 }
 
 .publish-tab-item.active {
   background: var(--white);
-  color: var(--primary-color);
+  color: #07B6D5;
   font-weight: 600;
   box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
 }
 
 .publish-tab-item.disabled {
-  color: rgba(255, 255, 255, 0.5);
+  color: #b0b8c0;
   opacity: 0.5;
 }
 

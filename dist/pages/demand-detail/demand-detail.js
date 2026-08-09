@@ -1,1 +1,581 @@
-"use strict";(wx["webpackJsonp"]=wx["webpackJsonp"]||[]).push([[557],{2613:function(e,s,n){var a=n(8870),l=n(1212),t=n(467),i=n(5544),c=n(118),r=n(6540),o=n(758),d=n.n(o),u=n(3042),m=n(8170),h=n(8028),x=n(197),v=n(3146),f=n(4848),j={morning:"\u4e0a\u5348",afternoon:"\u4e0b\u5348",evening:"\u665a\u4e0a"},N=[{value:0,label:"\u5165\u95e8"},{value:1,label:"\u521d\u7ea7"},{value:2,label:"\u4e2d\u7ea7"},{value:3,label:"\u9ad8\u7ea7"},{value:4,label:"\u4e13\u4e1a"},{value:5,label:"\u9876\u5c16"}];function g(e){var s,n;return null==e?"\u2014":null!==(s=null===(n=N.find(function(s){return s.value===e}))||void 0===n?void 0:n.label)&&void 0!==s?s:"".concat(e," \u7ea7")}function b(e,s){return"".concat(e,":00-").concat(s,":00")}function S(){var e,s,n,a,N,S,p,E,Y,w,k,C,A,T,y,I,M=(0,o.useRouter)(),B=M.params.id,$=(0,x.k)(),L=$.user,R=(0,r.useState)(null),V=(0,i.A)(R,2),F=V[0],H=V[1],J=(0,r.useState)(!0),O=(0,i.A)(J,2),P=O[0],U=O[1],D=(0,r.useState)(!1),_=(0,i.A)(D,2),q=_[0],z=_[1],G=(0,r.useState)(""),K=(0,i.A)(G,2),Q=K[0],W=K[1],X=(0,r.useState)(!1),Z=(0,i.A)(X,2),ee=Z[0],se=Z[1],ne=(0,r.useState)(!1),ae=(0,i.A)(ne,2),le=ae[0],te=ae[1],ie=(0,r.useState)(!1),ce=(0,i.A)(ie,2),re=ce[0],oe=ce[1],de=(null===L||void 0===L?void 0:L.id)===(null===F||void 0===F?void 0:F.userId);(0,r.useEffect)(function(){B&&(U(!0),u.I.getById(B).then(function(e){e.ok&&H(e.demand)}).catch(function(){return d().showToast({title:"\u52a0\u8f7d\u5931\u8d25",icon:"none"})}).finally(function(){return U(!1)}))},[B]),(0,r.useEffect)(function(){L&&F&&!de&&h.c.list().then(function(e){e.ok&&e.items&&te(e.items.some(function(e){return e.followedId===F.userId}))})},[L,F,de]);var ue=function(){var e=(0,t.A)((0,l.A)().m(function e(){var s,n,a;return(0,l.A)().w(function(e){while(1)switch(e.p=e.n){case 0:if(F&&!re){e.n=1;break}return e.a(2);case 1:if(oe(!0),e.p=2,!le){e.n=4;break}return e.n=3,h.c.unfollow(F.userId);case 3:s=e.v,s.ok&&te(!1),e.n=6;break;case 4:return e.n=5,h.c.follow(F.userId);case 5:n=e.v,n.ok&&te(!0);case 6:e.n=8;break;case 7:e.p=7,a=e.v,d().showToast({title:(null===a||void 0===a?void 0:a.message)||"\u64cd\u4f5c\u5931\u8d25",icon:"none"});case 8:return e.p=8,oe(!1),e.f(8);case 9:return e.a(2)}},e,null,[[2,7,8,9]])}));return function(){return e.apply(this,arguments)}}(),me=function(){var e=(0,t.A)((0,l.A)().m(function e(){var s,n;return(0,l.A)().w(function(e){while(1)switch(e.p=e.n){case 0:if(F&&!ee){e.n=1;break}return e.a(2);case 1:if(Q.trim()){e.n=2;break}return d().showToast({title:"\u8bf7\u586b\u5199\u7559\u8a00",icon:"none"}),e.a(2);case 2:if(!(Q.length>200)){e.n=3;break}return d().showToast({title:"\u7559\u8a00\u4e0d\u80fd\u8d85\u8fc7200\u5b57",icon:"none"}),e.a(2);case 3:return se(!0),e.p=4,e.n=5,m.o.create({demandId:B,toUserId:F.userId,message:Q.trim()});case 5:s=e.v,s.ok&&(d().showToast({title:"\u9080\u8bf7\u5df2\u53d1\u9001",icon:"success"}),z(!1),W("")),e.n=7;break;case 6:e.p=6,n=e.v,d().showToast({title:(null===n||void 0===n?void 0:n.message)||"\u53d1\u9001\u5931\u8d25",icon:"none"});case 7:return e.p=7,se(!1),e.f(7);case 8:return e.a(2)}},e,null,[[4,6,7,8]])}));return function(){return e.apply(this,arguments)}}();if(P)return(0,f.jsx)(c.Ss,{className:"page-detail",children:(0,f.jsx)(v.A,{})});if(!F)return(0,f.jsx)(c.Ss,{className:"page-detail",children:(0,f.jsx)(c.Ss,{className:"empty-state",children:(0,f.jsx)(c.EY,{children:"\u6570\u636e\u4e0d\u5b58\u5728"})})});var he=null!=F.budgetMin||null!=F.budgetMax?null!=F.budgetMin&&null!=F.budgetMax?"".concat(F.budgetMin,"-").concat(F.budgetMax," \u5143/\u5c0f\u65f6"):"".concat(null!==(e=F.budgetMin)&&void 0!==e?e:F.budgetMax," \u5143/\u5c0f\u65f6\u8d77"):"\u9762\u8bae",xe="student"===F.courtBookedBy?"\u5b66\u5458\u8ba2\u573a":"coach"===F.courtBookedBy?"\u966a\u7ec3\u8ba2\u573a":"\u534f\u5546\u8ba2\u573a",ve={open:"\u5b66\u5458\u5927\u5385\u4e2d",closed:"\u5df2\u5173\u95ed",filled:"\u5df2\u627e\u5230\u966a\u7ec3",expired:"\u5df2\u8fc7\u671f",draft:"\u8349\u7a3f"};return(0,f.jsxs)(c.Ss,{className:"page-detail",children:[(0,f.jsx)(c.Ss,{className:"detail-card",children:(0,f.jsxs)(c.Ss,{className:"user-header",children:[(0,f.jsxs)(c.Ss,{className:"user-info",children:[null!==(s=F.user)&&void 0!==s&&s.avatarVirtual?(0,f.jsx)(c._V,{src:F.user.avatarVirtual,className:"user-avatar",mode:"aspectFill"}):(0,f.jsx)(c.Ss,{className:"user-avatar user-avatar-placeholder",children:(0,f.jsx)(c.EY,{children:((null===(n=F.user)||void 0===n?void 0:n.name)||"?")[0]})}),(0,f.jsxs)(c.Ss,{className:"user-meta",children:[(0,f.jsxs)(c.Ss,{className:"user-name-row",children:[(0,f.jsx)(c.EY,{className:"user-name",children:null===(a=F.user)||void 0===a?void 0:a.name}),L&&!de&&(0,f.jsx)(c.Ss,{className:"follow-btn ".concat(le?"following":""),onClick:ue,children:(0,f.jsx)(c.EY,{children:le?"\u5df2\u5173\u6ce8":"+ \u5173\u6ce8"})})]}),(0,f.jsxs)(c.Ss,{className:"user-tags",children:[(0,f.jsx)(c.EY,{className:"tag",children:"\u5b66\u5458"}),(0,f.jsxs)(c.EY,{className:"tag",children:["\u81ea\u8bc4 ",g(null!==(N=null===(S=F.student)||void 0===S?void 0:S.level)&&void 0!==N?N:null)]}),(0,f.jsxs)(c.EY,{className:"tag",children:["\u671f\u671b\u966a\u7ec3 Lv.",null!==(p=F.expectedLevel)&&void 0!==p?p:"?","+"]})]}),null!=(null===(E=F.student)||void 0===E?void 0:E.reviewCount)&&F.student.reviewCount>=5&&null!=(null===(Y=F.student)||void 0===Y?void 0:Y.recentRating)&&(0,f.jsxs)(c.Ss,{className:"rating-row",children:[(0,f.jsxs)(c.EY,{className:"rating-score",children:[F.student.recentRating.toFixed(1),"\u5206"]}),(0,f.jsxs)(c.EY,{className:"rating-count",children:["(",F.student.reviewCount,"\u6761\u8bc4\u4ef7)"]})]}),null!=(null===(w=F.student)||void 0===w?void 0:w.reviewCount)&&F.student.reviewCount<5&&(0,f.jsxs)(c.EY,{className:"review-hint",children:["\u5df2\u6709",F.student.reviewCount,"\u6761\u8bc4\u4ef7\uff0c\u6ee15\u6761\u540e\u5c06\u5c55\u793a\u8bc4\u5206"]})]})]}),(null===(k=F.student)||void 0===k?void 0:k.bio)&&(0,f.jsxs)(c.Ss,{className:"user-bio",children:[(0,f.jsx)(c.EY,{className:"bio-label",children:"\u4e2a\u4eba\u4ecb\u7ecd"}),(0,f.jsx)(c.EY,{className:"bio-text",children:F.student.bio})]}),(null===(C=F.student)||void 0===C?void 0:C.goalTags)&&F.student.goalTags.length>0&&(0,f.jsxs)(c.Ss,{className:"goal-tags-section",children:[(0,f.jsx)(c.EY,{className:"bio-label",children:"\u7ec3\u7403\u76ee\u6807"}),(0,f.jsx)(c.Ss,{className:"goal-tags",children:F.student.goalTags.map(function(e,s){return(0,f.jsx)(c.EY,{className:"goal-tag",children:e},s)})})]})]})}),(0,f.jsxs)(c.Ss,{className:"detail-card",children:[(0,f.jsxs)(c.Ss,{className:"section-header",children:[(0,f.jsx)(c.EY,{className:"section-title",children:"\u7ec3\u7403\u9700\u6c42"}),(0,f.jsx)(c.EY,{className:"status-badge status-".concat(F.status),children:ve[F.status]||F.status})]}),(0,f.jsxs)(c.Ss,{className:"info-grid",children:[(0,f.jsxs)(c.Ss,{className:"info-item",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u65e5\u671f"}),(0,f.jsx)(c.EY,{className:"info-value",children:F.playDate})]}),(0,f.jsxs)(c.Ss,{className:"info-item",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u65f6\u6bb5"}),(0,f.jsxs)(c.EY,{className:"info-value",children:[j[F.timeSlot]||F.timeSlot," ",b(F.startHour,F.endHour)]})]}),(0,f.jsxs)(c.Ss,{className:"info-item info-item-full",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u671f\u671b\u5730\u70b9"}),(0,f.jsx)(c.EY,{className:"info-value",children:F.locationName||"\u5730\u70b9\u5f85\u5b9a"})]}),(0,f.jsxs)(c.Ss,{className:"info-item",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u9884\u7b97"}),(0,f.jsx)(c.EY,{className:"info-value price",children:he})]}),(0,f.jsxs)(c.Ss,{className:"info-item",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u671f\u671b\u7b49\u7ea7"}),(0,f.jsxs)(c.EY,{className:"info-value",children:["Lv.",null!==(A=F.expectedLevel)&&void 0!==A?A:"?","+"]})]}),(0,f.jsxs)(c.Ss,{className:"info-item",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u81ea\u8bc4\u7b49\u7ea7"}),(0,f.jsx)(c.EY,{className:"info-value",children:g(null!==(T=null===(y=F.student)||void 0===y?void 0:y.level)&&void 0!==T?T:null)})]}),(0,f.jsxs)(c.Ss,{className:"info-item",children:[(0,f.jsx)(c.EY,{className:"info-label",children:"\u8ba2\u573a"}),(0,f.jsx)(c.EY,{className:"info-value",children:xe})]})]}),F.note&&(0,f.jsxs)(c.Ss,{className:"note-box",children:[(0,f.jsx)(c.EY,{className:"note-label",children:"\u5907\u6ce8"}),(0,f.jsx)(c.EY,{className:"note-text",children:F.note})]})]}),(0,f.jsxs)(c.Ss,{className:"bottom-bar",children:["open"===F.status&&!de&&L&&(0,f.jsx)(c.$n,{className:"contact-btn",onClick:function(){return z(!0)},children:"\u60f3\u8054\u7cfb"}),"open"===F.status&&!L&&(0,f.jsx)(c.$n,{className:"contact-btn",onClick:function(){return d().navigateTo({url:"/pages/login/login"})},children:"\u767b\u5f55\u540e\u8054\u7cfb"}),de&&(0,f.jsx)(c.$n,{className:"contact-btn secondary",onClick:function(){return d().navigateTo({url:"/pages/orders/orders"})},children:"\u7ba1\u7406\u6211\u7684\u9700\u6c42"})]}),!L&&(0,f.jsx)(c.Ss,{className:"login-hint",children:(0,f.jsx)(c.EY,{children:"\u767b\u5f55\u540e\u53ef\u4ee5\u8054\u7cfb\u5b66\u5458"})}),q&&(0,f.jsx)(c.Ss,{className:"modal-overlay",onClick:function(){return z(!1)},children:(0,f.jsxs)(c.Ss,{className:"modal-content",onClick:function(e){return e.stopPropagation()},children:[(0,f.jsxs)(c.Ss,{className:"modal-header",children:[(0,f.jsxs)(c.EY,{className:"modal-title",children:["\u60f3\u8054\u7cfb ",null===(I=F.user)||void 0===I?void 0:I.name]}),(0,f.jsx)(c.Ss,{className:"modal-close",onClick:function(){return z(!1)},children:(0,f.jsx)(c.EY,{children:"\u2715"})})]}),(0,f.jsxs)(c.Ss,{className:"modal-body",children:[(0,f.jsx)(c.EY,{className:"modal-hint",children:"\u53d1\u9001\u7ec3\u7403\u9080\u8bf7\uff0c\u5bf9\u65b9\u540c\u610f\u540e\u5373\u53ef\u67e5\u770b\u8054\u7cfb\u65b9\u5f0f"}),(0,f.jsx)(c.TM,{className:"modal-textarea",placeholder:"\u7b80\u5355\u4ecb\u7ecd\u4e00\u4e0b\u81ea\u5df1\u5427\uff08200\u5b57\u4ee5\u5185\uff09",value:Q,onInput:function(e){return W(e.detail.value)},maxlength:200}),(0,f.jsxs)(c.EY,{className:"char-count",children:[Q.length,"/200"]}),(0,f.jsx)(c.EY,{className:"modal-disclaimer",children:"\u672c\u8bc4\u4ef7\u4e3a\u53cc\u65b9\u4e92\u8bc4\uff0c\u5206\u6570\u5c06\u4f1a\u76f4\u63a5\u5f71\u54cd\u60a8\u5728\u5e73\u53f0\u7684\u4fe1\u7528\u54df"})]}),(0,f.jsxs)(c.Ss,{className:"modal-footer",children:[(0,f.jsx)(c.$n,{className:"modal-cancel",onClick:function(){return z(!1)},children:"\u53d6\u6d88"}),(0,f.jsx)(c.$n,{className:"modal-confirm",onClick:me,loading:ee,disabled:ee,children:"\u53d1\u9001\u9080\u8bf7"})]})]})})]})}var p={navigationBarTitleText:"\u9700\u6c42\u8be6\u60c5"},E=(0,a.eU)(S,"pages/demand-detail/demand-detail",{root:{cn:[]}},p||{});S&&S.behaviors&&(E.behaviors=(E.behaviors||[]).concat(S.behaviors));Page(E)}},function(e){var s=function(s){return e(e.s=s)};e.O(0,[907,96,76],function(){return s(2613)});e.O()}]);
+"use strict";
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/demand-detail/demand-detail"],{
+
+/***/ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/demand-detail/demand-detail!./src/pages/demand-detail/demand-detail.tsx":
+/*!************************************************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/demand-detail/demand-detail!./src/pages/demand-detail/demand-detail.tsx ***!
+  \************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ DemandDetail; }
+/* harmony export */ });
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regenerator.js */ "./node_modules/@babel/runtime/helpers/esm/regenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/index.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_demands__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/demands */ "./src/services/demands.ts");
+/* harmony import */ var _services_invitations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/invitations */ "./src/services/invitations.ts");
+/* harmony import */ var _services_follows__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/follows */ "./src/services/follows.ts");
+/* harmony import */ var _stores_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../stores/user */ "./src/stores/user.ts");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/Loading */ "./src/components/Loading.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var TIME_SLOT_LABEL = {
+  morning: "上午",
+  afternoon: "下午",
+  evening: "晚上"
+};
+var LEVELS = [{
+  value: 0,
+  label: "入门"
+}, {
+  value: 1,
+  label: "初级"
+}, {
+  value: 2,
+  label: "中级"
+}, {
+  value: 3,
+  label: "高级"
+}, {
+  value: 4,
+  label: "专业"
+}, {
+  value: 5,
+  label: "顶尖"
+}];
+function levelLabel(level) {
+  var _LEVELS$find$label, _LEVELS$find;
+  if (level == null) return "—";
+  return (_LEVELS$find$label = (_LEVELS$find = LEVELS.find(function (l) {
+    return l.value === level;
+  })) === null || _LEVELS$find === void 0 ? void 0 : _LEVELS$find.label) !== null && _LEVELS$find$label !== void 0 ? _LEVELS$find$label : "".concat(level, " \u7EA7");
+}
+function formatTime(start, end) {
+  return "".concat(start, ":00-").concat(end, ":00");
+}
+function DemandDetail() {
+  var _detail$budgetMin, _detail$user, _detail$user2, _detail$user3, _detail$student$level, _detail$student, _detail$expectedLevel, _detail$student2, _detail$student3, _detail$student4, _detail$student5, _detail$student6, _detail$expectedLevel2, _detail$student$level2, _detail$student7, _detail$user4;
+  var router = (0,_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__.useRouter)();
+  var id = router.params.id;
+  var _useUserStore = (0,_stores_user__WEBPACK_IMPORTED_MODULE_5__.useUserStore)(),
+    user = _useUserStore.user;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState, 2),
+    detail = _useState2[0],
+    setDetail = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState5, 2),
+    showContact = _useState6[0],
+    setShowContact = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState7, 2),
+    message = _useState8[0],
+    setMessage = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState0 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState9, 2),
+    sending = _useState0[0],
+    setSending = _useState0[1];
+  var _useState1 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState1, 2),
+    isFollowing = _useState10[0],
+    setIsFollowing = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(_useState11, 2),
+    followLoading = _useState12[0],
+    setFollowLoading = _useState12[1];
+  var isOwner = (user === null || user === void 0 ? void 0 : user.id) === (detail === null || detail === void 0 ? void 0 : detail.userId);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!id) return;
+    setLoading(true);
+    _services_demands__WEBPACK_IMPORTED_MODULE_2__.demandsService.getById(id).then(function (res) {
+      if (res.ok) setDetail(res.demand);
+    }).catch(function () {
+      return _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+        title: "加载失败",
+        icon: "none"
+      });
+    }).finally(function () {
+      return setLoading(false);
+    });
+  }, [id]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (!user || !detail || isOwner) return;
+    _services_follows__WEBPACK_IMPORTED_MODULE_4__.followsService.list().then(function (res) {
+      if (res.ok && res.items) {
+        setIsFollowing(res.items.some(function (f) {
+          return f.followedId === detail.userId;
+        }));
+      }
+    });
+  }, [user, detail, isOwner]);
+  var handleFollow = /*#__PURE__*/function () {
+    var _ref = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_10__["default"])().m(function _callee() {
+      var res, _res, _t;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_10__["default"])().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            if (!(!detail || followLoading)) {
+              _context.n = 1;
+              break;
+            }
+            return _context.a(2);
+          case 1:
+            setFollowLoading(true);
+            _context.p = 2;
+            if (!isFollowing) {
+              _context.n = 4;
+              break;
+            }
+            _context.n = 3;
+            return _services_follows__WEBPACK_IMPORTED_MODULE_4__.followsService.unfollow(detail.userId);
+          case 3:
+            res = _context.v;
+            if (res.ok) setIsFollowing(false);
+            _context.n = 6;
+            break;
+          case 4:
+            _context.n = 5;
+            return _services_follows__WEBPACK_IMPORTED_MODULE_4__.followsService.follow(detail.userId);
+          case 5:
+            _res = _context.v;
+            if (_res.ok) setIsFollowing(true);
+          case 6:
+            _context.n = 8;
+            break;
+          case 7:
+            _context.p = 7;
+            _t = _context.v;
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: (_t === null || _t === void 0 ? void 0 : _t.message) || "操作失败",
+              icon: "none"
+            });
+          case 8:
+            _context.p = 8;
+            setFollowLoading(false);
+            return _context.f(8);
+          case 9:
+            return _context.a(2);
+        }
+      }, _callee, null, [[2, 7, 8, 9]]);
+    }));
+    return function handleFollow() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var handleSendInvitation = /*#__PURE__*/function () {
+    var _ref2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_10__["default"])().m(function _callee2() {
+      var res, _t2;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_10__["default"])().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            if (!(!detail || sending)) {
+              _context2.n = 1;
+              break;
+            }
+            return _context2.a(2);
+          case 1:
+            if (message.trim()) {
+              _context2.n = 2;
+              break;
+            }
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: "请填写留言",
+              icon: "none"
+            });
+            return _context2.a(2);
+          case 2:
+            if (!(message.length > 200)) {
+              _context2.n = 3;
+              break;
+            }
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: "留言不能超过200字",
+              icon: "none"
+            });
+            return _context2.a(2);
+          case 3:
+            setSending(true);
+            _context2.p = 4;
+            _context2.n = 5;
+            return _services_invitations__WEBPACK_IMPORTED_MODULE_3__.invitationsService.create({
+              demandId: id,
+              toUserId: detail.userId,
+              message: message.trim()
+            });
+          case 5:
+            res = _context2.v;
+            if (res.ok) {
+              _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+                title: "邀请已发送",
+                icon: "success"
+              });
+              setShowContact(false);
+              setMessage("");
+            }
+            _context2.n = 7;
+            break;
+          case 6:
+            _context2.p = 6;
+            _t2 = _context2.v;
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: (_t2 === null || _t2 === void 0 ? void 0 : _t2.message) || "发送失败",
+              icon: "none"
+            });
+          case 7:
+            _context2.p = 7;
+            setSending(false);
+            return _context2.f(7);
+          case 8:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[4, 6, 7, 8]]);
+    }));
+    return function handleSendInvitation() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  if (loading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+    className: "page-detail",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_Loading__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+  });
+  if (!detail) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+    className: "page-detail",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "empty-state",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+        children: "\u6570\u636E\u4E0D\u5B58\u5728"
+      })
+    })
+  });
+  var budgetText = detail.budgetMin != null || detail.budgetMax != null ? detail.budgetMin != null && detail.budgetMax != null ? "".concat(detail.budgetMin, "-").concat(detail.budgetMax, " \u5143/\u5C0F\u65F6") : "".concat((_detail$budgetMin = detail.budgetMin) !== null && _detail$budgetMin !== void 0 ? _detail$budgetMin : detail.budgetMax, " \u5143/\u5C0F\u65F6\u8D77") : "面议";
+  var courtBookedText = detail.courtBookedBy === "student" ? "学员订场" : detail.courtBookedBy === "coach" ? "陪练订场" : "协商订场";
+  var statusLabel = {
+    open: "学员大厅中",
+    closed: "已关闭",
+    filled: "已找到陪练",
+    expired: "已过期",
+    draft: "草稿"
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+    className: "page-detail",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "detail-card",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "user-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "user-info",
+          children: [(_detail$user = detail.user) !== null && _detail$user !== void 0 && _detail$user.avatarVirtual ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Image, {
+            src: detail.user.avatarVirtual,
+            className: "user-avatar",
+            mode: "aspectFill"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "user-avatar user-avatar-placeholder",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              children: (((_detail$user2 = detail.user) === null || _detail$user2 === void 0 ? void 0 : _detail$user2.name) || "?")[0]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "user-meta",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+              className: "user-name-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "user-name",
+                children: (_detail$user3 = detail.user) === null || _detail$user3 === void 0 ? void 0 : _detail$user3.name
+              }), user && !isOwner && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+                className: "follow-btn ".concat(isFollowing ? "following" : ""),
+                onClick: handleFollow,
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                  children: isFollowing ? "已关注" : "+ 关注"
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+              className: "user-tags",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "tag",
+                children: "\u5B66\u5458"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "tag",
+                children: ["\u81EA\u8BC4 ", levelLabel((_detail$student$level = (_detail$student = detail.student) === null || _detail$student === void 0 ? void 0 : _detail$student.level) !== null && _detail$student$level !== void 0 ? _detail$student$level : null)]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "tag",
+                children: ["\u671F\u671B\u966A\u7EC3 Lv.", (_detail$expectedLevel = detail.expectedLevel) !== null && _detail$expectedLevel !== void 0 ? _detail$expectedLevel : "?", "+"]
+              })]
+            }), ((_detail$student2 = detail.student) === null || _detail$student2 === void 0 ? void 0 : _detail$student2.reviewCount) != null && detail.student.reviewCount >= 5 && ((_detail$student3 = detail.student) === null || _detail$student3 === void 0 ? void 0 : _detail$student3.recentRating) != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+              className: "rating-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "rating-score",
+                children: [detail.student.recentRating.toFixed(1), "\u5206"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "rating-count",
+                children: ["(", detail.student.reviewCount, "\u6761\u8BC4\u4EF7)"]
+              })]
+            }), ((_detail$student4 = detail.student) === null || _detail$student4 === void 0 ? void 0 : _detail$student4.reviewCount) != null && detail.student.reviewCount < 5 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "review-hint",
+              children: ["\u5DF2\u6709", detail.student.reviewCount, "\u6761\u8BC4\u4EF7\uFF0C\u6EE15\u6761\u540E\u5C06\u5C55\u793A\u8BC4\u5206"]
+            })]
+          })]
+        }), ((_detail$student5 = detail.student) === null || _detail$student5 === void 0 ? void 0 : _detail$student5.bio) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "user-bio",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "bio-label",
+            children: "\u4E2A\u4EBA\u4ECB\u7ECD"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "bio-text",
+            children: detail.student.bio
+          })]
+        }), ((_detail$student6 = detail.student) === null || _detail$student6 === void 0 ? void 0 : _detail$student6.goalTags) && detail.student.goalTags.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "goal-tags-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "bio-label",
+            children: "\u7EC3\u7403\u76EE\u6807"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "goal-tags",
+            children: detail.student.goalTags.map(function (t, i) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+                className: "goal-tag",
+                children: t
+              }, i);
+            })
+          })]
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "detail-card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "section-header",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          className: "section-title",
+          children: "\u7EC3\u7403\u9700\u6C42"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          className: "status-badge status-".concat(detail.status),
+          children: statusLabel[detail.status] || detail.status
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "info-grid",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u65E5\u671F"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value",
+            children: detail.playDate
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u65F6\u6BB5"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value",
+            children: [TIME_SLOT_LABEL[detail.timeSlot] || detail.timeSlot, " ", formatTime(detail.startHour, detail.endHour)]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item info-item-full",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u671F\u671B\u5730\u70B9"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value",
+            children: detail.locationName || "地点待定"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u9884\u7B97"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value price",
+            children: budgetText
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u671F\u671B\u7B49\u7EA7"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value",
+            children: ["Lv.", (_detail$expectedLevel2 = detail.expectedLevel) !== null && _detail$expectedLevel2 !== void 0 ? _detail$expectedLevel2 : "?", "+"]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u81EA\u8BC4\u7B49\u7EA7"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value",
+            children: levelLabel((_detail$student$level2 = (_detail$student7 = detail.student) === null || _detail$student7 === void 0 ? void 0 : _detail$student7.level) !== null && _detail$student$level2 !== void 0 ? _detail$student$level2 : null)
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "info-item",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-label",
+            children: "\u8BA2\u573A"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "info-value",
+            children: courtBookedText
+          })]
+        })]
+      }), detail.note && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "note-box",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          className: "note-label",
+          children: "\u5907\u6CE8"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          className: "note-text",
+          children: detail.note
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "bottom-bar",
+      children: [detail.status === "open" && !isOwner && user && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Button, {
+        className: "contact-btn",
+        onClick: function onClick() {
+          return setShowContact(true);
+        },
+        children: "\u60F3\u8054\u7CFB"
+      }), detail.status === "open" && !user && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Button, {
+        className: "contact-btn",
+        onClick: function onClick() {
+          return _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().navigateTo({
+            url: "/pages/login/login"
+          });
+        },
+        children: "\u767B\u5F55\u540E\u8054\u7CFB"
+      }), isOwner && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Button, {
+        className: "contact-btn secondary",
+        onClick: function onClick() {
+          return _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().navigateTo({
+            url: "/pages/orders/orders"
+          });
+        },
+        children: "\u7BA1\u7406\u6211\u7684\u9700\u6C42"
+      })]
+    }), !user && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "login-hint",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+        children: "\u767B\u5F55\u540E\u53EF\u4EE5\u8054\u7CFB\u5B66\u5458"
+      })
+    }), showContact && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "modal-overlay",
+      onClick: function onClick() {
+        return setShowContact(false);
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "modal-content",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "modal-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "modal-title",
+            children: ["\u60F3\u8054\u7CFB ", (_detail$user4 = detail.user) === null || _detail$user4 === void 0 ? void 0 : _detail$user4.name]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "modal-close",
+            onClick: function onClick() {
+              return setShowContact(false);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              children: "\u2715"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "modal-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "modal-hint",
+            children: "\u53D1\u9001\u7EC3\u7403\u9080\u8BF7\uFF0C\u5BF9\u65B9\u540C\u610F\u540E\u5373\u53EF\u67E5\u770B\u8054\u7CFB\u65B9\u5F0F"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Textarea, {
+            className: "modal-textarea",
+            placeholder: "\u7B80\u5355\u4ECB\u7ECD\u4E00\u4E0B\u81EA\u5DF1\u5427\uFF08200\u5B57\u4EE5\u5185\uFF09",
+            value: message,
+            onInput: function onInput(e) {
+              return setMessage(e.detail.value);
+            },
+            maxlength: 200
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "char-count",
+            children: [message.length, "/200"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "modal-disclaimer",
+            children: "\u672C\u8BC4\u4EF7\u4E3A\u53CC\u65B9\u4E92\u8BC4\uFF0C\u5206\u6570\u5C06\u4F1A\u76F4\u63A5\u5F71\u54CD\u60A8\u5728\u5E73\u53F0\u7684\u4FE1\u7528\u54DF"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "modal-footer",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Button, {
+            className: "modal-cancel",
+            onClick: function onClick() {
+              return setShowContact(false);
+            },
+            children: "\u53D6\u6D88"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Button, {
+            className: "modal-confirm",
+            onClick: handleSendInvitation,
+            loading: sending,
+            disabled: sending,
+            children: "\u53D1\u9001\u9080\u8BF7"
+          })]
+        })]
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/pages/demand-detail/demand-detail.tsx":
+/*!***************************************************!*\
+  !*** ./src/pages/demand-detail/demand-detail.tsx ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/dsl/common.js");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_demand_detail_demand_detail_demand_detail_tsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!../../../node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/demand-detail/demand-detail!./demand-detail.tsx */ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/demand-detail/demand-detail!./src/pages/demand-detail/demand-detail.tsx");
+
+
+var config = {"navigationBarTitleText":"需求详情"};
+
+
+
+var taroOption = (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.createPageConfig)(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_demand_detail_demand_detail_demand_detail_tsx__WEBPACK_IMPORTED_MODULE_0__["default"], 'pages/demand-detail/demand-detail', {root:{cn:[]}}, config || {})
+if (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_demand_detail_demand_detail_demand_detail_tsx__WEBPACK_IMPORTED_MODULE_0__["default"] && _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_demand_detail_demand_detail_demand_detail_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors) {
+  taroOption.behaviors = (taroOption.behaviors || []).concat(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_demand_detail_demand_detail_demand_detail_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors)
+}
+var inst = Page(taroOption)
+
+
+
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_demand_detail_demand_detail_demand_detail_tsx__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+/******/ __webpack_require__.O(0, ["taro","vendors","common"], function() { return __webpack_exec__("./src/pages/demand-detail/demand-detail.tsx"); });
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=demand-detail.js.map

@@ -263,7 +263,7 @@ export default function Index() {
   );
 
   return (
-    <View className="page-index">
+    <View className={`page-index ${tab === "student" ? "tab-student" : "tab-coach"}`}>
       {/* 统一自定义导航栏 */}
       <CustomNav title="羽球搭子" />
       {/* 顶部渐变背景区 + 下沉式 Tab + 筛选条 */}

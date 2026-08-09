@@ -75,19 +75,18 @@ export default function Profile() {
       !!cp.bio,
       !!cp.teachingInfo,
       !!cp.city,
-      (cp.frequentAreas?.length ?? 0) > 0,
       cp.level > 0,
     ];
     const allDone = required.every(Boolean);
     return { done: allDone, label: allDone ? "已开通" : "未完善" };
   })();
 
-  // 订单网格入口
+  // 订单网格入口（无"已取消"：待确认订单若未撮合成功，系统自动从订单记录中移除）
   const orderEntries = [
     { icon: "📋", text: "全部", status: undefined },
-    { icon: "⏳", text: "进行中", status: "pending" },
+    { icon: "⏳", text: "待确认", status: "pending" },
+    { icon: "📊", text: "进行中", status: "in_progress" },
     { icon: "✅", text: "已完成", status: "completed" },
-    { icon: "❌", text: "已取消", status: "cancelled" },
   ];
 
   // 身份菜单
@@ -110,10 +109,9 @@ export default function Profile() {
     },
   ];
 
-  // 功能菜单
+  // 功能菜单（"我的订单"已合并进上方"订单管理"网格）
   const funcMenu = [
     { label: "我的发布", icon: "📢", url: "/pages/my-availabilities/my-availabilities" },
-    { label: "我的订单", icon: "📋", url: "/pages/orders/orders" },
     { label: "我的关注", icon: "⭐", url: "/pages/following/following" },
     { label: "意见反馈", icon: "💬", url: "/pages/feedback/feedback" },
   ];

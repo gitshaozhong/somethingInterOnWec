@@ -1,0 +1,793 @@
+"use strict";
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/city-picker/city-picker"],{
+
+/***/ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/city-picker/city-picker!./src/pages/city-picker/city-picker.tsx":
+/*!****************************************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/city-picker/city-picker!./src/pages/city-picker/city-picker.tsx ***!
+  \****************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ CityPicker; }
+/* harmony export */ });
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_createForOfIteratorHelper_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js */ "./node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/index.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config_cities__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config/cities */ "./src/config/cities.ts");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+
+
+
+
+
+
+function CityPicker() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_useState, 2),
+    keyword = _useState2[0],
+    setKeyword = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_useState3, 2),
+    activeLetter = _useState4[0],
+    setActiveLetter = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState6 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_useState5, 2),
+    scrollIntoViewId = _useState6[0],
+    setScrollIntoView = _useState6[1];
+
+  // 按字母分组的城市索引（缓存计算）
+  var cityIndex = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    return (0,_config_cities__WEBPACK_IMPORTED_MODULE_2__.buildCityIndex)();
+  }, []);
+  // 字母 → 该分组在 ScrollView 中的 sectionId（用于滚动定位）
+  var letterToSectionId = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var map = {};
+    var _iterator = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_createForOfIteratorHelper_js__WEBPACK_IMPORTED_MODULE_5__["default"])(cityIndex),
+      _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var g = _step.value;
+        map[g.letter] = "section-".concat(g.letter);
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    return map;
+  }, [cityIndex]);
+
+  // 搜索结果
+  var searchResults = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
+    var trimmed = keyword.trim();
+    if (!trimmed) return [];
+    return _config_cities__WEBPACK_IMPORTED_MODULE_2__.ALL_CITIES.filter(function (c) {
+      return c.includes(trimmed);
+    });
+  }, [keyword]);
+
+  // 点击城市：通过 eventChannel 回传给上一页并返回
+  var handleSelect = function handleSelect(city) {
+    var _currPage$getOpenerEv;
+    var pages = _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().getCurrentPages();
+    var currPage = pages[pages.length - 1];
+    var eventChannel = currPage === null || currPage === void 0 || (_currPage$getOpenerEv = currPage.getOpenerEventChannel) === null || _currPage$getOpenerEv === void 0 ? void 0 : _currPage$getOpenerEv.call(currPage);
+    if (eventChannel) {
+      eventChannel.emit("onCitySelected", city);
+    }
+    _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().navigateBack();
+  };
+
+  // 点击右侧字母索引：滚动到对应分组
+  var handleLetterClick = function handleLetterClick(letter) {
+    setActiveLetter(letter);
+    var sectionId = letterToSectionId[letter];
+    if (sectionId) {
+      // 触发 ScrollView 的 scroll-into-view（同一字母重复点击需重置后再设值）
+      setScrollIntoView("");
+      setTimeout(function () {
+        return setScrollIntoView(sectionId);
+      }, 0);
+    }
+    // 顶部字母浮层 600ms 后消失
+    setTimeout(function () {
+      return setActiveLetter("");
+    }, 600);
+  };
+  var hasKeyword = keyword.trim().length > 0;
+  // 实际存在城市的字母（用于索引条渲染）
+  var activeLetters = _config_cities__WEBPACK_IMPORTED_MODULE_2__.CITY_INDEX_LETTERS.filter(function (l) {
+    return letterToSectionId[l];
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+    className: "page-city-picker",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+      className: "search-bar",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+        className: "search-input-wrap",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+          className: "search-icon",
+          children: "\uD83D\uDD0D"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Input, {
+          className: "search-input",
+          placeholder: "\u8F93\u5165\u57CE\u5E02\u540D\u641C\u7D22",
+          value: keyword,
+          onInput: function onInput(e) {
+            return setKeyword(e.detail.value);
+          },
+          confirmType: "search"
+        }), keyword && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+          className: "clear-btn",
+          onClick: function onClick() {
+            return setKeyword("");
+          },
+          children: "\u2715"
+        })]
+      })
+    }), hasKeyword ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.ScrollView, {
+      className: "city-scroll search-mode",
+      scrollY: true,
+      children: searchResults.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+        className: "empty-tip",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+          className: "empty-icon",
+          children: "\uD83C\uDFD9\uFE0F"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+          className: "empty-text",
+          children: "\u672A\u627E\u5230\u76F8\u5173\u57CE\u5E02"
+        })]
+      }) : searchResults.map(function (city) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+          className: "city-item",
+          onClick: function onClick() {
+            return handleSelect(city);
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+            className: "city-name",
+            children: city
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+            className: "city-arrow",
+            children: "\u203A"
+          })]
+        }, city);
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+      className: "city-body",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.ScrollView, {
+        className: "city-scroll",
+        scrollY: true,
+        scrollIntoView: scrollIntoViewId,
+        scrollWithAnimation: true,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+          className: "hot-section",
+          id: "section-hot",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+            className: "section-title",
+            children: "\u70ED\u95E8\u57CE\u5E02"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+            className: "hot-grid",
+            children: _config_cities__WEBPACK_IMPORTED_MODULE_2__.HOT_CITIES.map(function (city) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+                className: "hot-chip",
+                onClick: function onClick() {
+                  return handleSelect(city);
+                },
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+                  children: city
+                })
+              }, city);
+            })
+          })]
+        }), cityIndex.map(function (group) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+            id: "section-".concat(group.letter),
+            className: "letter-section",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+              className: "letter-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+                className: "letter-text",
+                children: group.letter
+              })
+            }), group.cities.map(function (city) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+                className: "city-item",
+                onClick: function onClick() {
+                  return handleSelect(city);
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+                  className: "city-name",
+                  children: city
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+                  className: "city-arrow",
+                  children: "\u203A"
+                })]
+              }, city);
+            })]
+          }, group.letter);
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+        className: "index-bar",
+        children: activeLetters.map(function (letter) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+            className: "index-letter ".concat(activeLetter === letter ? "active" : ""),
+            onClick: function onClick() {
+              return handleLetterClick(letter);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+              children: letter
+            })
+          }, letter);
+        })
+      }), activeLetter && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.View, {
+        className: "letter-overlay",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_6__.Text, {
+          children: activeLetter
+        })
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/config/cities.ts":
+/*!******************************!*\
+  !*** ./src/config/cities.ts ***!
+  \******************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ALL_CITIES: function() { return /* binding */ ALL_CITIES; },
+/* harmony export */   CITY_INDEX_LETTERS: function() { return /* binding */ CITY_INDEX_LETTERS; },
+/* harmony export */   HOT_CITIES: function() { return /* binding */ HOT_CITIES; },
+/* harmony export */   buildCityIndex: function() { return /* binding */ buildCityIndex; }
+/* harmony export */ });
+/* unused harmony exports PROVINCES, CITY_PINYIN, getCityInitial */
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_createForOfIteratorHelper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js */ "./node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js");
+
+/**
+ * 全国城市数据（地级市以上）
+ * - HOT_CITIES: 热门城市（顶部快捷入口）
+ * - PROVINCES: 按省份分组的城市列表
+ * - CITY_PINYIN: 城市名 → 拼音首字母映射，用于 A-Z 索引分组
+ *
+ * 数据来源：民政部全国行政区划（地级以上）
+ * 更新时间：2024
+ */
+
+/** 热门城市 */
+var HOT_CITIES = ["北京", "上海", "广州", "深圳", "杭州", "成都", "武汉", "南京", "重庆", "苏州", "天津", "西安", "长沙", "郑州", "青岛", "沈阳", "大连", "厦门", "宁波", "福州"];
+
+/** 省份 → 城市列表（按地理大区顺序排列） */
+var PROVINCES = [
+// ============ 华北 ============
+{
+  name: "北京",
+  cities: ["北京"]
+}, {
+  name: "天津",
+  cities: ["天津"]
+}, {
+  name: "河北省",
+  cities: ["石家庄", "唐山", "秦皇岛", "邯郸", "邢台", "保定", "张家口", "承德", "沧州", "廊坊", "衡水"]
+}, {
+  name: "山西省",
+  cities: ["太原", "大同", "阳泉", "长治", "晋城", "朔州", "晋中", "运城", "忻州", "临汾", "吕梁"]
+}, {
+  name: "内蒙古自治区",
+  cities: ["呼和浩特", "包头", "乌海", "赤峰", "通辽", "鄂尔多斯", "呼伦贝尔", "巴彦淖尔", "乌兰察布"]
+},
+// ============ 东北 ============
+{
+  name: "辽宁省",
+  cities: ["沈阳", "大连", "鞍山", "抚顺", "本溪", "丹东", "锦州", "营口", "阜新", "辽阳", "盘锦", "铁岭", "朝阳", "葫芦岛"]
+}, {
+  name: "吉林省",
+  cities: ["长春", "吉林", "四平", "辽源", "通化", "白山", "松原", "白城"]
+}, {
+  name: "黑龙江省",
+  cities: ["哈尔滨", "齐齐哈尔", "鸡西", "鹤岗", "双鸭山", "大庆", "伊春", "佳木斯", "七台河", "牡丹江", "黑河", "绥化"]
+},
+// ============ 华东 ============
+{
+  name: "上海",
+  cities: ["上海"]
+}, {
+  name: "江苏省",
+  cities: ["南京", "无锡", "徐州", "常州", "苏州", "南通", "连云港", "淮安", "盐城", "扬州", "镇江", "泰州", "宿迁"]
+}, {
+  name: "浙江省",
+  cities: ["杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水"]
+}, {
+  name: "安徽省",
+  cities: ["合肥", "芜湖", "蚌埠", "淮南", "马鞍山", "淮北", "铜陵", "安庆", "黄山", "滁州", "阜阳", "宿州", "六安", "亳州", "池州", "宣城"]
+}, {
+  name: "福建省",
+  cities: ["福州", "厦门", "莆田", "三明", "泉州", "漳州", "南平", "龙岩", "宁德"]
+}, {
+  name: "江西省",
+  cities: ["南昌", "景德镇", "萍乡", "九江", "新余", "鹰潭", "赣州", "吉安", "宜春", "抚州", "上饶"]
+}, {
+  name: "山东省",
+  cities: ["济南", "青岛", "淄博", "枣庄", "东营", "烟台", "潍坊", "济宁", "泰安", "威海", "日照", "临沂", "德州", "聊城", "滨州", "菏泽"]
+},
+// ============ 华中 ============
+{
+  name: "河南省",
+  cities: ["郑州", "开封", "洛阳", "平顶山", "安阳", "鹤壁", "新乡", "焦作", "濮阳", "许昌", "漯河", "三门峡", "南阳", "商丘", "信阳", "周口", "驻马店"]
+}, {
+  name: "湖北省",
+  cities: ["武汉", "黄石", "十堰", "宜昌", "襄阳", "鄂州", "荆门", "孝感", "荆州", "黄冈", "咸宁", "随州"]
+}, {
+  name: "湖南省",
+  cities: ["长沙", "株洲", "湘潭", "衡阳", "邵阳", "岳阳", "常德", "张家界", "益阳", "郴州", "永州", "怀化", "娄底"]
+},
+// ============ 华南 ============
+{
+  name: "广东省",
+  cities: ["广州", "深圳", "珠海", "汕头", "佛山", "韶关", "湛江", "肇庆", "江门", "茂名", "惠州", "梅州", "汕尾", "河源", "阳江", "清远", "东莞", "中山", "潮州", "揭阳", "云浮"]
+}, {
+  name: "广西壮族自治区",
+  cities: ["南宁", "柳州", "桂林", "梧州", "北海", "防城港", "钦州", "贵港", "玉林", "百色", "贺州", "河池", "来宾", "崇左"]
+}, {
+  name: "海南省",
+  cities: ["海口", "三亚", "三沙", "儋州"]
+},
+// ============ 西南 ============
+{
+  name: "重庆",
+  cities: ["重庆"]
+}, {
+  name: "四川省",
+  cities: ["成都", "自贡", "攀枝花", "泸州", "德阳", "绵阳", "广元", "遂宁", "内江", "乐山", "南充", "眉山", "宜宾", "广安", "达州", "雅安", "巴中", "资阳"]
+}, {
+  name: "贵州省",
+  cities: ["贵阳", "六盘水", "遵义", "安顺", "毕节", "铜仁"]
+}, {
+  name: "云南省",
+  cities: ["昆明", "曲靖", "玉溪", "保山", "昭通", "丽江", "普洱", "临沧"]
+}, {
+  name: "西藏自治区",
+  cities: ["拉萨", "日喀则", "昌都", "林芝", "山南", "那曲"]
+},
+// ============ 西北 ============
+{
+  name: "陕西省",
+  cities: ["西安", "铜川", "宝鸡", "咸阳", "渭南", "延安", "汉中", "榆林", "安康", "商洛"]
+}, {
+  name: "甘肃省",
+  cities: ["兰州", "嘉峪关", "金昌", "白银", "天水", "武威", "张掖", "平凉", "酒泉", "庆阳", "定西", "陇南"]
+}, {
+  name: "青海省",
+  cities: ["西宁", "海东"]
+}, {
+  name: "宁夏回族自治区",
+  cities: ["银川", "石嘴山", "吴忠", "固原", "中卫"]
+}, {
+  name: "新疆维吾尔自治区",
+  cities: ["乌鲁木齐", "克拉玛依", "吐鲁番", "哈密"]
+}];
+
+/**
+ * 城市拼音首字母映射（用于 A-Z 索引）
+ * 覆盖以上所有城市，未覆盖的城市默认归入 "#" 分组
+ */
+var CITY_PINYIN = {
+  // 直辖市
+  "北京": "B",
+  "上海": "S",
+  "天津": "T",
+  "重庆": "C",
+  // 河北
+  "石家庄": "S",
+  "唐山": "T",
+  "秦皇岛": "Q",
+  "邯郸": "H",
+  "邢台": "X",
+  "保定": "B",
+  "张家口": "Z",
+  "承德": "C",
+  "沧州": "C",
+  "廊坊": "L",
+  "衡水": "H",
+  // 山西
+  "太原": "T",
+  "大同": "D",
+  "阳泉": "Y",
+  "长治": "C",
+  "晋城": "J",
+  "朔州": "S",
+  "晋中": "J",
+  "运城": "Y",
+  "忻州": "X",
+  "临汾": "L",
+  "吕梁": "L",
+  // 内蒙古
+  "呼和浩特": "H",
+  "包头": "B",
+  "乌海": "W",
+  "赤峰": "C",
+  "通辽": "T",
+  "鄂尔多斯": "E",
+  "呼伦贝尔": "H",
+  "巴彦淖尔": "B",
+  "乌兰察布": "W",
+  // 辽宁
+  "沈阳": "S",
+  "大连": "D",
+  "鞍山": "A",
+  "抚顺": "F",
+  "本溪": "B",
+  "丹东": "D",
+  "锦州": "J",
+  "营口": "Y",
+  "阜新": "F",
+  "辽阳": "L",
+  "盘锦": "P",
+  "铁岭": "T",
+  "朝阳": "C",
+  "葫芦岛": "H",
+  // 吉林
+  "长春": "C",
+  "吉林": "J",
+  "四平": "S",
+  "辽源": "L",
+  "通化": "T",
+  "白山": "B",
+  "松原": "S",
+  "白城": "B",
+  // 黑龙江
+  "哈尔滨": "H",
+  "齐齐哈尔": "Q",
+  "鸡西": "J",
+  "鹤岗": "H",
+  "双鸭山": "S",
+  "大庆": "D",
+  "伊春": "Y",
+  "佳木斯": "J",
+  "七台河": "Q",
+  "牡丹江": "M",
+  "黑河": "H",
+  "绥化": "S",
+  // 江苏
+  "南京": "N",
+  "无锡": "W",
+  "徐州": "X",
+  "常州": "C",
+  "苏州": "S",
+  "南通": "N",
+  "连云港": "L",
+  "淮安": "H",
+  "盐城": "Y",
+  "扬州": "Y",
+  "镇江": "Z",
+  "泰州": "T",
+  "宿迁": "S",
+  // 浙江
+  "杭州": "H",
+  "宁波": "N",
+  "温州": "W",
+  "嘉兴": "J",
+  "湖州": "H",
+  "绍兴": "S",
+  "金华": "J",
+  "衢州": "Q",
+  "舟山": "Z",
+  "台州": "T",
+  "丽水": "L",
+  // 安徽
+  "合肥": "H",
+  "芜湖": "W",
+  "蚌埠": "B",
+  "淮南": "H",
+  "马鞍山": "M",
+  "淮北": "H",
+  "铜陵": "T",
+  "安庆": "A",
+  "黄山": "H",
+  "滁州": "C",
+  "阜阳": "F",
+  "宿州": "S",
+  "六安": "L",
+  "亳州": "B",
+  "池州": "C",
+  "宣城": "X",
+  // 福建
+  "福州": "F",
+  "厦门": "X",
+  "莆田": "P",
+  "三明": "S",
+  "泉州": "Q",
+  "漳州": "Z",
+  "南平": "N",
+  "龙岩": "L",
+  "宁德": "N",
+  // 江西
+  "南昌": "N",
+  "景德镇": "J",
+  "萍乡": "P",
+  "九江": "J",
+  "新余": "X",
+  "鹰潭": "Y",
+  "赣州": "G",
+  "吉安": "J",
+  "宜春": "Y",
+  "抚州": "F",
+  "上饶": "S",
+  // 山东
+  "济南": "J",
+  "青岛": "Q",
+  "淄博": "Z",
+  "枣庄": "Z",
+  "东营": "D",
+  "烟台": "Y",
+  "潍坊": "W",
+  "济宁": "J",
+  "泰安": "T",
+  "威海": "W",
+  "日照": "R",
+  "临沂": "L",
+  "德州": "D",
+  "聊城": "L",
+  "滨州": "B",
+  "菏泽": "H",
+  // 河南
+  "郑州": "Z",
+  "开封": "K",
+  "洛阳": "L",
+  "平顶山": "P",
+  "安阳": "A",
+  "鹤壁": "H",
+  "新乡": "X",
+  "焦作": "J",
+  "濮阳": "P",
+  "许昌": "X",
+  "漯河": "L",
+  "三门峡": "S",
+  "南阳": "N",
+  "商丘": "S",
+  "信阳": "X",
+  "周口": "Z",
+  "驻马店": "Z",
+  // 湖北
+  "武汉": "W",
+  "黄石": "H",
+  "十堰": "S",
+  "宜昌": "Y",
+  "襄阳": "X",
+  "鄂州": "E",
+  "荆门": "J",
+  "孝感": "X",
+  "荆州": "J",
+  "黄冈": "H",
+  "咸宁": "X",
+  "随州": "S",
+  // 湖南
+  "长沙": "C",
+  "株洲": "Z",
+  "湘潭": "X",
+  "衡阳": "H",
+  "邵阳": "S",
+  "岳阳": "Y",
+  "常德": "C",
+  "张家界": "Z",
+  "益阳": "Y",
+  "郴州": "C",
+  "永州": "Y",
+  "怀化": "H",
+  "娄底": "L",
+  // 广东
+  "广州": "G",
+  "深圳": "S",
+  "珠海": "Z",
+  "汕头": "S",
+  "佛山": "F",
+  "韶关": "S",
+  "湛江": "Z",
+  "肇庆": "Z",
+  "江门": "J",
+  "茂名": "M",
+  "惠州": "H",
+  "梅州": "M",
+  "汕尾": "S",
+  "河源": "H",
+  "阳江": "Y",
+  "清远": "Q",
+  "东莞": "D",
+  "中山": "Z",
+  "潮州": "C",
+  "揭阳": "J",
+  "云浮": "Y",
+  // 广西
+  "南宁": "N",
+  "柳州": "L",
+  "桂林": "G",
+  "梧州": "W",
+  "北海": "B",
+  "防城港": "F",
+  "钦州": "Q",
+  "贵港": "G",
+  "玉林": "Y",
+  "百色": "B",
+  "贺州": "H",
+  "河池": "H",
+  "来宾": "L",
+  "崇左": "C",
+  // 海南
+  "海口": "H",
+  "三亚": "S",
+  "三沙": "S",
+  "儋州": "D",
+  // 四川
+  "成都": "C",
+  "自贡": "Z",
+  "攀枝花": "P",
+  "泸州": "L",
+  "德阳": "D",
+  "绵阳": "M",
+  "广元": "G",
+  "遂宁": "S",
+  "内江": "N",
+  "乐山": "L",
+  "南充": "N",
+  "眉山": "M",
+  "宜宾": "Y",
+  "广安": "G",
+  "达州": "D",
+  "雅安": "Y",
+  "巴中": "B",
+  "资阳": "Z",
+  // 贵州
+  "贵阳": "G",
+  "六盘水": "L",
+  "遵义": "Z",
+  "安顺": "A",
+  "毕节": "B",
+  "铜仁": "T",
+  // 云南
+  "昆明": "K",
+  "曲靖": "Q",
+  "玉溪": "Y",
+  "保山": "B",
+  "昭通": "Z",
+  "丽江": "L",
+  "普洱": "P",
+  "临沧": "L",
+  // 西藏
+  "拉萨": "L",
+  "日喀则": "R",
+  "昌都": "C",
+  "林芝": "L",
+  "山南": "S",
+  "那曲": "N",
+  // 陕西
+  "西安": "X",
+  "铜川": "T",
+  "宝鸡": "B",
+  "咸阳": "X",
+  "渭南": "W",
+  "延安": "Y",
+  "汉中": "H",
+  "榆林": "Y",
+  "安康": "A",
+  "商洛": "S",
+  // 甘肃
+  "兰州": "L",
+  "嘉峪关": "J",
+  "金昌": "J",
+  "白银": "B",
+  "天水": "T",
+  "武威": "W",
+  "张掖": "Z",
+  "平凉": "P",
+  "酒泉": "J",
+  "庆阳": "Q",
+  "定西": "D",
+  "陇南": "L",
+  // 青海
+  "西宁": "X",
+  "海东": "H",
+  // 宁夏
+  "银川": "Y",
+  "石嘴山": "S",
+  "吴忠": "W",
+  "固原": "G",
+  "中卫": "Z",
+  // 新疆
+  "乌鲁木齐": "W",
+  "克拉玛依": "K",
+  "吐鲁番": "T",
+  "哈密": "H"
+};
+
+/** A-Z 索引字母列表 */
+var CITY_INDEX_LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#"];
+
+/** 所有城市扁平列表 */
+var ALL_CITIES = PROVINCES.reduce(function (acc, p) {
+  return acc.concat(p.cities);
+}, []);
+
+/** 城市名 → 拼音首字母（未匹配归 "#"） */
+function getCityInitial(city) {
+  return CITY_PINYIN[city] || "#";
+}
+
+/**
+ * 构建按首字母分组的城市索引
+ * 返回：[{ letter: "B", cities: ["北京", "保定", ...] }, ...]，按字母顺序排序，无城市的字母不返回
+ */
+function buildCityIndex() {
+  var groups = {};
+  var _iterator = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_createForOfIteratorHelper_js__WEBPACK_IMPORTED_MODULE_0__["default"])(ALL_CITIES),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var city = _step.value;
+      var letter = getCityInitial(city);
+      if (!groups[letter]) groups[letter] = [];
+      groups[letter].push(city);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  return Object.keys(groups).sort(function (a, b) {
+    // 字母在前，"#" 在最后
+    if (a === "#") return 1;
+    if (b === "#") return -1;
+    return a.localeCompare(b);
+  }).map(function (letter) {
+    return {
+      letter: letter,
+      cities: groups[letter].sort(function (x, y) {
+        return x.localeCompare(y);
+      })
+    };
+  });
+}
+
+/***/ }),
+
+/***/ "./src/pages/city-picker/city-picker.tsx":
+/*!***********************************************!*\
+  !*** ./src/pages/city-picker/city-picker.tsx ***!
+  \***********************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/dsl/common.js");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_city_picker_city_picker_city_picker_tsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!../../../node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/city-picker/city-picker!./city-picker.tsx */ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/city-picker/city-picker!./src/pages/city-picker/city-picker.tsx");
+
+
+var config = {"navigationBarTitleText":"选择城市","navigationBarBackgroundColor":"#ffffff","navigationBarTextStyle":"black","enablePullDownRefresh":false};
+
+
+
+var taroOption = (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.createPageConfig)(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_city_picker_city_picker_city_picker_tsx__WEBPACK_IMPORTED_MODULE_0__["default"], 'pages/city-picker/city-picker', {root:{cn:[]}}, config || {})
+if (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_city_picker_city_picker_city_picker_tsx__WEBPACK_IMPORTED_MODULE_0__["default"] && _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_city_picker_city_picker_city_picker_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors) {
+  taroOption.behaviors = (taroOption.behaviors || []).concat(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_city_picker_city_picker_city_picker_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors)
+}
+var inst = Page(taroOption)
+
+
+
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_city_picker_city_picker_city_picker_tsx__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+/******/ __webpack_require__.O(0, ["taro","vendors"], function() { return __webpack_exec__("./src/pages/city-picker/city-picker.tsx"); });
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=city-picker.js.map

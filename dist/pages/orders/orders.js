@@ -1,1 +1,309 @@
-"use strict";(wx["webpackJsonp"]=wx["webpackJsonp"]||[]).push([[97],{4458:function(e,r,s){var a=s(8870),n=s(1212),c=s(467),l=s(5544),t=s(118),o=s(6540),i=s(758),d=s.n(i),u=s(8170),h=s(197),f=s(3146),m=s(6901),x=s(4848),p=[{key:"all",label:"\u5168\u90e8"},{key:"pending",label:"\u5f85\u786e\u8ba4"},{key:"in_progress",label:"\u8fdb\u884c\u4e2d"},{key:"completed",label:"\u5df2\u5b8c\u6210"}];function j(){var e=(0,h.k)(),r=e.user,s=(0,o.useState)([]),a=(0,l.A)(s,2),j=a[0],v=a[1],N=(0,o.useState)(!0),S=(0,l.A)(N,2),k=S[0],g=S[1],b=(0,o.useState)("all"),y=(0,l.A)(b,2),E=y[0],Y=y[1],w=function(){var e=(0,c.A)((0,n.A)().m(function e(){var r,s;return(0,n.A)().w(function(e){while(1)switch(e.p=e.n){case 0:return g(!0),e.p=1,e.n=2,u.o.orders();case 2:r=e.v,r.ok&&v(r.items||[]),e.n=4;break;case 3:e.p=3,s=e.v,console.error("\u83b7\u53d6\u8ba2\u5355\u5931\u8d25:",s);case 4:return e.p=4,g(!1),e.f(4);case 5:return e.a(2)}},e,null,[[1,3,4,5]])}));return function(){return e.apply(this,arguments)}}();if((0,o.useEffect)(function(){w()},[]),(0,i.useDidShow)(function(){w()}),!r)return(0,x.jsx)(t.Ss,{className:"page-orders",children:(0,x.jsx)(m.A,{text:"\u8bf7\u5148\u767b\u5f55"})});var A="all"===E?j:"pending"===E?j.filter(function(e){return null===e.orderStatus&&"accepted"===e.status}):j.filter(function(e){return e.orderStatus===E}),I=function(e){return"completed"===e.orderStatus?"\u5df2\u5b8c\u6210":"closed"===e.orderStatus?"\u5df2\u5173\u95ed":"in_progress"===e.orderStatus?"\u8fdb\u884c\u4e2d":null===e.orderStatus&&"accepted"===e.status?e.studentConfirmedAt&&e.coachConfirmedAt?"\u5f85\u7ec3\u7403":"\u5f85\u786e\u8ba4":e.status},C=function(e){return"completed"===e.orderStatus?"#52c41a":"in_progress"===e.orderStatus?"#1677ff":"#faad14"},D=function(e,r){return null==e||null==r?"":"".concat(e,":00-").concat(r,":00")};return(0,x.jsxs)(t.Ss,{className:"page-orders",children:[(0,x.jsx)(t.Ss,{className:"tab-scroll",children:p.map(function(e){return(0,x.jsx)(t.Ss,{className:"tab-chip ".concat(E===e.key?"active":""),onClick:function(){return Y(e.key)},children:(0,x.jsx)(t.EY,{children:e.label})},e.key)})}),k?(0,x.jsx)(f.A,{}):0===A.length?(0,x.jsx)(m.A,{text:"\u6682\u65e0\u8ba2\u5355"}):(0,x.jsx)(t.BM,{className:"list-scroll",scrollY:!0,children:A.map(function(e){return(0,x.jsxs)(t.Ss,{className:"order-card",onClick:function(){return d().navigateTo({url:"/pages/order-detail/order-detail?id=".concat(e.id)})},children:[(0,x.jsxs)(t.Ss,{className:"order-header",children:[(0,x.jsxs)(t.Ss,{className:"order-user-info",children:[e.peerAvatar?(0,x.jsx)(t.Ss,{className:"order-avatar",style:{backgroundImage:"url(".concat(e.peerAvatar,")")}}):(0,x.jsx)(t.Ss,{className:"order-avatar order-avatar-placeholder",children:(0,x.jsx)(t.EY,{children:(e.peerName||"?")[0]})}),(0,x.jsxs)(t.Ss,{children:[(0,x.jsx)(t.EY,{className:"order-peer-name",children:e.peerName}),(0,x.jsx)(t.EY,{className:"order-role-tag",children:"student"===e.myRole?"\u6211\u662f\u5b66\u5458":"\u6211\u662f\u966a\u7ec3"})]})]}),(0,x.jsxs)(t.Ss,{style:{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:4},children:[(0,x.jsx)(t.EY,{style:{fontSize:12,color:C(e),fontWeight:600},children:I(e)}),e.orderNo&&(0,x.jsx)(t.EY,{className:"order-no-text",children:e.orderNo})]})]}),(0,x.jsxs)(t.Ss,{className:"order-body",children:[(0,x.jsxs)(t.Ss,{className:"order-info-row",children:[(0,x.jsx)(t.EY,{className:"order-info-label",children:"\u65e5\u671f"}),(0,x.jsx)(t.EY,{className:"order-info-value",children:e.playDate||"\u5f85\u5b9a"})]}),(0,x.jsxs)(t.Ss,{className:"order-info-row",children:[(0,x.jsx)(t.EY,{className:"order-info-label",children:"\u65f6\u95f4"}),(0,x.jsx)(t.EY,{className:"order-info-value",children:D(e.startHour,e.endHour)})]}),(0,x.jsxs)(t.Ss,{className:"order-info-row",children:[(0,x.jsx)(t.EY,{className:"order-info-label",children:"\u6765\u6e90"}),(0,x.jsx)(t.EY,{className:"order-info-value",children:e.sourceTitle})]})]}),e.checkIn&&(0,x.jsx)(t.Ss,{className:"order-checkin",children:(0,x.jsx)(t.EY,{className:"checkin-badge ".concat(e.checkIn.validCheckIn?"valid":"invalid"),children:e.checkIn.validCheckIn?"\u5df2\u6253\u5361":"\u65e0\u6548\u6253\u5361"})}),"completed"===e.orderStatus&&(0,x.jsx)(t.Ss,{className:"order-review-status",children:(0,x.jsx)(t.EY,{className:"review-tag",children:e.myReviewDone?"\u5df2\u8bc4\u4ef7":"\u5f85\u8bc4\u4ef7"})})]},e.id)})})]})}var v={navigationBarTitleText:"\u6211\u7684\u8ba2\u5355"},N=(0,a.eU)(j,"pages/orders/orders",{root:{cn:[]}},v||{});j&&j.behaviors&&(N.behaviors=(N.behaviors||[]).concat(j.behaviors));Page(N)}},function(e){var r=function(r){return e(e.s=r)};e.O(0,[907,96,76],function(){return r(4458)});e.O()}]);
+"use strict";
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/orders/orders"],{
+
+/***/ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/orders/orders!./src/pages/orders/orders.tsx":
+/*!********************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/orders/orders!./src/pages/orders/orders.tsx ***!
+  \********************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Orders; }
+/* harmony export */ });
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regenerator.js */ "./node_modules/@babel/runtime/helpers/esm/regenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/index.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_invitations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/invitations */ "./src/services/invitations.ts");
+/* harmony import */ var _stores_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../stores/user */ "./src/stores/user.ts");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Loading */ "./src/components/Loading.tsx");
+/* harmony import */ var _components_Empty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Empty */ "./src/components/Empty.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+
+
+
+
+
+
+
+
+
+
+var ORDER_TABS = [{
+  key: "all",
+  label: "全部"
+}, {
+  key: "pending",
+  label: "待确认"
+}, {
+  key: "in_progress",
+  label: "进行中"
+}, {
+  key: "completed",
+  label: "已完成"
+}];
+function Orders() {
+  var _useUserStore = (0,_stores_user__WEBPACK_IMPORTED_MODULE_3__.useUserStore)(),
+    user = _useUserStore.user;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState, 2),
+    orders = _useState2[0],
+    setOrders = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState4 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState3, 2),
+    loading = _useState4[0],
+    setLoading = _useState4[1];
+  // 从 URL 参数初始化 tab（profile "订单管理" 网格跳转携带 status）
+  var initialTab = function (_Taro$getCurrentInsta) {
+    var params = (_Taro$getCurrentInsta = _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().getCurrentInstance().router) === null || _Taro$getCurrentInsta === void 0 ? void 0 : _Taro$getCurrentInsta.params;
+    var s = params === null || params === void 0 ? void 0 : params.status;
+    return s && ORDER_TABS.some(function (t) {
+      return t.key === s;
+    }) ? s : "all";
+  }();
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialTab),
+    _useState6 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState5, 2),
+    tab = _useState6[0],
+    setTab = _useState6[1];
+  var fetchOrders = /*#__PURE__*/function () {
+    var _ref = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().m(function _callee() {
+      var res, _t;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            setLoading(true);
+            _context.p = 1;
+            _context.n = 2;
+            return _services_invitations__WEBPACK_IMPORTED_MODULE_2__.invitationsService.orders();
+          case 2:
+            res = _context.v;
+            if (res.ok) {
+              setOrders(res.items || []);
+            }
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error("获取订单失败:", _t);
+          case 4:
+            _context.p = 4;
+            setLoading(false);
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    }));
+    return function fetchOrders() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetchOrders();
+  }, []);
+  (0,_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__.useDidShow)(function () {
+    fetchOrders();
+  });
+  if (!user) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+      className: "page-orders",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Empty__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        text: "\u8BF7\u5148\u767B\u5F55"
+      })
+    });
+  }
+  var filtered = tab === "all" ? orders : tab === "pending" ? orders.filter(function (o) {
+    return o.orderStatus === null && o.status === "accepted";
+  }) : orders.filter(function (o) {
+    return o.orderStatus === tab;
+  });
+  var orderStatusLabel = function orderStatusLabel(o) {
+    if (o.orderStatus === "completed") return "已完成";
+    if (o.orderStatus === "closed") return "已关闭";
+    if (o.orderStatus === "in_progress") return "进行中";
+    if (o.orderStatus === null && o.status === "accepted") {
+      if (o.studentConfirmedAt && o.coachConfirmedAt) return "待练球";
+      return "待确认";
+    }
+    return o.status;
+  };
+  var orderStatusColor = function orderStatusColor(o) {
+    if (o.orderStatus === "completed") return "#52c41a";
+    if (o.orderStatus === "in_progress") return "#1677ff";
+    return "#faad14";
+  };
+  var formatTime = function formatTime(s, e) {
+    if (s == null || e == null) return "";
+    return "".concat(s, ":00-").concat(e, ":00");
+  };
+  var timeLabel = function timeLabel(slot) {
+    var map = {
+      morning: "上午",
+      afternoon: "下午",
+      evening: "晚上"
+    };
+    return map[slot] || "";
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+    className: "page-orders",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+      className: "tab-scroll",
+      children: ORDER_TABS.map(function (t) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+          className: "tab-chip ".concat(tab === t.key ? "active" : ""),
+          onClick: function onClick() {
+            return setTab(t.key);
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+            children: t.label
+          })
+        }, t.key);
+      })
+    }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Loading__WEBPACK_IMPORTED_MODULE_4__["default"], {}) : filtered.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Empty__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      text: "\u6682\u65E0\u8BA2\u5355"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.ScrollView, {
+      className: "list-scroll",
+      scrollY: true,
+      children: filtered.map(function (order) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+          className: "order-card",
+          onClick: function onClick() {
+            return _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().navigateTo({
+              url: "/pages/order-detail/order-detail?id=".concat(order.id)
+            });
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+            className: "order-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+              className: "order-user-info",
+              children: [order.peerAvatar ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+                className: "order-avatar",
+                style: {
+                  backgroundImage: "url(".concat(order.peerAvatar, ")")
+                }
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+                className: "order-avatar order-avatar-placeholder",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                  children: (order.peerName || "?")[0]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                  className: "order-peer-name",
+                  children: order.peerName
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                  className: "order-role-tag",
+                  children: order.myRole === "student" ? "我是学员" : "我是陪练"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+              style: {
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                gap: 4
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                style: {
+                  fontSize: 12,
+                  color: orderStatusColor(order),
+                  fontWeight: 600
+                },
+                children: orderStatusLabel(order)
+              }), order.orderNo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-no-text",
+                children: order.orderNo
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+            className: "order-body",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+              className: "order-info-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-info-label",
+                children: "\u65E5\u671F"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-info-value",
+                children: order.playDate || "待定"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+              className: "order-info-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-info-label",
+                children: "\u65F6\u95F4"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-info-value",
+                children: formatTime(order.startHour, order.endHour)
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+              className: "order-info-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-info-label",
+                children: "\u6765\u6E90"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+                className: "order-info-value",
+                children: order.sourceTitle
+              })]
+            })]
+          }), order.checkIn && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+            className: "order-checkin",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+              className: "checkin-badge ".concat(order.checkIn.validCheckIn ? "valid" : "invalid"),
+              children: order.checkIn.validCheckIn ? "已打卡" : "无效打卡"
+            })
+          }), order.orderStatus === "completed" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.View, {
+            className: "order-review-status",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_10__.Text, {
+              className: "review-tag",
+              children: order.myReviewDone ? "已评价" : "待评价"
+            })
+          })]
+        }, order.id);
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/pages/orders/orders.tsx":
+/*!*************************************!*\
+  !*** ./src/pages/orders/orders.tsx ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/dsl/common.js");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_orders_orders_orders_tsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!../../../node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/orders/orders!./orders.tsx */ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/orders/orders!./src/pages/orders/orders.tsx");
+
+
+var config = {"navigationBarTitleText":"我的订单"};
+
+
+
+var taroOption = (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.createPageConfig)(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_orders_orders_orders_tsx__WEBPACK_IMPORTED_MODULE_0__["default"], 'pages/orders/orders', {root:{cn:[]}}, config || {})
+if (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_orders_orders_orders_tsx__WEBPACK_IMPORTED_MODULE_0__["default"] && _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_orders_orders_orders_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors) {
+  taroOption.behaviors = (taroOption.behaviors || []).concat(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_orders_orders_orders_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors)
+}
+var inst = Page(taroOption)
+
+
+
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_orders_orders_orders_tsx__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+/******/ __webpack_require__.O(0, ["taro","vendors","common"], function() { return __webpack_exec__("./src/pages/orders/orders.tsx"); });
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=orders.js.map

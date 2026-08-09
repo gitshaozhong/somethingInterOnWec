@@ -1,1 +1,91 @@
-.page-feedback{background:var(--bg-color);min-height:100vh;padding-bottom:80rpx}.page-header{background:var(--white);border-bottom:2rpx solid var(--border-color);padding:32rpx}.page-title{color:var(--text-color);font-size:36rpx;font-weight:700}.feedback-card{background:var(--white);border-radius:var(--radius);box-shadow:0 2rpx 8rpx rgba(0,0,0,.06);margin:24rpx;padding:32rpx}.feedback-title{margin-bottom:24rpx}.title-text{color:var(--text-color);font-size:30rpx;font-weight:500;line-height:1.6}.cooldown-hint{color:var(--danger-color);display:block;font-size:24rpx;line-height:1.5;margin-top:12rpx}.feedback-textarea{background:var(--bg-color);border:2rpx solid var(--border-color);border-radius:16rpx;box-sizing:border-box;font-size:28rpx;height:320rpx;line-height:1.6;padding:24rpx;width:100%}.char-count{color:var(--text-color-hint);display:block;font-size:22rpx;margin-top:8rpx;text-align:right}.submit-area{padding:24rpx}.submit-btn{align-items:center;background:var(--primary-color);border:none;border-radius:44rpx;color:#fff;display:flex;font-size:32rpx;font-weight:600;height:88rpx;justify-content:center;width:100%}.empty{color:var(--text-color-hint);padding:160rpx 0;text-align:center}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[0].use[4]!./src/pages/feedback/feedback.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page-feedback {
+  min-height: 100vh;
+  background: var(--bg-color);
+  padding-bottom: 80rpx;
+}
+
+.page-header {
+  padding: 32rpx;
+  background: var(--white);
+  border-bottom: 2rpx solid var(--border-color);
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.feedback-card {
+  background: var(--white);
+  margin: 24rpx;
+  border-radius: var(--radius);
+  padding: 32rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.feedback-title {
+  margin-bottom: 24rpx;
+}
+
+.title-text {
+  font-size: 30rpx;
+  color: var(--text-color);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.cooldown-hint {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: var(--danger-color);
+  line-height: 1.5;
+}
+
+.feedback-textarea {
+  width: 100%;
+  height: 320rpx;
+  padding: 24rpx;
+  border: 2rpx solid var(--border-color);
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  background: var(--bg-color);
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 22rpx;
+  color: var(--text-color-hint);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.submit-area {
+  padding: 24rpx;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty {
+  text-align: center;
+  padding: 160rpx 0;
+  color: var(--text-color-hint);
+}

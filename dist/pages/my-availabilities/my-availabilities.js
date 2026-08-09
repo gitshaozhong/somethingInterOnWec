@@ -1,1 +1,534 @@
-"use strict";(wx["webpackJsonp"]=wx["webpackJsonp"]||[]).push([[938],{286:function(e,s,n){var a=n(8870),c=n(9379),l=n(1212),t=n(467),i=n(5544),r=n(118),o=n(6540),u=n(758),d=n.n(u),h=n(5363),m=n(3042),f=n(3146),x=n(6901),j=n(4848),N={morning:"\u4e0a\u5348",afternoon:"\u4e0b\u5348",evening:"\u665a\u4e0a"},v={open:{label:"\u8fdb\u884c\u4e2d",className:"status-open"},closed:{label:"\u5df2\u5173\u95ed",className:"status-closed"},expired:{label:"\u5df2\u8fc7\u671f",className:"status-expired"}},p={student:"\u5b66\u5458\u8ba2\u573a",coach:"\u966a\u7ec3\u8ba2\u573a",negotiate:"\u534f\u5546\u8ba2\u573a"};function b(e,s){return null==e||null==s?"\u65f6\u95f4\u5f85\u5b9a":"".concat(e,":00-").concat(s,":00")}function S(e,s){return null==e&&null==s?"\u4ef7\u683c\u9762\u8bae":null!=e&&null!=s?"".concat(e,"-").concat(s,"\u5143/\u65f6"):"".concat(null!==e&&void 0!==e?e:s,"\u5143/\u65f6")}function E(e,s){return null==e&&null==s?"\u9884\u7b97\u9762\u8bae":null!=e&&null!=s?"".concat(e,"-").concat(s,"\u5143/\u65f6"):"".concat(null!==e&&void 0!==e?e:s,"\u5143/\u65f6")}function Y(){var e=(0,o.useState)("student"),s=(0,i.A)(e,2),n=s[0],a=s[1],Y=(0,o.useState)([]),w=(0,i.A)(Y,2),g=w[0],A=w[1],k=(0,o.useState)([]),y=(0,i.A)(k,2),L=y[0],B=y[1],C=(0,o.useState)(!0),M=(0,i.A)(C,2),T=M[0],H=M[1],D=(0,o.useState)(null),I=(0,i.A)(D,2),J=I[0],O=I[1],P=function(){var e=(0,t.A)((0,l.A)().m(function e(){var s,n;return(0,l.A)().w(function(e){while(1)switch(e.p=e.n){case 0:return H(!0),e.p=1,e.n=2,m.I.mine();case 2:s=e.v,s.ok&&B(s.items||[]),e.n=4;break;case 3:e.p=3,n=e.v,console.error("\u83b7\u53d6\u6211\u7684\u9700\u6c42\u5931\u8d25:",n);case 4:return e.p=4,H(!1),e.f(4);case 5:return e.a(2)}},e,null,[[1,3,4,5]])}));return function(){return e.apply(this,arguments)}}(),U=function(){var e=(0,t.A)((0,l.A)().m(function e(){var s,n;return(0,l.A)().w(function(e){while(1)switch(e.p=e.n){case 0:return H(!0),e.p=1,e.n=2,h.h.mine();case 2:s=e.v,s.ok&&A(s.items||[]),e.n=4;break;case 3:e.p=3,n=e.v,console.error("\u83b7\u53d6\u6211\u7684\u6863\u671f\u5931\u8d25:",n);case 4:return e.p=4,H(!1),e.f(4);case 5:return e.a(2)}},e,null,[[1,3,4,5]])}));return function(){return e.apply(this,arguments)}}();(0,o.useEffect)(function(){"student"===n?P():U()},[n]),(0,u.useDidShow)(function(){"student"===n?P():U()});var q=function(e){e!==n&&a(e)},z=function(e){d().navigateTo({url:"student"===n?"/pages/demand-detail/demand-detail?id=".concat(e):"/pages/availability-detail/availability-detail?id=".concat(e)})},F=function(){var e=(0,t.A)((0,l.A)().m(function e(s,a){var t,i,r,o;return(0,l.A)().w(function(e){while(1)switch(e.p=e.n){case 0:return a.stopPropagation(),e.n=1,d().showModal({title:"student"===n?"\u5173\u95ed\u9700\u6c42":"\u4e0b\u67b6\u6863\u671f",content:"student"===n?"\u786e\u5b9a\u8981\u5173\u95ed\u8be5\u9700\u6c42\u5417\uff1f\u5173\u95ed\u540e\u966a\u7ec3\u5458\u5c06\u65e0\u6cd5\u770b\u5230\u3002":"\u786e\u5b9a\u8981\u4e0b\u67b6\u8be5\u6863\u671f\u5417\uff1f\u4e0b\u67b6\u540e\u5b66\u5458\u5c06\u65e0\u6cd5\u770b\u5230\u3002"});case 1:if(t=e.v,t.confirm){e.n=2;break}return e.a(2);case 2:if(O(s),e.p=3,"student"!==n){e.n=5;break}return e.n=4,m.I.close(s);case 4:r=e.v,e.n=7;break;case 5:return e.n=6,h.h.close(s);case 6:r=e.v;case 7:i=r,i.ok&&(d().showToast({title:"student"===n?"\u5df2\u5173\u95ed":"\u5df2\u4e0b\u67b6",icon:"success"}),"student"===n?B(function(e){return e.map(function(e){return e.id===s?(0,c.A)((0,c.A)({},e),{},{status:"closed"}):e})}):A(function(e){return e.map(function(e){return e.id===s?(0,c.A)((0,c.A)({},e),{},{status:"closed"}):e})})),e.n=9;break;case 8:e.p=8,o=e.v,d().showToast({title:(null===o||void 0===o?void 0:o.message)||"\u64cd\u4f5c\u5931\u8d25",icon:"none"});case 9:return e.p=9,O(null),e.f(9);case 10:return e.a(2)}},e,null,[[3,8,9,10]])}));return function(s,n){return e.apply(this,arguments)}}(),G=function(e){return e.tempLocation?e.tempLocation:e.venueId?"\u5df2\u9009\u7403\u9986":"\u5730\u70b9\u5f85\u5b9a"},K=function(e){return e.locationName?e.locationName:"\u5730\u70b9\u5f85\u5b9a"},Q=function(){return 0!==g.length||T?g.map(function(e){var s=v[e.status]||v.open;return(0,j.jsxs)(r.Ss,{className:"card",onClick:function(){return z(e.id)},children:[(0,j.jsxs)(r.Ss,{className:"card-header",children:[(0,j.jsx)(r.EY,{className:"card-date",children:e.playDate}),(0,j.jsx)(r.EY,{className:"status-badge ".concat(s.className),children:s.label})]}),(0,j.jsxs)(r.Ss,{className:"card-body",children:[(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u65f6\u6bb5"}),(0,j.jsxs)(r.EY,{className:"info-value",children:[N[e.timeSlot]||e.timeSlot," ",b(e.startHour,e.endHour)]})]}),(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u7403\u9986"}),(0,j.jsx)(r.EY,{className:"info-value",children:G(e)})]}),(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u8ba2\u573a"}),(0,j.jsx)(r.EY,{className:"info-value",children:p[e.courtBookedBy]||"\u534f\u5546\u8ba2\u573a"})]}),(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u4ef7\u4f4d"}),(0,j.jsx)(r.EY,{className:"info-value price-value",children:S(e.priceMin,e.priceMax)})]}),e.note&&(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u5907\u6ce8"}),(0,j.jsx)(r.EY,{className:"info-value note-text",children:e.note})]})]}),"open"===e.status&&(0,j.jsx)(r.Ss,{className:"card-footer",children:(0,j.jsx)(r.Ss,{className:"close-btn ".concat(J===e.id?"loading":""),onClick:function(s){return F(e.id,s)},children:(0,j.jsx)(r.EY,{children:J===e.id?"\u5904\u7406\u4e2d...":"\u4e0b\u67b6"})})})]},e.id)}):(0,j.jsx)(x.A,{text:"\u6682\u65e0\u966a\u7ec3\u6863\u671f\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427"})},R=function(){return 0!==L.length||T?L.map(function(e){var s=v[e.status]||v.open;return(0,j.jsxs)(r.Ss,{className:"card",onClick:function(){return z(e.id)},children:[(0,j.jsxs)(r.Ss,{className:"card-header",children:[(0,j.jsx)(r.EY,{className:"card-date",children:e.playDate}),(0,j.jsx)(r.EY,{className:"status-badge ".concat(s.className),children:s.label})]}),(0,j.jsxs)(r.Ss,{className:"card-body",children:[(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u65f6\u6bb5"}),(0,j.jsxs)(r.EY,{className:"info-value",children:[N[e.timeSlot]||e.timeSlot," ",b(e.startHour,e.endHour)]})]}),(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u5730\u70b9"}),(0,j.jsx)(r.EY,{className:"info-value",children:K(e)})]}),null!=e.expectedLevel&&(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u671f\u671b"}),(0,j.jsxs)(r.EY,{className:"info-value",children:["Lv.",e.expectedLevel,"+ \u966a\u7ec3"]})]}),null!=e.studentLevel&&(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u81ea\u8eab"}),(0,j.jsxs)(r.EY,{className:"info-value",children:["Lv.",e.studentLevel]})]}),(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u8ba2\u573a"}),(0,j.jsx)(r.EY,{className:"info-value",children:p[e.courtBookedBy]||"\u534f\u5546\u8ba2\u573a"})]}),(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u9884\u7b97"}),(0,j.jsx)(r.EY,{className:"info-value price-value",children:E(e.budgetMin,e.budgetMax)})]}),e.note&&(0,j.jsxs)(r.Ss,{className:"info-row",children:[(0,j.jsx)(r.EY,{className:"info-label",children:"\u5907\u6ce8"}),(0,j.jsx)(r.EY,{className:"info-value note-text",children:e.note})]})]}),"open"===e.status&&(0,j.jsx)(r.Ss,{className:"card-footer",children:(0,j.jsx)(r.Ss,{className:"close-btn ".concat(J===e.id?"loading":""),onClick:function(s){return F(e.id,s)},children:(0,j.jsx)(r.EY,{children:J===e.id?"\u5904\u7406\u4e2d...":"\u5173\u95ed\u9700\u6c42"})})})]},e.id)}):(0,j.jsx)(x.A,{text:"\u6682\u65e0\u5b66\u5458\u9700\u6c42\uff0c\u53bb\u53d1\u5e03\u4e00\u4e2a\u5427"})},V="student"===n?L.length:g.length;return(0,j.jsxs)(r.Ss,{className:"page-my-availabilities",children:[(0,j.jsx)(r.Ss,{className:"page-header",children:(0,j.jsx)(r.EY,{className:"page-title",children:"\u6211\u7684\u53d1\u5e03"})}),(0,j.jsxs)(r.Ss,{className:"post-tab-bar",children:[(0,j.jsx)(r.Ss,{className:"post-tab-item ".concat("student"===n?"active":""),onClick:function(){return q("student")},children:(0,j.jsx)(r.EY,{children:"\u5b66\u5458\u9700\u6c42"})}),(0,j.jsx)(r.Ss,{className:"post-tab-item ".concat("coach"===n?"active":""),onClick:function(){return q("coach")},children:(0,j.jsx)(r.EY,{children:"\u966a\u7ec3\u6863\u671f"})})]}),T?(0,j.jsx)(f.A,{}):(0,j.jsxs)(r.BM,{className:"list-scroll",scrollY:!0,children:["student"===n?R():Q(),V>0&&(0,j.jsx)(r.Ss,{className:"list-bottom",children:(0,j.jsxs)(r.EY,{children:["\u5171",V,"\u6761","student"===n?"\u9700\u6c42":"\u6863\u671f"]})})]})]})}var w={navigationBarTitleText:"\u6211\u7684\u6863\u671f"},g=(0,a.eU)(Y,"pages/my-availabilities/my-availabilities",{root:{cn:[]}},w||{});Y&&Y.behaviors&&(g.behaviors=(g.behaviors||[]).concat(Y.behaviors));Page(g)}},function(e){var s=function(s){return e(e.s=s)};e.O(0,[907,96,76],function(){return s(286)});e.O()}]);
+"use strict";
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/my-availabilities/my-availabilities"],{
+
+/***/ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/my-availabilities/my-availabilities!./src/pages/my-availabilities/my-availabilities.tsx":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/my-availabilities/my-availabilities!./src/pages/my-availabilities/my-availabilities.tsx ***!
+  \****************************************************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ MyAvailabilities; }
+/* harmony export */ });
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regenerator.js */ "./node_modules/@babel/runtime/helpers/esm/regenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/index.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _services_availabilities__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/availabilities */ "./src/services/availabilities.ts");
+/* harmony import */ var _services_demands__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/demands */ "./src/services/demands.ts");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Loading */ "./src/components/Loading.tsx");
+/* harmony import */ var _components_Empty__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Empty */ "./src/components/Empty.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+var TIME_SLOT_LABEL = {
+  morning: "上午",
+  afternoon: "下午",
+  evening: "晚上"
+};
+var STATUS_MAP = {
+  open: {
+    label: "进行中",
+    className: "status-open"
+  },
+  closed: {
+    label: "已关闭",
+    className: "status-closed"
+  },
+  expired: {
+    label: "已过期",
+    className: "status-expired"
+  }
+};
+var COURT_LABEL = {
+  student: "学员订场",
+  coach: "陪练订场",
+  negotiate: "协商订场"
+};
+function formatTime(start, end) {
+  if (start == null || end == null) return "时间待定";
+  return "".concat(start, ":00-").concat(end, ":00");
+}
+function formatPrice(min, max) {
+  if (min == null && max == null) return "价格面议";
+  if (min != null && max != null) return "".concat(min, "-").concat(max, "\u5143/\u65F6");
+  return "".concat(min !== null && min !== void 0 ? min : max, "\u5143/\u65F6");
+}
+function formatBudget(min, max) {
+  if (min == null && max == null) return "预算面议";
+  if (min != null && max != null) return "".concat(min, "-").concat(max, "\u5143/\u65F6");
+  return "".concat(min !== null && min !== void 0 ? min : max, "\u5143/\u65F6");
+}
+function MyAvailabilities() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("student"),
+    _useState2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState, 2),
+    activeTab = _useState2[0],
+    setActiveTab = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState4 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState3, 2),
+    coachList = _useState4[0],
+    setCoachList = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState6 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState5, 2),
+    studentList = _useState6[0],
+    setStudentList = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState8 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState7, 2),
+    loading = _useState8[0],
+    setLoading = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState0 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_7__["default"])(_useState9, 2),
+    operatingId = _useState0[0],
+    setOperatingId = _useState0[1];
+  var fetchStudentList = /*#__PURE__*/function () {
+    var _ref = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().m(function _callee() {
+      var res, _t;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            setLoading(true);
+            _context.p = 1;
+            _context.n = 2;
+            return _services_demands__WEBPACK_IMPORTED_MODULE_3__.demandsService.mine();
+          case 2:
+            res = _context.v;
+            if (res.ok) {
+              setStudentList(res.items || []);
+            }
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error("获取我的需求失败:", _t);
+          case 4:
+            _context.p = 4;
+            setLoading(false);
+            return _context.f(4);
+          case 5:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3, 4, 5]]);
+    }));
+    return function fetchStudentList() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  var fetchCoachList = /*#__PURE__*/function () {
+    var _ref2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().m(function _callee2() {
+      var res, _t2;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            setLoading(true);
+            _context2.p = 1;
+            _context2.n = 2;
+            return _services_availabilities__WEBPACK_IMPORTED_MODULE_2__.availabilitiesService.mine();
+          case 2:
+            res = _context2.v;
+            if (res.ok) {
+              setCoachList(res.items || []);
+            }
+            _context2.n = 4;
+            break;
+          case 3:
+            _context2.p = 3;
+            _t2 = _context2.v;
+            console.error("获取我的档期失败:", _t2);
+          case 4:
+            _context2.p = 4;
+            setLoading(false);
+            return _context2.f(4);
+          case 5:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[1, 3, 4, 5]]);
+    }));
+    return function fetchCoachList() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (activeTab === "student") fetchStudentList();else fetchCoachList();
+  }, [activeTab]);
+  (0,_tarojs_taro__WEBPACK_IMPORTED_MODULE_1__.useDidShow)(function () {
+    if (activeTab === "student") fetchStudentList();else fetchCoachList();
+  });
+  var switchTab = function switchTab(tab) {
+    if (tab === activeTab) return;
+    setActiveTab(tab);
+  };
+  var goDetail = function goDetail(id) {
+    _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().navigateTo({
+      url: activeTab === "student" ? "/pages/demand-detail/demand-detail?id=".concat(id) : "/pages/availability-detail/availability-detail?id=".concat(id)
+    });
+  };
+  var handleClose = /*#__PURE__*/function () {
+    var _ref3 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().m(function _callee3(id, e) {
+      var res, result, _t3, _t4;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_9__["default"])().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            e.stopPropagation();
+            _context3.n = 1;
+            return _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showModal({
+              title: activeTab === "student" ? "关闭需求" : "下架档期",
+              content: activeTab === "student" ? "确定要关闭该需求吗？关闭后陪练员将无法看到。" : "确定要下架该档期吗？下架后学员将无法看到。"
+            });
+          case 1:
+            res = _context3.v;
+            if (res.confirm) {
+              _context3.n = 2;
+              break;
+            }
+            return _context3.a(2);
+          case 2:
+            setOperatingId(id);
+            _context3.p = 3;
+            if (!(activeTab === "student")) {
+              _context3.n = 5;
+              break;
+            }
+            _context3.n = 4;
+            return _services_demands__WEBPACK_IMPORTED_MODULE_3__.demandsService.close(id);
+          case 4:
+            _t3 = _context3.v;
+            _context3.n = 7;
+            break;
+          case 5:
+            _context3.n = 6;
+            return _services_availabilities__WEBPACK_IMPORTED_MODULE_2__.availabilitiesService.close(id);
+          case 6:
+            _t3 = _context3.v;
+          case 7:
+            result = _t3;
+            if (result.ok) {
+              _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+                title: activeTab === "student" ? "已关闭" : "已下架",
+                icon: "success"
+              });
+              if (activeTab === "student") {
+                setStudentList(function (prev) {
+                  return prev.map(function (it) {
+                    return it.id === id ? (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_10__["default"])((0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_10__["default"])({}, it), {}, {
+                      status: "closed"
+                    }) : it;
+                  });
+                });
+              } else {
+                setCoachList(function (prev) {
+                  return prev.map(function (it) {
+                    return it.id === id ? (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_10__["default"])((0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_10__["default"])({}, it), {}, {
+                      status: "closed"
+                    }) : it;
+                  });
+                });
+              }
+            }
+            _context3.n = 9;
+            break;
+          case 8:
+            _context3.p = 8;
+            _t4 = _context3.v;
+            _tarojs_taro__WEBPACK_IMPORTED_MODULE_1___default().showToast({
+              title: (_t4 === null || _t4 === void 0 ? void 0 : _t4.message) || "操作失败",
+              icon: "none"
+            });
+          case 9:
+            _context3.p = 9;
+            setOperatingId(null);
+            return _context3.f(9);
+          case 10:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[3, 8, 9, 10]]);
+    }));
+    return function handleClose(_x, _x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+  var renderCoachLocation = function renderCoachLocation(item) {
+    if (item.tempLocation) return item.tempLocation;
+    if (item.venueId) return "已选球馆";
+    return "地点待定";
+  };
+  var renderStudentLocation = function renderStudentLocation(item) {
+    if (item.locationName) return item.locationName;
+    return "地点待定";
+  };
+  var renderCoachList = function renderCoachList() {
+    return coachList.length === 0 && !loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Empty__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      text: "\u6682\u65E0\u966A\u7EC3\u6863\u671F\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427"
+    }) : coachList.map(function (item) {
+      var statusCfg = STATUS_MAP[item.status] || STATUS_MAP.open;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "card",
+        onClick: function onClick() {
+          return goDetail(item.id);
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "card-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "card-date",
+            children: item.playDate
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "status-badge ".concat(statusCfg.className),
+            children: statusCfg.label
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "card-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u65F6\u6BB5"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: [TIME_SLOT_LABEL[item.timeSlot] || item.timeSlot, " ", formatTime(item.startHour, item.endHour)]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u7403\u9986"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: renderCoachLocation(item)
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u8BA2\u573A"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: COURT_LABEL[item.courtBookedBy] || "协商订场"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u4EF7\u4F4D"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value price-value",
+              children: formatPrice(item.priceMin, item.priceMax)
+            })]
+          }), item.note && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u5907\u6CE8"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value note-text",
+              children: item.note
+            })]
+          })]
+        }), item.status === "open" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "card-footer",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "close-btn ".concat(operatingId === item.id ? "loading" : ""),
+            onClick: function onClick(e) {
+              return handleClose(item.id, e);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              children: operatingId === item.id ? "处理中..." : "下架"
+            })
+          })
+        })]
+      }, item.id);
+    });
+  };
+  var renderStudentList = function renderStudentList() {
+    return studentList.length === 0 && !loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Empty__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      text: "\u6682\u65E0\u5B66\u5458\u9700\u6C42\uFF0C\u53BB\u53D1\u5E03\u4E00\u4E2A\u5427"
+    }) : studentList.map(function (item) {
+      var statusCfg = STATUS_MAP[item.status] || STATUS_MAP.open;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "card",
+        onClick: function onClick() {
+          return goDetail(item.id);
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "card-header",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "card-date",
+            children: item.playDate
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+            className: "status-badge ".concat(statusCfg.className),
+            children: statusCfg.label
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "card-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u65F6\u6BB5"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: [TIME_SLOT_LABEL[item.timeSlot] || item.timeSlot, " ", formatTime(item.startHour, item.endHour)]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u5730\u70B9"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: renderStudentLocation(item)
+            })]
+          }), item.expectedLevel != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u671F\u671B"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: ["Lv.", item.expectedLevel, "+ \u966A\u7EC3"]
+            })]
+          }), item.studentLevel != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u81EA\u8EAB"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: ["Lv.", item.studentLevel]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u8BA2\u573A"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value",
+              children: COURT_LABEL[item.courtBookedBy] || "协商订场"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u9884\u7B97"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value price-value",
+              children: formatBudget(item.budgetMin, item.budgetMax)
+            })]
+          }), item.note && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "info-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-label",
+              children: "\u5907\u6CE8"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              className: "info-value note-text",
+              children: item.note
+            })]
+          })]
+        }), item.status === "open" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+          className: "card-footer",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+            className: "close-btn ".concat(operatingId === item.id ? "loading" : ""),
+            onClick: function onClick(e) {
+              return handleClose(item.id, e);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+              children: operatingId === item.id ? "处理中..." : "关闭需求"
+            })
+          })
+        })]
+      }, item.id);
+    });
+  };
+  var totalCount = activeTab === "student" ? studentList.length : coachList.length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+    className: "page-my-availabilities",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "page-header",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+        className: "page-title",
+        children: "\u6211\u7684\u53D1\u5E03"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+      className: "post-tab-bar",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "post-tab-item ".concat(activeTab === "student" ? "active" : ""),
+        onClick: function onClick() {
+          return switchTab("student");
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          children: "\u5B66\u5458\u9700\u6C42"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "post-tab-item ".concat(activeTab === "coach" ? "active" : ""),
+        onClick: function onClick() {
+          return switchTab("coach");
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          children: "\u966A\u7EC3\u6863\u671F"
+        })
+      })]
+    }), loading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_Loading__WEBPACK_IMPORTED_MODULE_4__["default"], {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.ScrollView, {
+      className: "list-scroll",
+      scrollY: true,
+      children: [activeTab === "student" ? renderStudentList() : renderCoachList(), totalCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.View, {
+        className: "list-bottom",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_11__.Text, {
+          children: ["\u5171", totalCount, "\u6761", activeTab === "student" ? "需求" : "档期"]
+        })
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/pages/my-availabilities/my-availabilities.tsx":
+/*!***********************************************************!*\
+  !*** ./src/pages/my-availabilities/my-availabilities.tsx ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/dsl/common.js");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_my_availabilities_my_availabilities_my_availabilities_tsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!../../../node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/my-availabilities/my-availabilities!./my-availabilities.tsx */ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/my-availabilities/my-availabilities!./src/pages/my-availabilities/my-availabilities.tsx");
+
+
+var config = {"navigationBarTitleText":"我的档期"};
+
+
+
+var taroOption = (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.createPageConfig)(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_my_availabilities_my_availabilities_my_availabilities_tsx__WEBPACK_IMPORTED_MODULE_0__["default"], 'pages/my-availabilities/my-availabilities', {root:{cn:[]}}, config || {})
+if (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_my_availabilities_my_availabilities_my_availabilities_tsx__WEBPACK_IMPORTED_MODULE_0__["default"] && _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_my_availabilities_my_availabilities_my_availabilities_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors) {
+  taroOption.behaviors = (taroOption.behaviors || []).concat(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_my_availabilities_my_availabilities_my_availabilities_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors)
+}
+var inst = Page(taroOption)
+
+
+
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_my_availabilities_my_availabilities_my_availabilities_tsx__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+/******/ __webpack_require__.O(0, ["taro","vendors","common"], function() { return __webpack_exec__("./src/pages/my-availabilities/my-availabilities.tsx"); });
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=my-availabilities.js.map

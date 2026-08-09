@@ -1,1 +1,419 @@
-"use strict";(wx["webpackJsonp"]=wx["webpackJsonp"]||[]).push([[198],{5694:function(e,s,a){var n=a(8870),l=a(1212),r=a(467),i=a(5544),c=a(118),t=a(758),o=a.n(t),d=a(6540),u=a(197),m=a(2122),h=a(9567),v=a(4848);function x(){var e=(0,u.k)(),s=e.user,a=e.logout,n=(0,d.useState)(null),x=(0,i.A)(n,2),j=x[0],g=x[1];(0,t.useDidShow)(function(){N()});var N=function(){var e=(0,r.A)((0,l.A)().m(function e(){var a,n;return(0,l.A)().w(function(e){while(1)switch(e.p=e.n){case 0:if(s){e.n=1;break}return e.a(2);case 1:return e.p=1,e.n=2,m.y.getProfile();case 2:a=e.v,a.ok&&a.user&&g(a.user),e.n=4;break;case 3:e.p=3,n=e.v,console.error("\u83b7\u53d6\u8d44\u6599\u5931\u8d25:",n);case 4:return e.a(2)}},e,null,[[1,3]])}));return function(){return e.apply(this,arguments)}}();if(!s)return(0,v.jsxs)(c.Ss,{className:"page-profile-loggedout",children:[(0,v.jsx)(h.A,{title:"\u6211\u7684"}),(0,v.jsxs)(c.Ss,{className:"login-empty",children:[(0,v.jsx)(c.Ss,{className:"login-empty-icon",children:"\ud83c\udff8"}),(0,v.jsx)(c.EY,{className:"login-empty-text",children:"\u767b\u5f55\u540e\u4f53\u9a8c\u5168\u90e8\u529f\u80fd"}),(0,v.jsx)(c.$n,{className:"login-btn",onClick:function(){return o().navigateTo({url:"/pages/login/login"})},children:"\u5fae\u4fe1\u4e00\u952e\u767b\u5f55"})]})]});var p=function(){var e=null===j||void 0===j?void 0:j.studentProfile;if(!e)return{done:!1,label:"\u672a\u5f00\u901a"};var s=[!(null===j||void 0===j||!j.avatarVirtual),!(null===j||void 0===j||!j.avatarReal),"verified"===(null===j||void 0===j?void 0:j.studentAvatarStatus),!(null===j||void 0===j||!j.name),!(null===j||void 0===j||!j.phone)&&/^1[3-9]\d{9}$/.test(j.phone),!!e.realName,!!e.idNumber,e.level>0],a=s.every(Boolean);return{done:a,label:a?"\u5df2\u5f00\u901a":"\u672a\u5b8c\u5584"}}(),f=function(e,s){var a=null===j||void 0===j?void 0:j.coachProfile;if(!a)return{done:!1,label:"\u672a\u5f00\u901a"};var n=[!(null===j||void 0===j||!j.avatarVirtual),!(null===j||void 0===j||!j.avatarReal),"verified"===(null===j||void 0===j?void 0:j.coachAvatarStatus),!(null===j||void 0===j||!j.name),!(null===j||void 0===j||!j.phone)&&/^1[3-9]\d{9}$/.test(j.phone),!!a.realName,!!a.bio,!!a.teachingInfo,!!a.city,(null!==(e=null===(s=a.frequentAreas)||void 0===s?void 0:s.length)&&void 0!==e?e:0)>0,a.level>0],l=n.every(Boolean);return{done:l,label:l?"\u5df2\u5f00\u901a":"\u672a\u5b8c\u5584"}}(),b=[{icon:"\ud83d\udccb",text:"\u5168\u90e8",status:void 0},{icon:"\u23f3",text:"\u8fdb\u884c\u4e2d",status:"pending"},{icon:"\u2705",text:"\u5df2\u5b8c\u6210",status:"completed"},{icon:"\u274c",text:"\u5df2\u53d6\u6d88",status:"cancelled"}],S=[{label:"\u6211\u7684\u5b66\u5458\u8eab\u4efd",icon:"\ud83c\udff8",status:p.label,statusDone:p.done,url:"/pages/profile-edit/profile-edit?tab=student",gradient:"orange"},{label:"\u6211\u7684\u966a\u7ec3\u5458\u8eab\u4efd",icon:"\ud83c\udfaf",status:f.label,statusDone:f.done,url:"/pages/profile-edit/profile-edit?tab=coach",gradient:"green"}],w=[{label:"\u6211\u7684\u53d1\u5e03",icon:"\ud83d\udce2",url:"/pages/my-availabilities/my-availabilities"},{label:"\u6211\u7684\u8ba2\u5355",icon:"\ud83d\udccb",url:"/pages/orders/orders"},{label:"\u6211\u7684\u5173\u6ce8",icon:"\u2b50",url:"/pages/following/following"},{label:"\u610f\u89c1\u53cd\u9988",icon:"\ud83d\udcac",url:"/pages/feedback/feedback"}];return(0,v.jsxs)(c.Ss,{className:"page-profile",children:[(0,v.jsx)(h.A,{title:"\u6211\u7684"}),(0,v.jsxs)(c.Ss,{className:"header",children:[(0,v.jsxs)(c.Ss,{className:"user-info",onClick:function(){return o().navigateTo({url:"/pages/profile-edit/profile-edit?tab=student"})},children:[(0,v.jsx)(c.Ss,{className:"avatar",children:s.avatarUrl?(0,v.jsx)(c._V,{src:s.avatarUrl,className:"avatar-img",mode:"aspectFill"}):(0,v.jsx)(c.Ss,{className:"avatar-placeholder",children:(0,v.jsx)(c.EY,{children:(s.nickname||"\u7528")[0]})})}),(0,v.jsxs)(c.Ss,{className:"user-details",children:[(0,v.jsx)(c.EY,{className:"nickname",children:s.nickname||"\u7528\u6237"}),(0,v.jsx)(c.EY,{className:"phone",children:null!==j&&void 0!==j&&j.phone?"ID\uff1a".concat(j.phone):"\u672a\u7ed1\u5b9a\u624b\u673a\u53f7"})]}),(0,v.jsx)(c.Ss,{className:"setting-btn",children:(0,v.jsx)(c.EY,{className:"setting-arrow",children:"\u203a"})})]}),(0,v.jsxs)(c.Ss,{className:"balance-cards",children:[(0,v.jsx)(c.Ss,{className:"balance-card orange",onClick:function(){return o().navigateTo({url:"/pages/orders/orders?role=student"})},children:(0,v.jsxs)(c.Ss,{className:"card-content",children:[(0,v.jsx)(c.EY,{className:"amount",children:p.done?"\u5b66\u5458":"\u672a\u5f00\u901a"}),(0,v.jsx)(c.EY,{className:"label",children:"\u5b66\u5458\u8eab\u4efd"}),(0,v.jsx)(c.Ss,{className:"view-btn",children:(0,v.jsx)(c.EY,{className:"view-arrow",children:"\u203a"})})]})}),(0,v.jsx)(c.Ss,{className:"balance-card green",onClick:function(){return o().navigateTo({url:"/pages/orders/orders?role=coach"})},children:(0,v.jsxs)(c.Ss,{className:"card-content",children:[(0,v.jsx)(c.EY,{className:"amount",children:f.done?"\u966a\u7ec3":"\u672a\u5f00\u901a"}),(0,v.jsx)(c.EY,{className:"label",children:"\u966a\u7ec3\u8eab\u4efd"}),(0,v.jsx)(c.Ss,{className:"view-btn",children:(0,v.jsx)(c.EY,{className:"view-arrow",children:"\u203a"})})]})})]})]}),(0,v.jsxs)(c.Ss,{className:"order-section",children:[(0,v.jsx)(c.Ss,{className:"section-title",children:"\u8ba2\u5355\u7ba1\u7406"}),(0,v.jsx)(c.Ss,{className:"order-grid",children:b.map(function(e){return(0,v.jsxs)(c.Ss,{className:"order-item",onClick:function(){return o().navigateTo({url:"/pages/orders/orders".concat(e.status?"?status=".concat(e.status):"")})},children:[(0,v.jsx)(c.Ss,{className:"order-icon",children:(0,v.jsx)(c.EY,{className:"order-emoji",children:e.icon})}),(0,v.jsx)(c.EY,{className:"order-text",children:e.text})]},e.text)})})]}),(0,v.jsx)(c.Ss,{className:"menu-section",children:S.map(function(e,s){return(0,v.jsxs)(c.Ss,{children:[(0,v.jsxs)(c.Ss,{className:"menu-item",onClick:function(){return o().navigateTo({url:e.url})},children:[(0,v.jsx)(c.Ss,{className:"menu-icon-wrap ".concat(e.gradient),children:(0,v.jsx)(c.EY,{className:"menu-icon",children:e.icon})}),(0,v.jsx)(c.EY,{className:"menu-label",children:e.label}),(0,v.jsx)(c.EY,{className:"menu-status ".concat(e.statusDone?"done":"pending"),children:e.status}),(0,v.jsx)(c.EY,{className:"menu-arrow",children:"\u203a"})]}),s<S.length-1&&(0,v.jsx)(c.Ss,{className:"menu-divider"})]},e.label)})}),(0,v.jsx)(c.Ss,{className:"menu-section",children:w.map(function(e,s){return(0,v.jsxs)(c.Ss,{children:[(0,v.jsxs)(c.Ss,{className:"menu-item",onClick:function(){return o().navigateTo({url:e.url})},children:[(0,v.jsx)(c.Ss,{className:"menu-icon-wrap gray",children:(0,v.jsx)(c.EY,{className:"menu-icon",children:e.icon})}),(0,v.jsx)(c.EY,{className:"menu-label",children:e.label}),(0,v.jsx)(c.EY,{className:"menu-arrow",children:"\u203a"})]}),s<w.length-1&&(0,v.jsx)(c.Ss,{className:"menu-divider"})]},e.label)})}),(0,v.jsx)(c.Ss,{className:"logout-section",children:(0,v.jsx)(c.$n,{className:"logout-btn",onClick:a,children:"\u9000\u51fa\u767b\u5f55"})})]})}var j={navigationBarTitleText:"\u6211\u7684",navigationStyle:"custom"},g=(0,n.eU)(x,"pages/profile/profile",{root:{cn:[]}},j||{});x&&x.behaviors&&(g.behaviors=(g.behaviors||[]).concat(x.behaviors));Page(g)}},function(e){var s=function(s){return e(e.s=s)};e.O(0,[907,96,76],function(){return s(5694)});e.O()}]);
+"use strict";
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/profile/profile"],{
+
+/***/ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/profile/profile!./src/pages/profile/profile.tsx":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/profile/profile!./src/pages/profile/profile.tsx ***!
+  \************************************************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ Profile; }
+/* harmony export */ });
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regenerator.js */ "./node_modules/@babel/runtime/helpers/esm/regenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _tarojs_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @tarojs/components */ "./node_modules/@tarojs/plugin-platform-weapp/dist/components-react.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/index.js");
+/* harmony import */ var _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tarojs_taro__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _stores_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../stores/user */ "./src/stores/user.ts");
+/* harmony import */ var _services_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth */ "./src/services/auth.ts");
+/* harmony import */ var _components_CustomNav_CustomNav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/CustomNav/CustomNav */ "./src/components/CustomNav/CustomNav.tsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/cjs/react-jsx-runtime.production.min.js");
+
+
+
+
+
+
+
+
+
+
+
+function Profile() {
+  var _useUserStore = (0,_stores_user__WEBPACK_IMPORTED_MODULE_2__.useUserStore)(),
+    user = _useUserStore.user,
+    logout = _useUserStore.logout;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+    _useState2 = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_slicedToArray_js__WEBPACK_IMPORTED_MODULE_6__["default"])(_useState, 2),
+    profile = _useState2[0],
+    setProfile = _useState2[1];
+  (0,_tarojs_taro__WEBPACK_IMPORTED_MODULE_0__.useDidShow)(function () {
+    fetchProfile();
+  });
+  var fetchProfile = /*#__PURE__*/function () {
+    var _ref = (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_7__["default"])(/*#__PURE__*/(0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_8__["default"])().m(function _callee() {
+      var res, _t;
+      return (0,E_000Project_trae_project_2026_20260713_badminton_wechatMiniApp_miniapp_node_modules_babel_runtime_helpers_esm_regenerator_js__WEBPACK_IMPORTED_MODULE_8__["default"])().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            if (user) {
+              _context.n = 1;
+              break;
+            }
+            return _context.a(2);
+          case 1:
+            _context.p = 1;
+            _context.n = 2;
+            return _services_auth__WEBPACK_IMPORTED_MODULE_3__.authService.getProfile();
+          case 2:
+            res = _context.v;
+            if (res.ok && res.user) {
+              setProfile(res.user);
+            }
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error("获取资料失败:", _t);
+          case 4:
+            return _context.a(2);
+        }
+      }, _callee, null, [[1, 3]]);
+    }));
+    return function fetchProfile() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+  if (!user) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+      className: "page-profile-loggedout",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_CustomNav_CustomNav__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        title: "\u6211\u7684"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+        className: "login-empty",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          className: "login-empty-icon",
+          children: "\uD83C\uDFF8"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+          className: "login-empty-text",
+          children: "\u767B\u5F55\u540E\u4F53\u9A8C\u5168\u90E8\u529F\u80FD"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Button, {
+          className: "login-btn",
+          onClick: function onClick() {
+            return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+              url: "/pages/login/login"
+            });
+          },
+          children: "\u5FAE\u4FE1\u4E00\u952E\u767B\u5F55"
+        })]
+      })]
+    });
+  }
+
+  // 学员身份状态
+  var studentStatus = function () {
+    var sp = profile === null || profile === void 0 ? void 0 : profile.studentProfile;
+    if (!sp) return {
+      done: false,
+      label: "未开通"
+    };
+    var required = [!!(profile !== null && profile !== void 0 && profile.avatarVirtual), !!(profile !== null && profile !== void 0 && profile.avatarReal),
+    // 真人头像必须审核通过才能开通
+    (profile === null || profile === void 0 ? void 0 : profile.studentAvatarStatus) === "verified", !!(profile !== null && profile !== void 0 && profile.name), !!(profile !== null && profile !== void 0 && profile.phone) && /^1[3-9]\d{9}$/.test(profile.phone), !!sp.realName, !!sp.idNumber, sp.level > 0];
+    var allDone = required.every(Boolean);
+    return {
+      done: allDone,
+      label: allDone ? "已开通" : "未完善"
+    };
+  }();
+
+  // 陪练身份状态
+  var coachStatus = function () {
+    var cp = profile === null || profile === void 0 ? void 0 : profile.coachProfile;
+    if (!cp) return {
+      done: false,
+      label: "未开通"
+    };
+    var required = [!!(profile !== null && profile !== void 0 && profile.avatarVirtual), !!(profile !== null && profile !== void 0 && profile.avatarReal),
+    // 真人头像必须审核通过才能开通
+    (profile === null || profile === void 0 ? void 0 : profile.coachAvatarStatus) === "verified", !!(profile !== null && profile !== void 0 && profile.name), !!(profile !== null && profile !== void 0 && profile.phone) && /^1[3-9]\d{9}$/.test(profile.phone), !!cp.realName, !!cp.bio, !!cp.teachingInfo, !!cp.city, cp.level > 0];
+    var allDone = required.every(Boolean);
+    return {
+      done: allDone,
+      label: allDone ? "已开通" : "未完善"
+    };
+  }();
+
+  // 订单网格入口（无"已取消"：待确认订单若未撮合成功，系统自动从订单记录中移除）
+  var orderEntries = [{
+    icon: "📋",
+    text: "全部",
+    status: undefined
+  }, {
+    icon: "⏳",
+    text: "待确认",
+    status: "pending"
+  }, {
+    icon: "📊",
+    text: "进行中",
+    status: "in_progress"
+  }, {
+    icon: "✅",
+    text: "已完成",
+    status: "completed"
+  }];
+
+  // 身份菜单
+  var identityMenu = [{
+    label: "我的学员身份",
+    icon: "🏸",
+    status: studentStatus.label,
+    statusDone: studentStatus.done,
+    url: "/pages/profile-edit/profile-edit?tab=student",
+    gradient: "orange"
+  }, {
+    label: "我的陪练员身份",
+    icon: "🎯",
+    status: coachStatus.label,
+    statusDone: coachStatus.done,
+    url: "/pages/profile-edit/profile-edit?tab=coach",
+    gradient: "green"
+  }];
+
+  // 功能菜单（"我的订单"已合并进上方"订单管理"网格）
+  var funcMenu = [{
+    label: "我的发布",
+    icon: "📢",
+    url: "/pages/my-availabilities/my-availabilities"
+  }, {
+    label: "我的关注",
+    icon: "⭐",
+    url: "/pages/following/following"
+  }, {
+    label: "意见反馈",
+    icon: "💬",
+    url: "/pages/feedback/feedback"
+  }];
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+    className: "page-profile",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_components_CustomNav_CustomNav__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      title: "\u6211\u7684"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+      className: "header",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+        className: "user-info",
+        onClick: function onClick() {
+          return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+            url: "/pages/profile-edit/profile-edit?tab=student"
+          });
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          className: "avatar",
+          children: user.avatarUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Image, {
+            src: user.avatarUrl,
+            className: "avatar-img",
+            mode: "aspectFill"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "avatar-placeholder",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              children: (user.nickname || "用")[0]
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          className: "user-details",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+            className: "nickname",
+            children: user.nickname || "用户"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+            className: "phone",
+            children: profile !== null && profile !== void 0 && profile.phone ? "ID\uFF1A".concat(profile.phone) : "未绑定手机号"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          className: "setting-btn",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+            className: "setting-arrow",
+            children: "\u203A"
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+        className: "balance-cards",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          className: "balance-card orange",
+          onClick: function onClick() {
+            return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+              url: "/pages/orders/orders?role=student"
+            });
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "card-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "amount",
+              children: studentStatus.done ? "学员" : "未开通"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "label",
+              children: "\u5B66\u5458\u8EAB\u4EFD"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+              className: "view-btn",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+                className: "view-arrow",
+                children: "\u203A"
+              })
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          className: "balance-card green",
+          onClick: function onClick() {
+            return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+              url: "/pages/orders/orders?role=coach"
+            });
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "card-content",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "amount",
+              children: coachStatus.done ? "陪练" : "未开通"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "label",
+              children: "\u966A\u7EC3\u8EAB\u4EFD"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+              className: "view-btn",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+                className: "view-arrow",
+                children: "\u203A"
+              })
+            })]
+          })
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+      className: "order-section",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+        className: "section-title",
+        children: "\u8BA2\u5355\u7BA1\u7406"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+        className: "order-grid",
+        children: orderEntries.map(function (item) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "order-item",
+            onClick: function onClick() {
+              return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+                url: "/pages/orders/orders".concat(item.status ? "?status=".concat(item.status) : "")
+              });
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+              className: "order-icon",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+                className: "order-emoji",
+                children: item.icon
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "order-text",
+              children: item.text
+            })]
+          }, item.text);
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+      className: "menu-section",
+      children: identityMenu.map(function (item, idx) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "menu-item",
+            onClick: function onClick() {
+              return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+                url: item.url
+              });
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+              className: "menu-icon-wrap ".concat(item.gradient),
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+                className: "menu-icon",
+                children: item.icon
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "menu-label",
+              children: item.label
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "menu-status ".concat(item.statusDone ? "done" : "pending"),
+              children: item.status
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "menu-arrow",
+              children: "\u203A"
+            })]
+          }), idx < identityMenu.length - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "menu-divider"
+          })]
+        }, item.label);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+      className: "menu-section",
+      children: funcMenu.map(function (item, idx) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "menu-item",
+            onClick: function onClick() {
+              return _tarojs_taro__WEBPACK_IMPORTED_MODULE_0___default().navigateTo({
+                url: item.url
+              });
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+              className: "menu-icon-wrap gray",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+                className: "menu-icon",
+                children: item.icon
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "menu-label",
+              children: item.label
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Text, {
+              className: "menu-arrow",
+              children: "\u203A"
+            })]
+          }), idx < funcMenu.length - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+            className: "menu-divider"
+          })]
+        }, item.label);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.View, {
+      className: "logout-section",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_tarojs_components__WEBPACK_IMPORTED_MODULE_9__.Button, {
+        className: "logout-btn",
+        onClick: logout,
+        children: "\u9000\u51FA\u767B\u5F55"
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./src/pages/profile/profile.tsx":
+/*!***************************************!*\
+  !*** ./src/pages/profile/profile.tsx ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) {
+
+/* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/dsl/common.js");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_profile_profile_profile_tsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !!../../../node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/profile/profile!./profile.tsx */ "./node_modules/@tarojs/taro-loader/lib/entry-cache.js?name=pages/profile/profile!./src/pages/profile/profile.tsx");
+
+
+var config = {"navigationBarTitleText":"我的","navigationStyle":"custom"};
+
+
+
+var taroOption = (0,_tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__.createPageConfig)(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_profile_profile_profile_tsx__WEBPACK_IMPORTED_MODULE_0__["default"], 'pages/profile/profile', {root:{cn:[]}}, config || {})
+if (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_profile_profile_profile_tsx__WEBPACK_IMPORTED_MODULE_0__["default"] && _node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_profile_profile_profile_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors) {
+  taroOption.behaviors = (taroOption.behaviors || []).concat(_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_profile_profile_profile_tsx__WEBPACK_IMPORTED_MODULE_0__["default"].behaviors)
+}
+var inst = Page(taroOption)
+
+
+
+/* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_tarojs_taro_loader_lib_entry_cache_js_name_pages_profile_profile_profile_tsx__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+/******/ __webpack_require__.O(0, ["taro","vendors","common"], function() { return __webpack_exec__("./src/pages/profile/profile.tsx"); });
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=profile.js.map

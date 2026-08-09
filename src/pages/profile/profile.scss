@@ -41,9 +41,10 @@
 }
 
 /* 顶部用户信息区（青绿渐变背景） */
+/* header 从导航栏下方开始，青色渐变不再透到导航栏 */
 .header {
   background: linear-gradient(180deg, #07B6D5 0%, #4FC9E0 60%, var(--bg-color) 100%);
-  padding: 24px 20px 60px;
+  padding: 16px 20px 60px;
 }
 
 .user-info {

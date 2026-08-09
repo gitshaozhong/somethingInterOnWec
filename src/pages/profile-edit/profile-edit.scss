@@ -222,6 +222,41 @@
   flex-shrink: 0;
 }
 
+/* 所在城市选择入口（点击跳转 city-picker） */
+.city-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--white);
+  box-sizing: border-box;
+}
+
+.city-entry:active {
+  background: var(--bg-color);
+}
+
+.city-entry-value {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.city-entry-placeholder {
+  font-size: 14px;
+  color: var(--text-color-hint);
+}
+
+.city-entry-arrow {
+  font-size: 20px;
+  color: var(--text-color-hint);
+  line-height: 1;
+  margin-left: 8px;
+}
+
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
