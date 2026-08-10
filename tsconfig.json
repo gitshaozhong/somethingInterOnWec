@@ -13,16 +13,17 @@
     "noUnusedParameters": false,
     "strictNullChecks": true,
     "sourceMap": true,
-    "rootDir": ".",
+    "rootDirs": [".", "../shared"],
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
     "typeRoots": ["node_modules/@types"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@shared/*": ["../shared/*"]
     },
     "baseUrl": "."
   },
-  "include": ["src/**/*", "config/**/*", "types/**/*"],
+  "include": ["src/**/*", "config/**/*", "types/**/*", "../shared/**/*"],
   "exclude": ["node_modules", "dist"]
 }

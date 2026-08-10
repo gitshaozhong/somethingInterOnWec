@@ -1,4 +1,5 @@
 import { defineConfig } from "@tarojs/cli";
+import path from "path";
 
 export default defineConfig({
   projectName: "yuqiudazi",
@@ -24,6 +25,9 @@ export default defineConfig({
   compiler: "webpack5",
   cache: { enable: false },
   mini: {
+    webpackChain(chain) {
+      chain.resolve.alias.set("@shared", path.resolve(__dirname, "..", "..", "shared"));
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -41,6 +45,9 @@ export default defineConfig({
   h5: {
     publicPath: "/",
     staticDirectory: "static",
+    webpackChain(chain) {
+      chain.resolve.alias.set("@shared", path.resolve(__dirname, "..", "..", "shared"));
+    },
     postcss: {
       autoprefixer: {
         enable: true,
