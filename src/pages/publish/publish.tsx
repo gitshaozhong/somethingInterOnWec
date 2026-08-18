@@ -5,12 +5,14 @@ import { availabilitiesService } from "../../services/availabilities";
 import { demandsService } from "../../services/demands";
 import { authService } from "../../services/auth";
 import { useUserStore } from "../../stores/user";
+import { ensureSubscribe } from "../../utils/subscribe";
 import Loading from "../../components/Loading";
 import CustomNav from "../../components/CustomNav/CustomNav";
 import {
   BADMINTON_LEVELS,
   HOUR_OPTIONS,
   COURT_BOOKED_OPTIONS,
+  DISTANCE_OPTIONS,
   PRICE_PRESETS,
   inferTimeSlot,
 } from "../../config/site";
@@ -53,6 +55,7 @@ export default function Publish() {
   const [studentLevel, setStudentLevel] = useState(0);
   const [budgetMin, setBudgetMin] = useState("");
   const [budgetMax, setBudgetMax] = useState("");
+  const [radiusKm, setRadiusKm] = useState<number>(5);
 
   useDidShow(() => {
     fetchProfile();
@@ -241,9 +244,18 @@ export default function Publish() {
         note: note.trim() || null,
       });
       if (res.ok) {
-        Taro.showToast({ title: "发布成功", icon: "success" });
-        resetForm();
-        setTimeout(() => Taro.switchTab({ url: "/pages/index/index" }), 1500);
+        Taro.showModal({
+          title: "发布成功",
+          content: "档期已上架陪练大厅。有学员向你发出邀请时，会通过服务通知和「消息」页提醒你，请留意。",
+          showCancel: false,
+          confirmText: "我知道了",
+          success: () => {
+            resetForm();
+            ensureSubscribe(["invite_received"]).finally(() => {
+              Taro.switchTab({ url: "/pages/index/index" });
+            });
+          },
+        });
       }
     } catch (e: any) {
       Taro.showToast({ title: e?.message || "发布失败", icon: "none" });
@@ -292,12 +304,22 @@ export default function Publish() {
         budgetMin: budgetMin ? Number(budgetMin) : null,
         budgetMax: Number(budgetMax),
         courtBookedBy,
+        radiusKm,
         note: note.trim() || null,
       });
       if (res.ok) {
-        Taro.showToast({ title: "发布成功", icon: "success" });
-        resetForm();
-        setTimeout(() => Taro.switchTab({ url: "/pages/index/index" }), 1500);
+        Taro.showModal({
+          title: "发布成功",
+          content: "需求已上架学员大厅。有陪练向你发出邀请时，会通过服务通知和「消息」页提醒你，请留意。",
+          showCancel: false,
+          confirmText: "我知道了",
+          success: () => {
+            resetForm();
+            ensureSubscribe(["invite_received"]).finally(() => {
+              Taro.switchTab({ url: "/pages/index/index" });
+            });
+          },
+        });
       }
     } catch (e: any) {
       Taro.showToast({ title: e?.message || "发布失败", icon: "none" });
@@ -320,6 +342,7 @@ export default function Publish() {
     setPriceMax("");
     setBudgetMin("");
     setBudgetMax("");
+    setRadiusKm(5);
   };
 
   const today = new Date().toISOString().slice(0, 10);
@@ -415,6 +438,22 @@ export default function Publish() {
                       <Text className="venue-entry-placeholder">点击选择球馆位置</Text>
                     )}
                     <Text className="venue-entry-arrow">›</Text>
+                  </View>
+                </View>
+
+                <View className="form-item">
+                  <Text className="form-label">匹配范围</Text>
+                  <Text className="form-hint">该球馆方圆范围内的球友可在「附近」列表看到你的需求</Text>
+                  <View className="radio-row">
+                    {DISTANCE_OPTIONS.map((d) => (
+                      <View
+                        key={d}
+                        className={`radio-chip ${radiusKm === d ? "active" : ""}`}
+                        onClick={() => setRadiusKm(d)}
+                      >
+                        <Text>{d} 公里</Text>
+                      </View>
+                    ))}
                   </View>
                 </View>
 

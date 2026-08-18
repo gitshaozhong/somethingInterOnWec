@@ -41,6 +41,8 @@ export default function Index() {
   const [studentLevel, setStudentLevel] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [courtBooked, setCourtBooked] = useState("");
+  // 「附近」筛选：定位坐标（仅学员大厅生效，与区域筛选互斥）
+  const [near, setNear] = useState<{ lat: number; lng: number } | null>(null);
 
   const startHour = TIME_PRESETS.find(t => t.value === timePreset)?.start ?? null;
   const endHour = TIME_PRESETS.find(t => t.value === timePreset)?.end ?? null;
@@ -49,6 +51,7 @@ export default function Index() {
     !!date ||
     !!timePreset ||
     !!district ||
+    !!near ||
     level > 0 ||
     studentLevel > 0 ||
     maxPrice > 0 ||
@@ -63,6 +66,7 @@ export default function Index() {
       if (endHour != null) params.endHour = endHour;
       if (district) params.district = district;
       if (courtBooked) params.courtBookedBy = courtBooked;
+      if (near && tab === "student") params.near = `${near.lat},${near.lng}`;
 
       if (tab === "coach") {
         if (level > 0) params.level = level;
@@ -90,13 +94,13 @@ export default function Index() {
       setLoading(false);
       setRefreshing(false);
     }
-  }, [tab, date, startHour, endHour, district, level, studentLevel, maxPrice, courtBooked]);
+  }, [tab, date, startHour, endHour, district, near, level, studentLevel, maxPrice, courtBooked]);
 
   useEffect(() => {
     setPage(1);
     setHasMore(true);
     fetchList(1);
-  }, [tab, date, timePreset, district, level, studentLevel, maxPrice, courtBooked]);
+  }, [tab, date, timePreset, district, near, level, studentLevel, maxPrice, courtBooked]);
 
   useDidShow(() => {
     fetchList(1);
@@ -134,10 +138,32 @@ export default function Index() {
     setDate("");
     setTimePreset("");
     setDistrict("");
+    setNear(null);
     setLevel(0);
     setStudentLevel(0);
     setMaxPrice(0);
     setCourtBooked("");
+  };
+
+  // 切换「附近」筛选：开启时获取定位，与区域筛选互斥
+  const toggleNear = () => {
+    if (near) { setNear(null); return; }
+    Taro.getLocation({
+      type: "gcj02",
+      success: (res) => {
+        setNear({ lat: res.latitude, lng: res.longitude });
+        setDistrict("");
+      },
+      fail: () => {
+        Taro.showModal({
+          title: "需要位置权限",
+          content: "开启位置权限后，可查看你附近球馆的学员需求",
+          confirmText: "去开启",
+          cancelText: "取消",
+          success: (r) => { if (r.confirm) Taro.openSetting(); },
+        });
+      },
+    });
   };
 
 
@@ -207,7 +233,7 @@ export default function Index() {
   // 学员需求卡片
   const renderStudentList = () => (
     studentList.length === 0 && !loading ? (
-      <Empty text="暂无需求" />
+      <Empty text={near ? "附近暂无匹配需求，可关闭「只看附近」查看全部" : "暂无需求"} />
     ) : (
       studentList.map((item) => (
         <View key={item.id} className="card" onClick={() => goDetail(item.id)}>
@@ -245,7 +271,10 @@ export default function Index() {
           </View>
 
           <View className="card-bottom">
-            <Text className="court-badge">期望 Lv.{item.expectedLevel ?? "?"}+</Text>
+            <View className="badge-group">
+              <Text className="court-badge">期望 Lv.{item.expectedLevel ?? "?"}+</Text>
+              <Text className="court-badge">方圆{item.radiusKm ?? 5}km</Text>
+            </View>
             <View className="price-wrap">
               {item.budgetMax != null ? (
                 <>
@@ -324,18 +353,33 @@ export default function Index() {
                 </View>
               </View>
 
+              {/* 附近（仅学员大厅） */}
+              {tab === "student" && (
+                <View className="panel-group">
+                  <Text className="group-title">位置</Text>
+                  <View className="chip-row">
+                    <View className={`chip ${near ? "active" : ""}`} onClick={toggleNear}>
+                      <Text>{near ? "📍 附近已开启" : "📍 只看附近"}</Text>
+                    </View>
+                  </View>
+                  {near && (
+                    <Text className="group-hint">仅显示期望地点在其匹配范围内的需求</Text>
+                  )}
+                </View>
+              )}
+
               {/* 区域 */}
               <View className="panel-group">
                 <Text className="group-title">区域（单选）</Text>
                 <View className="chip-row">
-                  <View className={`chip ${!district ? "active" : ""}`} onClick={() => setDistrict("")}>
+                  <View className={`chip ${!district ? "active" : ""}`} onClick={() => { setDistrict(""); setNear(null); }}>
                     <Text>不限</Text>
                   </View>
                   {BEIJING_DISTRICTS.map((d) => (
                     <View
                       key={d}
                       className={`chip ${district === d ? "active" : ""}`}
-                      onClick={() => setDistrict(d)}
+                      onClick={() => { setDistrict(d); setNear(null); }}
                     >
                       <Text>{d}区</Text>
                     </View>

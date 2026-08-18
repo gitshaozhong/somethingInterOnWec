@@ -5,6 +5,7 @@ import { invitationsService } from "../../../services/invitations";
 import { notificationsService } from "../../../services/notifications";
 import { useUserStore } from "../../../stores/user";
 import { useAppStore } from "../../../stores/app";
+import { ensureSubscribe } from "../../../utils/subscribe";
 import Loading from "../../../components/Loading";
 import Empty from "../../../components/Empty";
 import StatusBadge from "../../../components/StatusBadge";
@@ -85,8 +86,11 @@ export default function FirstConfirmPage() {
         replyMessage: replyMessage.trim() || undefined,
       });
       if (res.ok) {
+        if (respondAction === "accept") {
+          await ensureSubscribe(["practice_confirmed"]);
+        }
         Taro.showToast({
-          title: respondAction === "accept" ? "已同意，双方已解锁手机号" : "已婉拒邀请",
+          title: respondAction === "accept" ? "已同意！手机号已互相解锁，尽快电话联系吧" : "已婉拒邀请",
           icon: "success",
         });
         setShowRespond(false);
@@ -223,7 +227,7 @@ export default function FirstConfirmPage() {
           )}
           {!isReceived && item.status === "pending" && (
             <View className="respond-btns">
-              <Text className="msg-waiting">等待对方响应…</Text>
+              <Text className="msg-waiting">等待对方确认… 通常在 5-20 分钟内响应</Text>
               <View className="respond-btn cancel" onClick={() => openRevoke(item)}>
                 <Text>取消邀请</Text>
               </View>

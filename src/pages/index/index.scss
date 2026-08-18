@@ -184,6 +184,13 @@
   margin-bottom: 10px;
 }
 
+.group-hint {
+  display: block;
+  font-size: 11px;
+  color: var(--text-color-hint);
+  margin-top: 8px;
+}
+
 .chip-row {
   display: flex;
   flex-wrap: wrap;
@@ -384,6 +391,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.badge-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .court-badge {

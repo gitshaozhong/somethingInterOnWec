@@ -5,6 +5,7 @@ import { invitationsService } from "../../../services/invitations";
 import { notificationsService } from "../../../services/notifications";
 import { useUserStore } from "../../../stores/user";
 import { useAppStore } from "../../../stores/app";
+import { ensureSubscribe } from "../../../utils/subscribe";
 import Loading from "../../../components/Loading";
 import Empty from "../../../components/Empty";
 import type { InvitationItem } from "../../../types";
@@ -62,6 +63,7 @@ export default function SecondConfirmPage() {
     try {
       const res = await invitationsService.confirmPractice(item.id);
       if (res.ok) {
+        await ensureSubscribe(["practice_confirmed"]);
         Taro.showToast({
           title: res.bothConfirmed ? "双方已确认，订单进行中" : "已确认练球",
           icon: "success",

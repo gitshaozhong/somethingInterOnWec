@@ -95,6 +95,7 @@ export interface DemandItem {
   startHour: number;
   endHour: number;
   locationName: string | null;
+  radiusKm: number;
   expectedLevel: number | null;
   budgetMin: number | null;
   budgetMax: number | null;

@@ -1,5 +1,5 @@
 import request from "./request";
-import type { Invitation } from "../types";
+import type { InvitationItem, OrderItem } from "../types";
 
 export const invitationsService = {
   /** 发起邀请 */
@@ -14,7 +14,7 @@ export const invitationsService = {
 
   /** 我的消息列表 */
   list() {
-    return request.get<{ ok: boolean; items: Invitation[] }>("/invitations");
+    return request.get<{ ok: boolean; items: InvitationItem[] }>("/invitations");
   },
 
   /** 未读消息数 */
@@ -44,6 +44,6 @@ export const invitationsService = {
 
   /** 我的订单列表 */
   orders() {
-    return request.get<{ ok: boolean; items: Invitation[] }>("/invitations/orders");
+    return request.get<{ ok: boolean; items: OrderItem[] }>("/invitations/orders");
   },
 };

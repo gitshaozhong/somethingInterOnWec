@@ -5,6 +5,7 @@ import { availabilitiesService } from "../../services/availabilities";
 import { invitationsService } from "../../services/invitations";
 import { followsService } from "../../services/follows";
 import { useUserStore } from "../../stores/user";
+import { ensureSubscribe } from "../../utils/subscribe";
 import Loading from "../../components/Loading";
 import RatingStars from "../../components/RatingStars";
 import type { AvailabilityDetail } from "../../types";
@@ -102,9 +103,15 @@ export default function AvailabilityDetail() {
         message: message.trim(),
       });
       if (res.ok) {
-        Taro.showToast({ title: "邀请已发送", icon: "success" });
         setShowContact(false);
         setMessage("");
+        Taro.showModal({
+          title: "邀请已发送",
+          content: "对方通常会在 5-20 分钟内确认。响应结果会通过服务通知和「消息」页告知你，请留意。",
+          showCancel: false,
+          confirmText: "我知道了",
+          success: () => { ensureSubscribe(["invite_result"]); },
+        });
       }
     } catch (e: any) {
       Taro.showToast({ title: e?.message || "发送失败", icon: "none" });
@@ -279,7 +286,7 @@ export default function AvailabilityDetail() {
               </View>
             </View>
             <View className="modal-body">
-              <Text className="modal-hint">发送练球邀请，对方同意后即可查看联系方式</Text>
+              <Text className="modal-hint">发送练球邀请，对方同意后即可查看联系方式。对方通常会在 5-20 分钟内响应。</Text>
               <Textarea
                 className="modal-textarea"
                 placeholder="简单介绍一下自己吧（200字以内）"
